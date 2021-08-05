@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Add, RateReview } from '@material-ui/icons';
+import { useEffect } from 'react';
 import {
   CarrerHeader,
   PageContainer, ProfessionHeader, ProfessionText, Row,
@@ -7,6 +8,7 @@ import {
 import ProfissionNavigation from '../../navigations/ProfissionNavigation';
 import { Tabs } from '../../components/Tabs';
 import { Button } from '../../components/Button';
+import { useCareers } from '../../hooks/Careers';
 
 const tabs = [
   {
@@ -32,11 +34,17 @@ const tabs = [
 ];
 const Profession = () => {
   const { profissao } = useParams();
+  const { currentCarrer, getCarrerById } = useCareers();
+
+  useEffect(() => {
+    getCarrerById(profissao);
+  }, []);
+
   return (
     <PageContainer>
       <ProfessionHeader>
         <CarrerHeader>
-          <ProfessionText>{profissao}</ProfessionText>
+          <ProfessionText>{currentCarrer.name}</ProfessionText>
           <Row>
             <Button text="Seguir" sufixIcon={<Add />} />
             <Button style={{ marginLeft: 5 }} text="Avaliar" sufixIcon={<RateReview />} />
