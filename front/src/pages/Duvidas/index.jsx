@@ -27,7 +27,11 @@ const Duvidas = () => {
           <QuestionListItemText>
             {question.text}
           </QuestionListItemText>
-          <QuestionListItemUsername>{question.user.name}</QuestionListItemUsername>
+          <QuestionListItemUsername>
+            Perguntado por
+            {' '}
+            {question.user.name}
+          </QuestionListItemUsername>
         </QuestionListItemContainer>
         {index !== questions.length - 1 && <HorizontalLine />}
       </div>
