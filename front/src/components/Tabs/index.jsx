@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useLocation, useHistory } from 'react-router-dom';
 import {
   TabsContainer, Tab, BottomBorder, Container,
@@ -18,8 +19,9 @@ const Tabs = ({ tabs }) => {
   return (
     <Container>
       <TabsContainer>
-        {tabs.map((tab) => (
+        {tabs.map((tab, index) => (
           <Tab
+            key={index}
             onClick={() => onTabClick(tab.path)}
             selected={tab.path === currentPath}
           >
