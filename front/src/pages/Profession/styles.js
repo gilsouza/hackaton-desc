@@ -5,10 +5,17 @@ export const PageContainer = styled.div`
   flex: 1;
   background-color: var(--background-color);
 `;
+export const ContentContainer = styled.div`
+  padding: 20px;
+  flex: 1;
+  background-color: var(--third-color);
+  border-radius: 0 0 5px 5px;
+  border: 1px solid black;
+`;
 export const ProfessionHeader = styled.div`
   background-color: black;
   padding: 12px 20px 0 20px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0 ;
 `;
 export const CarrerHeader = styled.div`
   display: flex;

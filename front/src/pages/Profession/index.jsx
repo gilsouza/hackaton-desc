@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Add, RateReview } from '@material-ui/icons';
 import { useEffect } from 'react';
 import {
-  CarrerHeader,
+  CarrerHeader, ContentContainer,
   PageContainer, ProfessionHeader, ProfessionText, Row,
 } from './styles';
 import ProfissionNavigation from '../../navigations/ProfissionNavigation';
@@ -52,7 +52,9 @@ const Profession = () => {
         </CarrerHeader>
         <Tabs tabs={tabs} />
       </ProfessionHeader>
-      <ProfissionNavigation />
+      <ContentContainer>
+        <ProfissionNavigation />
+      </ContentContainer>
     </PageContainer>
   );
 };
