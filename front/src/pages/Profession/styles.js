@@ -3,9 +3,23 @@ import styled from 'styled-components';
 export const PageContainer = styled.div``;
 export const ProfessionHeader = styled.div`
   margin: 20px;
-background-color: black`;
+  background-color: black;
+  padding: 12px 20px;
+  border-radius: 5px;
+`;
+export const CarrerHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const ProfessionText = styled.p`
-  font-size: 26px;
+  font-size: 32px;
+  text-align: left;
+  font-weight: bold;
   color: white;
+`;
+
+export const Row = styled.div`
+    display: flex;
 `;
