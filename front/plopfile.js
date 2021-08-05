@@ -18,17 +18,12 @@ module.exports = function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'src/pages/{{pascalCase name}}/index.tsx',
+                path: 'src/pages/{{pascalCase name}}/index.js',
                 templateFile: 'plop-templates/components.hbs',
             },
             {
                 type: 'add',
-                path: 'src/pages/{{pascalCase name}}/interfaces.ts',
-                templateFile: 'plop-templates/interfaces.hbs',
-            },
-            {
-                type: 'add',
-                path: 'src/pages/{{pascalCase name}}/styles.ts',
+                path: 'src/pages/{{pascalCase name}}/styles.js',
                 templateFile: 'plop-templates/styles.hbs',
             },
             {
@@ -48,17 +43,12 @@ module.exports = function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'src/components/{{pascalCase name}}/index.tsx',
+                path: 'src/components/{{pascalCase name}}/index.js',
                 templateFile: 'plop-templates/components.hbs',
             },
             {
                 type: 'add',
-                path: 'src/components/{{pascalCase name}}/interfaces.ts',
-                templateFile: 'plop-templates/interfaces.hbs',
-            },
-            {
-                type: 'add',
-                path: 'src/components/{{pascalCase name}}/styles.ts',
+                path: 'src/components/{{pascalCase name}}/styles.js',
                 templateFile: 'plop-templates/styles.hbs',
             },
             {
@@ -78,13 +68,8 @@ module.exports = function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'src/hooks/{{pascalCase name}}/index.tsx',
+                path: 'src/hooks/{{pascalCase name}}/index.js',
                 templateFile: 'plop-templates/hooks.hbs',
-            },
-            {
-                type: 'add',
-                path: 'src/hooks/{{pascalCase name}}/interfaces.ts',
-                templateFile: 'plop-templates/interfacesHooks.hbs',
             },
             {
                 type: 'git add',
