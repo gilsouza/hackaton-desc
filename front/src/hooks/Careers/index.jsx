@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import { Loading } from '../../components/Loading';
 
 const CareersContext = createContext({});
 
@@ -7,38 +8,48 @@ const API_URL = 'https://hackaton-desc-back.vercel.app';
 
 const CareersProvider = ({ children }) => {
   const [careers, setCarrers] = useState([]);
+  const [loadding, setLoading] = useState(false);
   const [briefs, setBriefs] = useState([]);
   const [currentCarrer, setCurrentCarrer] = useState({});
   const [questions, setQuestions] = useState([]);
 
   const getCareersByFragment = async (fragment) => {
+    setLoading(true);
     if (fragment) {
       const { data } = await axios.get(`${API_URL}/careers?q=${fragment}`);
       setCarrers(data);
     } else {
       setCarrers([]);
     }
+    setLoading(false);
   };
 
   const getCarrerById = async (id) => {
+    setLoading(true);
     const { data } = await axios.get(`${API_URL}/careers?id=${id}`);
     if (data.length) {
       setCurrentCarrer(data[0]);
     } else {
       setCurrentCarrer(null);
     }
+    setLoading(false);
   };
 
   const getBriefs = async () => {
+    setLoading(true);
     if (currentCarrer?.id) {
       const { data } = await axios.get(`${API_URL}/careers/${currentCarrer?.id}/briefs?_expand=user`);
-      setBriefs(data);
+
+      const briefLikes = await Promise.all(data.map((brief) => axios.get(`${API_URL}/briefs/${brief.id}/likes`)));
+      setBriefs(data.map((d, index) => ({ ...d, likes: briefLikes[index].data })));
     } else {
       setBriefs([]);
     }
+    setLoading(false);
   };
 
   const getQuestions = async () => {
+    setLoading(true);
     if (currentCarrer?.id) {
       const { data } = await axios.get(`${API_URL}/questions?careerId=${currentCarrer?.id}&_expand=user`);
 
@@ -46,6 +57,7 @@ const CareersProvider = ({ children }) => {
     } else {
       setQuestions([]);
     }
+    setLoading(false);
   };
 
   return (
@@ -61,6 +73,7 @@ const CareersProvider = ({ children }) => {
     }}
     >
       {children}
+      {loadding && <Loading />}
     </CareersContext.Provider>
   );
 };

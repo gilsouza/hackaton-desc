@@ -8,6 +8,14 @@ export const UserContainer = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+export const LikeContainer = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+`;
+export const Score = styled.div`
+  margin: 0 8px;
+`;
 export const Name = styled.span`
     margin: 2px 0;
   font-size: 16px;
