@@ -3,11 +3,6 @@ import styled from 'styled-components';
 export const Img = styled.img`
   margin-right: 5px;
 `;
-export const Avatar = styled.img`
-    border-radius: 60px;
-  height: 60px;
-  width: 60px;
-`;
 export const HeaderContainer = styled.div`
   height: 60px;
   padding: 20px;

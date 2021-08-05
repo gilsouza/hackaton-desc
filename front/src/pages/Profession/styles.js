@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
+    max-width: 800px;
+  width: 100%;
+`;
+
+export const PageBackground = styled.div`
   padding: 20px;
   flex: 1;
+  justify-content: center;
+  display: flex;
   background-color: var(--background-color);
 `;
 export const ContentContainer = styled.div`

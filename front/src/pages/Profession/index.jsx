@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Add, RateReview } from '@material-ui/icons';
 import { useEffect } from 'react';
 import {
-  CarrerHeader, ContentContainer,
+  CarrerHeader, ContentContainer, PageBackground,
   PageContainer, ProfessionHeader, ProfessionText, Row,
 } from './styles';
 import ProfissionNavigation from '../../navigations/ProfissionNavigation';
@@ -41,21 +41,23 @@ const Profession = () => {
   }, []);
 
   return (
-    <PageContainer>
-      <ProfessionHeader>
-        <CarrerHeader>
-          <ProfessionText>{currentCarrer.name}</ProfessionText>
-          <Row>
-            <Button text="Seguir" sufixIcon={<Add />} />
-            <Button style={{ marginLeft: 5 }} text="Avaliar" sufixIcon={<RateReview />} />
-          </Row>
-        </CarrerHeader>
-        <Tabs tabs={tabs} />
-      </ProfessionHeader>
-      <ContentContainer>
-        <ProfissionNavigation />
-      </ContentContainer>
-    </PageContainer>
+    <PageBackground>
+      <PageContainer>
+        <ProfessionHeader>
+          <CarrerHeader>
+            <ProfessionText>{currentCarrer.name}</ProfessionText>
+            <Row>
+              <Button text="Seguir" sufixIcon={<Add />} />
+              <Button style={{ marginLeft: 5 }} text="Avaliar" sufixIcon={<RateReview />} />
+            </Row>
+          </CarrerHeader>
+          <Tabs tabs={tabs} />
+        </ProfessionHeader>
+        <ContentContainer>
+          <ProfissionNavigation />
+        </ContentContainer>
+      </PageContainer>
+    </PageBackground>
   );
 };
 
