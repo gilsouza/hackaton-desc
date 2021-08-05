@@ -1,8 +1,6 @@
 import React from 'react';
 import { PageContainer } from './styles';
 
-const Depoimentos = () => {
-  return <PageContainer>Depoimentos</PageContainer>;
-};
+const Depoimentos = () => <PageContainer>Depoimentos</PageContainer>;
 
 export { Depoimentos };
