@@ -205,7 +205,7 @@ module.exports = () => {
                 id: "1",
                 briefId: 1,
                 userId: 1,
-                // careerId: "human-research-engineer",
+                careerId: "human-research-engineer",
             },
             {
                 createdAt: "2021-08-05T20:18:51.931Z",
@@ -213,6 +213,7 @@ module.exports = () => {
                 id: "2",
                 briefId: 1,
                 userId: 2,
+                careerId: "human-research-engineer",
             },
             {
                 createdAt: "2021-08-05T13:40:37.212Z",
@@ -220,6 +221,7 @@ module.exports = () => {
                 id: "3",
                 briefId: 2,
                 userId: 3,
+                careerId: "human-research-engineer",
             },
             {
                 createdAt: "2021-08-05T20:33:43.535Z",
@@ -233,6 +235,20 @@ module.exports = () => {
                 like: false,
                 id: "5",
                 briefId: 3,
+                userId: 5,
+            },
+            {
+                createdAt: "2021-08-05T00:12:02.256Z",
+                like: false,
+                id: "6",
+                question_anwsers: 2,
+                userId: 5,
+            },
+            {
+                createdAt: "2021-08-05T00:12:02.256Z",
+                like: false,
+                id: "7",
+                question_anwsers: 2,
                 userId: 5,
             },
         ],
