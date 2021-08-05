@@ -237,6 +237,20 @@ module.exports = () => {
                 briefId: 3,
                 userId: 5,
             },
+            {
+                createdAt: "2021-08-05T00:12:02.256Z",
+                like: false,
+                id: "6",
+                question_anwsers: 2,
+                userId: 5,
+            },
+            {
+                createdAt: "2021-08-05T00:12:02.256Z",
+                like: false,
+                id: "7",
+                question_anwsers: 2,
+                userId: 5,
+            },
         ],
         question_anwsers: [
             {
@@ -251,7 +265,6 @@ module.exports = () => {
                 userId: 2,
                 questionId: 1,
                 text: "quis corrupti fugit",
-                answers: "answers 1",
                 id: "2",
             },
         ],
