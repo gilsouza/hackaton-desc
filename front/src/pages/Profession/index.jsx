@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { PageContainer } from './styles';
+import { PageContainer, ProfessionHeader, ProfessionText } from './styles';
 import ProfissionNavigation from '../../navigations/ProfissionNavigation';
 
 const Profession = () => {
   const { profissao } = useParams();
   return (
     <PageContainer>
-      Profissão
-      {profissao}
+      <ProfessionHeader>
+        <ProfessionText>{profissao}</ProfessionText>
+      </ProfessionHeader>
       <ProfissionNavigation />
     </PageContainer>
   );

@@ -1,13 +1,16 @@
 import {
-  HeaderContainer, HeaderText, LeftContainer, LoginButton,
+  HeaderContainer, HeaderText, Img, LeftContainer, LoginButton,
 } from './styles';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.svg';
 
 const Header = () => (
   <HeaderContainer>
     <LeftContainer>
-      <img src={logo} alt="logo" />
-      <HeaderText>Carreiras</HeaderText>
+      <Img src={logo} alt="logo" height={50} />
+      <HeaderText>
+        <span>descomplica</span>
+        <span>carreiras</span>
+      </HeaderText>
     </LeftContainer>
     <LoginButton>Entrar</LoginButton>
   </HeaderContainer>

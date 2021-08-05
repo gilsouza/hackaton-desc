@@ -39,7 +39,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: AprovaSans;
   }
   
-  
+  :root {
+    --primary-color: #00E88F;
+    --secondary-color: black;
+    --third-color: white;
+  }
+
 `;
 
 export { GlobalStyle };

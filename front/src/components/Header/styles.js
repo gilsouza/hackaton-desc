@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+export const Img = styled.img`
+  margin-right: 5px;
+`;
 export const HeaderContainer = styled.div`
   height: 60px;
   padding: 20px;
@@ -7,11 +10,17 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: black;
 `;
 
 export const HeaderText = styled.h1`
-  color: black;
-  font-weight: 800;
+  color: var(--primary-color);
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 22px;
 `;
 
 export const LeftContainer = styled.div`
