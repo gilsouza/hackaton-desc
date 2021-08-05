@@ -1,0 +1,24 @@
+import React, { createContext, useContext, useState } from 'react';
+import { {{ properCase name }}ContextData } from './interfaces';
+
+const {{ properCase name }}Context = createContext<{{ properCase name }}ContextData>({} as {{ properCase name }}ContextData);
+
+const {{ properCase name }}Provider: React.FC = ({ children }) => {
+  const [state, setState] = useState({});
+
+  return (
+    <{{ properCase name }}Context.Provider value={state}>{children}</{{ properCase name }}Context.Provider>
+  );
+};
+
+const use{{ properCase name }} = () => {
+  const context = useContext({{ properCase name }}Context);
+
+  if (!context) {
+    throw new Error('use{{ properCase name }} must be used within an use{{ properCase name }}');
+  }
+
+  return context;
+};
+
+export { {{ properCase name }}Provider, use{{ properCase name }} };
