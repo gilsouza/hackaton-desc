@@ -49,8 +49,13 @@ export const CareerCard = styled.div`
   height: 84px;
   width: 60%;
   padding: 12px;
-  margin: 10px 0;
   border-bottom: 1px solid #aaa;
+  transition: background-color 0.3s;
+
+  :hover {
+    background-color: #efefef;
+    cursor: pointer;
+  }
 `;
 
 export const CareerCardText = styled.div`

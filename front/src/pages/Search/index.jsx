@@ -2,11 +2,14 @@ import { useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import {
   PageContainer, SearchInput, SearchContainer, SearchFrom, NotFoundText, CareerCard, CareerCardText,
 } from './styles';
 
 const Search = () => {
+  const history = useHistory();
+
   const [searchText, setSearchText] = useState('');
   const [careersSearchResult, setCareersSearchResult] = useState([]);
   const [hasSearchedCareer, setHasSearchedCareer] = useState(false);
@@ -33,6 +36,10 @@ const Search = () => {
     }
   };
 
+  const handleCardClick = (id) => {
+    history.push(`/profissao/desenvolvedor/${id}`);
+  };
+
   const renderSearchResult = () => {
     if (careersSearchResult.length === 0) {
       if (!hasSearchedCareer) {
@@ -43,9 +50,8 @@ const Search = () => {
     }
 
     return (careersSearchResult.map((career) => (
-      <CareerCard key={career.id}>
+      <CareerCard key={career.id} onClick={() => { handleCardClick(career.id); }}>
         <CareerCardText>{career.name}</CareerCardText>
-
         <ChevronRightIcon />
       </CareerCard>
     )));
