@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const Img = styled.img`
   margin-right: 5px;
 `;
+export const Avatar = styled.img`
+    border-radius: 60px;
+  height: 60px;
+  width: 60px;
+`;
 export const HeaderContainer = styled.div`
   height: 60px;
   padding: 20px;
@@ -23,10 +28,27 @@ export const HeaderText = styled.h1`
   line-height: 22px;
 `;
 
+export const Name = styled.h1`
+  color: var(--third-color);
+  font-size: 20px;
+  margin-right: 10px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 22px;
+`;
+
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const LoginButton = styled.button`
