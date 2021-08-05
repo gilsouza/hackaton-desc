@@ -8,9 +8,16 @@ export const PageContainer = styled.div`
 `;
 
 export const SearchInput = styled.input`
+  display: flex;
+  flex: 1;
   border: none;
   font-size: 16px;
+  outline: none;
   width: 100%;
+`;
+
+export const SearchFrom = styled.form`
+  width: 90%;
 `;
 
 export const SearchContainer = styled.div`
@@ -25,4 +32,28 @@ export const SearchContainer = styled.div`
   margin-top: 40px;
   height: 36px;
   width: 800px;
+  margin-bottom: 24px;
+`;
+
+export const NotFoundText = styled.div`
+  margin-top: 52px;
+  font-size: 24px;
+  color: #aaa;
+`;
+
+export const CareerCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  width: 60%;
+  padding: 12px;
+  margin: 10px 0;
+  border-bottom: 1px solid #aaa;
+`;
+
+export const CareerCardText = styled.div`
+  font-size: 24px;
+  color: black;
 `;
