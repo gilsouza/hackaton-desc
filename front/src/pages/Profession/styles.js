@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
-export const PageContainer = styled.div``;
+export const PageContainer = styled.div`
+  padding: 20px;
+  flex: 1;
+  background-color: var(--background-color);
+`;
 export const ProfessionHeader = styled.div`
-  margin: 20px;
   background-color: black;
   padding: 12px 20px 0 20px;
   border-radius: 5px;
