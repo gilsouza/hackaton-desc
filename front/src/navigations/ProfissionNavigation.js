@@ -1,6 +1,5 @@
 import {
     Switch,
-    BrowserRouter as Router,
     Route,
 } from "react-router-dom";
 import {Salario} from "../pages/Salario";
