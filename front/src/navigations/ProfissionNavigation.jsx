@@ -19,7 +19,7 @@ function App() {
       <Route path="/profissao/:profissao/depoimentos" exact>
         <Depoimentos />
       </Route>
-      <Route path="/profissao/:profissao/*">
+      <Route path="/profissao/:profissao/" exact>
         <Geral />
       </Route>
     </Switch>

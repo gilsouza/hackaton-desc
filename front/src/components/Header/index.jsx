@@ -5,7 +5,7 @@ import logo from '../../assets/logo.svg';
 
 const Header = () => (
   <HeaderContainer>
-    <LeftContainer>
+    <LeftContainer onClick={() => window.location.replace('/')}>
       <Img src={logo} alt="logo" height={50} />
       <HeaderText>
         <span>descomplica</span>

@@ -26,6 +26,7 @@ export const HeaderText = styled.h1`
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const LoginButton = styled.button`
