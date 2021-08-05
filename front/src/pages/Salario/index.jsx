@@ -1,8 +1,6 @@
 import React from 'react';
 import { PageContainer } from './styles';
 
-const Salario = () => {
-  return <PageContainer>Salario</PageContainer>;
-};
+const Salario = () => <PageContainer>Salario</PageContainer>;
 
 export { Salario };
