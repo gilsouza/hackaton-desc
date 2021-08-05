@@ -19,7 +19,7 @@ function App() {
         <Route path="/" exact   >
           <Search />
         </Route>
-        <Route path="/profissao" exact>
+        <Route path="/profissao/:profissao/*" exact>
           <Profession />
         </Route>
         <Route>
