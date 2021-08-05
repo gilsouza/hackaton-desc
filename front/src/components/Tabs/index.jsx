@@ -12,7 +12,7 @@ const Tabs = ({ tabs }) => {
     if (currentPath) {
       history.push(`${pathname.replace(currentPath, path)}`);
     } else {
-      history.push(`/profissao/desenvolvedor/${path}`);
+      history.push(`${pathname}${path}`);
     }
   };
   return (

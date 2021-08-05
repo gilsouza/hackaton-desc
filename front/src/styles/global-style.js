@@ -43,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-color: #00E88F;
     --secondary-color: black;
     --third-color: white;
+    --background-color: #F5F5F5;
   }
 
 `;

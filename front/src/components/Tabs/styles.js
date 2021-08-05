@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const BottomBorder = styled.div`
   height: 5px;
   background-color: var(--primary-color);
-  transition: 1s;
+  transition: 0.5s;
   position: absolute;
   bottom: 0;
   left: ${(props) => 5 + (props.index * 110)}px;

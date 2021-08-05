@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import {
   PageContainer, SearchInput, SearchContainer, SearchFrom, NotFoundText, CareerCard, CareerCardText,
 } from './styles';
+import { useCareers } from '../../hooks/Careers';
 
 const Search = () => {
+  const { getCareersByFragment, careers } = useCareers();
   const history = useHistory();
 
   const [searchText, setSearchText] = useState('');
-  const [careersSearchResult, setCareersSearchResult] = useState([]);
   const [hasSearchedCareer, setHasSearchedCareer] = useState(false);
 
   const handleInputChange = (event) => {
@@ -24,24 +24,20 @@ const Search = () => {
     event.preventDefault();
 
     if (searchText) {
-      const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/careers?q=${searchText}`);
+      getCareersByFragment(searchText);
 
       setHasSearchedCareer(true);
-
-      setCareersSearchResult(data);
     } else {
       setHasSearchedCareer(false);
-
-      setCareersSearchResult([]);
     }
   };
 
   const handleCardClick = (id) => {
-    history.push(`/profissao/desenvolvedor/${id}`);
+    history.push(`/profissao/${id}/`);
   };
 
   const renderSearchResult = () => {
-    if (careersSearchResult.length === 0) {
+    if (careers.length === 0) {
       if (!hasSearchedCareer) {
         return null;
       }
@@ -49,9 +45,10 @@ const Search = () => {
       return <NotFoundText>Não encontramos nenhuma carreira com esse nome :(</NotFoundText>;
     }
 
-    return (careersSearchResult.map((career) => (
+    return (careers.map((career) => (
       <CareerCard key={career.id} onClick={() => { handleCardClick(career.id); }}>
         <CareerCardText>{career.name}</CareerCardText>
+
         <ChevronRightIcon />
       </CareerCard>
     )));

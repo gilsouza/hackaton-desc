@@ -1,7 +1,9 @@
 import {
-  HeaderContainer, HeaderText, Img, LeftContainer, LoginButton,
+  Avatar,
+  HeaderContainer, HeaderText, Img, LeftContainer, Name, Row,
 } from './styles';
 import logo from '../../assets/logo.svg';
+import snow from '../../assets/snow.png';
 
 const Header = () => (
   <HeaderContainer>
@@ -12,7 +14,10 @@ const Header = () => (
         <span>carreiras</span>
       </HeaderText>
     </LeftContainer>
-    <LoginButton>Entrar</LoginButton>
+    <Row>
+      <Name>Gugu Snow</Name>
+      <Avatar src={snow} />
+    </Row>
   </HeaderContainer>
 );
 
