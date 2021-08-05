@@ -8,10 +8,12 @@ import { Profession } from './pages/Profession';
 import { Search } from './pages/Search';
 import { NotFound } from './pages/NotFound';
 import { Header } from './components/Header';
+import { GlobalStyle } from './styles/global-style';
 
 function App() {
   return (
     <div className="App">
+      <GlobalStyle />
       <Header />
       <Router>
         <Switch>
