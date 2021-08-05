@@ -1,8 +1,17 @@
 import React from 'react';
-import { PageContainer } from './styles';
+import { HeaderContainer, HeaderText, LeftContainer, LoginButton } from './styles';
+import logo from '../../assets/logo.png';
 
 const Header = () => {
-  return <PageContainer>Header</PageContainer>;
+  return (
+    <HeaderContainer>
+      <LeftContainer>
+        <img src={logo} alt="logo"/>
+        <HeaderText>Carreiras</HeaderText>
+      </LeftContainer>
+      <LoginButton>Entrar</LoginButton>
+    </HeaderContainer>
+  );
 };
 
 export { Header };
