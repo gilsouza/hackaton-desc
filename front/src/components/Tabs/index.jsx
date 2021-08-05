@@ -1,10 +1,13 @@
 import { useLocation, useHistory } from 'react-router-dom';
-import { TabsContainer, Tab, BottomBorder } from './styles';
+import {
+  TabsContainer, Tab, BottomBorder, Container,
+} from './styles';
 
 const Tabs = ({ tabs }) => {
   const { pathname } = useLocation();
   const history = useHistory();
   const currentPath = pathname.split('/').reverse()[0];
+  const currentIndex = tabs.findIndex((tab) => tab.path === currentPath);
   const onTabClick = (path) => {
     if (currentPath) {
       history.push(`${pathname.replace(currentPath, path)}`);
@@ -13,7 +16,7 @@ const Tabs = ({ tabs }) => {
     }
   };
   return (
-    <>
+    <Container>
       <TabsContainer>
         {tabs.map((tab) => (
           <Tab
@@ -24,8 +27,8 @@ const Tabs = ({ tabs }) => {
           </Tab>
         ))}
       </TabsContainer>
-      <BottomBorder />
-    </>
+      <BottomBorder index={currentIndex} />
+    </Container>
   );
 };
 
