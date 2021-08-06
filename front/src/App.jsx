@@ -10,6 +10,7 @@ import { NotFound } from './pages/NotFound';
 import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global-style';
 import { CareersProvider } from './hooks/Careers';
+import { Avaliar } from './pages/Avaliar';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/profissao/:profissao/*" exact>
               <Profession />
+            </Route>
+            <Route path="/avaliar/:profissao" exact>
+              <Avaliar />
             </Route>
             <Route>
               <NotFound />

@@ -13,10 +13,10 @@ import {
 } from './styles';
 
 const Duvidas = () => {
-  const { getQuestions, questions } = useCareers();
+  const { getQuestions, questions, currentCarrer } = useCareers();
   useEffect(() => {
     getQuestions();
-  }, []);
+  }, [currentCarrer]);
 
   const handleClick = () => {
 
