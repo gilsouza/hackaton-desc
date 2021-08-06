@@ -11,10 +11,10 @@ import {
   BackButton,
   FollowedCareersContainer,
   FollowedCareersTitle,
-  CareerName,
 } from './styles';
 import { RateProvider } from '../../hooks/Rate';
 import { Header } from '../../components/Header';
+import { CareerCard } from '../../components/CarrerCard';
 
 const User = () => {
   const [followedCareers, setFollowedCareers] = useState([]);
@@ -51,11 +51,11 @@ const User = () => {
                   Você está seguindo as seguintes carreiras:
                 </FollowedCareersTitle>
                 {followedCareers.map((car) => (
-                  <CareerName onClick={() => { history.push(`/profissao/${car}/`); }}>
-                    -
-                    {' '}
-                    {car}
-                  </CareerName>
+                  <CareerCard
+                    onClick={() => { history.push(`/profissao/${car}/`); }}
+                    career={{ name: car }}
+                    score={2}
+                  />
                 ))}
               </FollowedCareersContainer>
             </ContentContainer>
