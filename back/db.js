@@ -952,7 +952,7 @@ module.exports = () => {
                 userId: 4,
             },
         ],
-        rating: [
+        ratings: [
             {
                 createdAt: "2021-08-05T08:01:13.408Z",
                 is_employed: false,

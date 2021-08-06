@@ -29,7 +29,7 @@ const tabs = [
   },
   {
     name: 'Avaliações',
-    path: 'avaliacao',
+    path: 'avaliacoes',
   },
 ];
 const Profession = () => {
