@@ -15,7 +15,7 @@ const Depoimentos = () => {
 
   return (
     <PageContainer>
-      {briefs.map((brief, index) => (
+      {briefs.length ? briefs.map((brief, index) => (
         <Card style={{ marginBottom: index < briefs.length ? '16px' : 0 }}>
           <Quote>{brief.text}</Quote>
           <UserContainer>
@@ -29,7 +29,7 @@ const Depoimentos = () => {
             <ThumbUp style={{ color: '#006b00' }} />
           </LikeContainer>
         </Card>
-      ))}
+      )) : <h2>Nenhum depoimento ainda :(</h2>}
     </PageContainer>
   );
 };
