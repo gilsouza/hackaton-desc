@@ -18,7 +18,7 @@ const CareersProvider = ({ children }) => {
 
   const getCareersByFragment = async (fragment, showLoading = true) => {
     setLoading(showLoading);
-    const { data } = await axios.get(`${API_URL}/careers?q=${fragment}`);
+    const { data } = await axios.get(`${API_URL}/careers?name_like=${fragment}`);
     if (fragment) {
       setCarrers(data);
     } else {

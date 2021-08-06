@@ -56,7 +56,10 @@ const Duvidas = () => {
   const [selectedQuestion, setSelectedQuestion] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const { getQuestions, questions } = useCareers();
+  const [newQuestionTitle, setNewQuestionTitle] = useState('');
+  const [newQuestionContent, setNewQuestionContent] = useState('');
+
+  const { getQuestions, questions, currentCareer } = useCareers();
 
   useEffect(() => {
     getQuestions();
@@ -96,6 +99,24 @@ const Duvidas = () => {
     const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${id}`);
 
     setCurrentAnswers(data);
+  };
+
+  const handleSendQuestion = async () => {
+    const { data } = await axios.post('https://hackaton-desc-back.vercel.app/questions', {
+      userId: 1,
+      text: newQuestionContent,
+      title: newQuestionTitle,
+      careerId: currentCareer.id,
+      upvotes: 0,
+      downvotes: 0,
+    });
+
+    closeModal();
+
+    setCurrentQuestionId(data.id);
+    setSelectedQuestion(data);
+    setCurrentAnswers([]);
+    getQuestions();
   };
 
   const renderQuestion = () => (
@@ -138,7 +159,7 @@ const Duvidas = () => {
   const renderQuestionList = () => {
     if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }
 
-    return questions.map((question) => (
+    return questions.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)).map((question) => (
       <div key={question.id} style={{ width: '100%' }}>
         <QuestionListItemContainer key={question.id} onClick={() => { handleClick(question.id); }}>
           <QuestionListItemLeft>
@@ -192,10 +213,10 @@ const Duvidas = () => {
             <CloseIcon onClick={closeModal} />
           </ModalHeader>
           <ModalText>Escolha um título:</ModalText>
-          <ModalTitleInput placeholder="título" />
+          <ModalTitleInput placeholder="título" onChange={(e) => setNewQuestionTitle(e.target.value)} />
           <ModalText>Elabore sua pergunta:</ModalText>
-          <ModalTextArea />
-          <Button text="Enviar" style={{ alignSelf: 'center', width: 80 }} />
+          <ModalTextArea onChange={(e) => setNewQuestionContent(e.target.value)} />
+          <Button text="Enviar" style={{ alignSelf: 'center', width: 80 }} onClick={handleSendQuestion} />
         </ModalContainer>
       </Modal>
     </PageContainer>
