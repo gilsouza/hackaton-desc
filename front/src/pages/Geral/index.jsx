@@ -181,7 +181,18 @@ const Geral = () => {
       <Section>
         <SectionTitle>Palavras chaves principais:</SectionTitle>
         <SectionContainer>
-          <ReactWordcloud style={{ height: 400, width: 600 }} words={words} />
+          <ReactWordcloud
+            style={{ height: 400, width: 600 }}
+            words={words}
+            options={{
+              enableTooltip: true,
+              fontFamily: 'impact',
+              fontSizes: [5, 80],
+              padding: 1,
+              scale: 'sqrt',
+              spiral: 'archimedean',
+            }}
+          />
         </SectionContainer>
       </Section>
     </PageContainer>
