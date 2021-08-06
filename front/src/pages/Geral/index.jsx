@@ -180,8 +180,7 @@ const Geral = () => {
         <Card>
           <SalaryContainer size="lg">
             <Salary size="lg">
-              R$
-              {parseFloat(salarioMedio).toFixed(2)}
+              {`R$ ${parseFloat(salarioMedio).toFixed(2)}`}
             </Salary>
             <LabelResult>Salário médio total</LabelResult>
           </SalaryContainer>
@@ -190,8 +189,7 @@ const Geral = () => {
             {!!salarioBaixaExperiencia && (
             <SalaryContainer>
               <Salary>
-                R$
-                {parseFloat(salarioBaixaExperiencia).toFixed(2)}
+                {`R$ ${parseFloat(salarioMedio).toFixed(2)}`}
               </Salary>
               <LabelResult>Salario médio de 0 a 3 anos de experiência</LabelResult>
             </SalaryContainer>
@@ -199,8 +197,7 @@ const Geral = () => {
             {!!salarioMediaExperiencia && (
             <SalaryContainer>
               <Salary>
-                R$
-                {parseFloat(salarioMediaExperiencia).toFixed(2)}
+                {`R$ ${parseFloat(salarioMediaExperiencia).toFixed(2)}`}
               </Salary>
               <LabelResult>Salário médio de 3 a 6 anos de experiência</LabelResult>
             </SalaryContainer>
@@ -208,8 +205,7 @@ const Geral = () => {
             {!!salarioAltaExperiencia && (
             <SalaryContainer>
               <Salary>
-                R$
-                {parseFloat(salarioAltaExperiencia).toFixed(2)}
+                {`R$ ${parseFloat(salarioAltaExperiencia).toFixed(2)}`}
               </Salary>
               <LabelResult>Salário médio de 6 a 9 anos de experiência</LabelResult>
             </SalaryContainer>
@@ -217,8 +213,7 @@ const Geral = () => {
             {!!salarioAltissimaExperiencia && (
             <SalaryContainer>
               <Salary>
-                R$
-                {parseFloat(salarioAltissimaExperiencia).toFixed(2)}
+                {`R$ ${parseFloat(salarioAltissimaExperiencia).toFixed(2)}`}
               </Salary>
               <LabelResult>Salário médio de 9 ou mais anos de experiência</LabelResult>
             </SalaryContainer>
@@ -236,7 +231,6 @@ const Geral = () => {
       {topVoteBrief && renderBriefSection()}
       <HorizontalLine />
       {renderDuvidas()}
-      <HorizontalLine />
       {salarioMedio && renderSalaries()}
       <HorizontalLine />
       {words.length > 50 && renderWordCloud()}
