@@ -10,6 +10,7 @@ export const PageContainer = styled.button`
   background-color: ${(props) => getBackgroundColor(props.disabled, props.selected)};
   border-radius: 40px;
   border: none;
+  box-shadow: 0 0 4px #999;
   display: flex;
   align-items: center;
   justify-content: center;

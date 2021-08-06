@@ -128,3 +128,12 @@ export const AnswerUsername = styled.div`
   margin-bottom: 10px;
   margin-left: 30px;
 `;
+
+export const HeaderHorizontalContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+`;

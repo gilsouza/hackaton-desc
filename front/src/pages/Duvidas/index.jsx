@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import axios from 'axios';
 import { useCareers } from '../../hooks/Careers';
+import { Button } from '../../components/Button';
 import {
   PageContainer,
   HorizontalLine,
@@ -19,6 +20,7 @@ import {
   AnswersTitle,
   AnswerText,
   AnswerUsername,
+  HeaderHorizontalContainer,
 } from './styles';
 
 const Duvidas = () => {
@@ -65,7 +67,7 @@ const Duvidas = () => {
             {` ${answer.user.name}`}
           </AnswerUsername>
         </>
-      )) : <div>Nenhuma resposta encontrada</div>}
+      )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
     </>
   );
 
@@ -99,6 +101,15 @@ const Duvidas = () => {
 
   return (
     <PageContainer>
+      <HeaderHorizontalContainer>
+        <div>
+          {questions.length}
+          {' '}
+          dúvidas encontradas.
+        </div>
+        <Button text="Fazer Pergunta" style={{ alignSelf: 'center' }} />
+      </HeaderHorizontalContainer>
+      <HorizontalLine />
       {currentQuestionId ? renderQuestion() : renderQuestionList()}
     </PageContainer>
   );
