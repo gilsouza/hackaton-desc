@@ -124,7 +124,7 @@ const Duvidas = () => {
   const handleAnswerQuestion = async () => {
     const { data } = await axios.post('https://hackaton-desc.herokuapp.com/question_answers', {
       userId: 1,
-      questionId: selectedQuestion,
+      questionId: selectedQuestion.id,
       text: answerQuestionText,
       upvotes: 0,
       downvotes: 0,
