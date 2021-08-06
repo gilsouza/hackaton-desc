@@ -49,14 +49,14 @@ const Step1 = () => {
               <Button text="2001 a 5000" onClick={() => setSalarie(1)} />
               <Button text="Mais de 5000" onClick={() => setSalarie(2)} />
             </Row>
+            <Button
+              text="Proximo passo"
+              sufixIcon={<ArrowRight />}
+              onClick={() => history.push(pathname.replace('1', '2'))}
+            />
           </>
           )
         }
-      <Button
-        text="Proximo passo"
-        sufixIcon={<ArrowRight />}
-        onClick={() => history.push(pathname.replace('1', '2'))}
-      />
     </Container>
   );
 };

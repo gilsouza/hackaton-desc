@@ -5,7 +5,6 @@ import {
 const Steps = ({ steps, selectedIndex }) => (
   <StepsContainer>
     <Line>
-
       <LineProgress width={selectedIndex * (100 / 2)} />
     </Line>
     <StepsAbsolute>
