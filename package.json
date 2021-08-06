@@ -1,19 +1,16 @@
 {
-  "name": "hackaton-desc",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hackaton-desc-back",
+  "version": "0.1.0",
+  "private": true,
   "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "faker": "^5.5.2",
+    "json-server": "^0.16.3",
+    "lodash": "^4.17.21"
+  },
   "scripts": {
-    "start": "cd back && npm start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gilsouza/hackaton-desc.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gilsouza/hackaton-desc/issues"
-  },
-  "homepage": "https://github.com/gilsouza/hackaton-desc#readme"
+    "start": "node index.js",
+    "vercel:deploy": "vercel"
+  }
 }
