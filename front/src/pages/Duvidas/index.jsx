@@ -9,34 +9,34 @@ import Modal from 'react-modal';
 import { useCareers } from '../../hooks/Careers';
 import { Button } from '../../components/Button';
 import {
-  PageContainer,
-  HorizontalLine,
-  QuestionListItemContainer,
-  QuestionListItemText,
-  QuestionListItemTitle,
-  QuestionListItemUsername,
-  QuestionListItemLeft,
-  QuestionListItemRight,
-  BackButton,
-  HorizontalContainer,
-  QuestionTitle,
-  QuestionText,
+  AnswerContainer,
+  AnswerQuestionContainer,
   AnswersTitle,
   AnswerText,
   AnswerUsername,
+  BackButton,
   HeaderHorizontalContainer,
-  AnswerContainer,
-  RightContainer,
-  VotesContainer,
-  VotesNumber,
-  AnswerQuestionContainer,
-  StyledTextArea,
+  HorizontalContainer,
+  HorizontalLine,
   ModalContainer,
   ModalHeader,
   ModalText,
   ModalTextArea,
   ModalTitle,
   ModalTitleInput,
+  PageContainer,
+  QuestionListItemContainer,
+  QuestionListItemLeft,
+  QuestionListItemRight,
+  QuestionListItemText,
+  QuestionListItemTitle,
+  QuestionListItemUsername,
+  QuestionText,
+  QuestionTitle,
+  RightContainer,
+  StyledTextArea,
+  VotesContainer,
+  VotesNumber,
 } from './styles';
 
 const customStyles = {
@@ -175,11 +175,18 @@ const Duvidas = () => {
   );
 
   const renderQuestionList = () => {
-    if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }
+    if (!questions.length) {
+      return <div>Essa carreira ainda não tem perguntas!</div>;
+    }
 
     return questions.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)).map((question) => (
       <div key={question.id} style={{ width: '100%' }}>
-        <QuestionListItemContainer key={question.id} onClick={() => { handleClick(question.id); }}>
+        <QuestionListItemContainer
+          key={question.id}
+          onClick={() => {
+            handleClick(question.id);
+          }}
+        >
           <QuestionListItemLeft>
             <QuestionListItemTitle>
               {question.title}

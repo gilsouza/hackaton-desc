@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  PageContainer, AsyncSelectStyled, AbsoluteWithAnimation,
-} from './styles';
+import { AbsoluteWithAnimation, AsyncSelectStyled, PageContainer } from './styles';
 import { useCareers } from '../../hooks/Careers';
 import { Logo } from '../../components/Logo';
 
@@ -34,13 +32,13 @@ const Search = () => {
         <Logo size={careerSelected ? 'md' : 'lg'} />
       </AbsoluteWithAnimation>
       {!careerSelected && (
-      <AsyncSelectStyled
-        loadOptions={searchCareers}
-        placeholder="Busque por uma carreira"
-        onInputChange={setSearchText}
-        onChange={(option) => handleCardClick(option.id)}
-        noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
-      />
+        <AsyncSelectStyled
+          loadOptions={searchCareers}
+          placeholder="Busque por uma carreira"
+          onInputChange={setSearchText}
+          onChange={(option) => handleCardClick(option.id)}
+          noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
+        />
       )}
     </PageContainer>
   );

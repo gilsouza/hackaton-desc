@@ -2,8 +2,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Add, Check, RateReview } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import {
-  CarrerHeader, ContentContainer, PageBackground,
-  PageContainer, ProfessionHeader, ProfessionText, Row,
+  CarrerHeader,
+  ContentContainer,
+  PageBackground,
+  PageContainer,
+  ProfessionHeader,
+  ProfessionText,
+  Row,
 } from './styles';
 import ProfissionNavigation from '../../navigations/ProfissionNavigation';
 import { Tabs } from '../../components/Tabs';
@@ -68,7 +73,11 @@ const Profession = () => {
             <CarrerHeader>
               <ProfessionText>{currentCareer?.name}</ProfessionText>
               <Row>
-                <Button text={hasFollowed ? 'Seguindo' : 'Seguir'} sufixIcon={hasFollowed ? <Check /> : <Add />} onClick={handleFollow} />
+                <Button
+                  text={hasFollowed ? 'Seguindo' : 'Seguir'}
+                  sufixIcon={hasFollowed ? <Check /> : <Add />}
+                  onClick={handleFollow}
+                />
                 <Button
                   style={{ marginLeft: 5 }}
                   text="Avaliar"

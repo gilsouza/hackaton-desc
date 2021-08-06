@@ -46,7 +46,6 @@ Input que busca as carreiras, curso e cargo.
 
 - Card com as carreiras seguidas
 
-
 ## Modal de Avaliação
 
 - Formulário que coleta avaliação e dados gerais, inclusive depoimento.

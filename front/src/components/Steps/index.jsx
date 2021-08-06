@@ -1,5 +1,5 @@
 import {
-  StepsContainer, Step, Line, StepsAbsolute, LineProgress,
+  Line, LineProgress, Step, StepsAbsolute, StepsContainer,
 } from './styles';
 
 const Steps = ({ steps, selectedIndex }) => (

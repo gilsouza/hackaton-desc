@@ -3,8 +3,14 @@ import ReactStars from 'react-stars';
 import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
-  GeneralResults, LabelRatingResult,
-  LabelResult, LabelResultGeral, PageContainer, Rating, Section, SectionTitle,
+  GeneralResults,
+  LabelRatingResult,
+  LabelResult,
+  LabelResultGeral,
+  PageContainer,
+  Rating,
+  Section,
+  SectionTitle,
 } from './styles';
 import { averagePropInList } from '../../util/math';
 import { HorizontalLine } from '../Duvidas/styles';
@@ -19,7 +25,6 @@ const Geral = () => {
     getRatings();
     getBriefs();
   }, [currentCareer]);
-  console.log('topVoteBrief', topVoteBrief);
 
   const happinessAverage = useMemo(() => averagePropInList(ratings, 'happiness'), [ratings]);
 

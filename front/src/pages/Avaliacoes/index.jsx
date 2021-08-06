@@ -3,7 +3,12 @@ import ReactStars from 'react-stars';
 import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
-  GeneralResults, LabelRatingResult, LabelResult, PageContainer, Rating, TotalResult,
+  GeneralResults,
+  LabelRatingResult,
+  LabelResult,
+  PageContainer,
+  Rating,
+  TotalResult,
 } from './styles';
 import { averagePropInList } from '../../util/math';
 

@@ -1,6 +1,5 @@
 import {
-  HeaderBackground,
-  HeaderContainer, Name, Row,
+  HeaderBackground, HeaderContainer, Name, Row,
 } from './styles';
 import snow from '../../assets/snow.png';
 import { Avatar } from '../../styles/global-components';
