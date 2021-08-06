@@ -3,7 +3,7 @@ import ReactStars from 'react-stars';
 import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
-  GeneralResults, LabelResult, PageContainer, Rating, TextResult, TotalResult,
+  GeneralResults, LabelRatingResult, LabelResult, PageContainer, Rating, TotalResult,
 } from './styles';
 import { averagePropInList } from '../../util/math';
 
@@ -41,7 +41,8 @@ const Avaliacoes = () => {
 
   const renderRatingBox = ({ label, average }) => (
     <Rating key={label}>
-      <LabelResult>{`${label} ${average}`}</LabelResult>
+      <LabelResult>{`${label}: `}</LabelResult>
+      <LabelRatingResult>{average}</LabelRatingResult>
       <ReactStars
         value={average}
         count={5}
@@ -49,7 +50,7 @@ const Avaliacoes = () => {
         edit={false}
         half
         color1="#DDD"
-        color2="#00E88F"
+        color2="#00C86F"
       />
     </Rating>
   );
@@ -57,11 +58,11 @@ const Avaliacoes = () => {
   return (
     <PageContainer>
       <TotalResult>
-        {`${ratings.length} avaliações encontradas`}
+        {`> ${ratings.length} avaliações encontradas`}
       </TotalResult>
       <GeneralResults>
         <LabelResult>avaliação geral:</LabelResult>
-        <TextResult>{`${generalAverage}`}</TextResult>
+        <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
         <ReactStars
           value={generalAverage}
           count={5}
