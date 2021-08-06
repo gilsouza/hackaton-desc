@@ -3,7 +3,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
+import Modal from 'react-modal';
 import { useCareers } from '../../hooks/Careers';
 import { Button } from '../../components/Button';
 import {
@@ -27,18 +29,46 @@ import {
   RightContainer,
   VotesContainer,
   VotesNumber,
+  AnswerQuestionContainer,
+  StyledTextArea,
+  ModalContainer,
+  ModalHeader,
+  ModalText,
+  ModalTextArea,
+  ModalTitle,
+  ModalTitleInput,
 } from './styles';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 const Duvidas = () => {
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [currentAnswers, setCurrentAnswers] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState({});
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const { getQuestions, questions } = useCareers();
 
   useEffect(() => {
     getQuestions();
   }, []);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const handleClick = async (questionId) => {
     setCurrentQuestionId(questionId);
@@ -76,11 +106,14 @@ const Duvidas = () => {
           {' '}
           Voltar
         </BackButton>
-        <Button text="Responder Pergunta" />
       </HorizontalContainer>
       <HorizontalLine />
       <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       <QuestionText>{selectedQuestion.text}</QuestionText>
+      <AnswerQuestionContainer>
+        <StyledTextArea />
+        <Button text="Responder Pergunta" />
+      </AnswerQuestionContainer>
       <HorizontalLine />
       <AnswersTitle>Principais respostas:</AnswersTitle>
       {currentAnswers.length > 0 ? currentAnswers.map((answer) => (
@@ -105,7 +138,7 @@ const Duvidas = () => {
   const renderQuestionList = () => {
     if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }
 
-    return questions.map((question, index) => (
+    return questions.map((question) => (
       <div key={question.id} style={{ width: '100%' }}>
         <QuestionListItemContainer key={question.id} onClick={() => { handleClick(question.id); }}>
           <QuestionListItemLeft>
@@ -125,7 +158,7 @@ const Duvidas = () => {
             <ChevronRightIcon />
           </QuestionListItemRight>
         </QuestionListItemContainer>
-        {index !== questions.length - 1 && <HorizontalLine />}
+        <HorizontalLine />
       </div>
     ));
   };
@@ -141,12 +174,30 @@ const Duvidas = () => {
               {' '}
               dúvidas encontradas.
             </div>
-            <Button text="Fazer Pergunta" />
+            <Button text="Fazer Pergunta" onClick={openModal} />
           </HeaderHorizontalContainer>
           <HorizontalLine />
           {renderQuestionList()}
         </>
       )}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Fazer Pergunta"
+      >
+        <ModalContainer>
+          <ModalHeader>
+            <ModalTitle>Faça uma pergunta</ModalTitle>
+            <CloseIcon onClick={closeModal} />
+          </ModalHeader>
+          <ModalText>Escolha um título:</ModalText>
+          <ModalTitleInput placeholder="título" />
+          <ModalText>Elabore sua pergunta:</ModalText>
+          <ModalTextArea />
+          <Button text="Enviar" style={{ alignSelf: 'center', width: 80 }} />
+        </ModalContainer>
+      </Modal>
     </PageContainer>
   );
 };

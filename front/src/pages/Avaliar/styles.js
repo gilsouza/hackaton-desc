@@ -30,7 +30,7 @@ export const Title = styled.div`
     margin-top: 20px;
 `;
 export const TextArea = styled.textarea`
-    margin-top: 20px;
+  margin-top: 20px;
   width: 400px;
   height: 400px;
   border: 1px solid var(--secondary-color);

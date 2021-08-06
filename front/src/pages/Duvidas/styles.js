@@ -143,3 +143,58 @@ export const VotesContainer = styled.div`
 export const VotesNumber = styled.div`
   font-size: 20px;
 `;
+
+export const AnswerQuestionContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 20px;
+  margin-left: 60px;
+`;
+
+export const StyledTextArea = styled.textarea`
+  width: 500px;
+  height: 80px;
+  margin: 10px;
+  resize: none;
+  outline: none;
+`;
+
+export const ModalContainer = styled.div`
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+`;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+`;
+
+export const ModalTitle = styled.div`
+  font-size: 24px;
+`;
+
+export const ModalTitleInput = styled.input`
+  width: 80%;
+  outline: none;
+`;
+
+export const ModalText = styled.div`
+  padding-top: 20px;
+`;
+
+export const ModalTextArea = styled.textarea`
+  resize: none;
+  width: 80%;
+  height: 80px;
+  outline: none;
+  margin-bottom: 20px;
+`;
