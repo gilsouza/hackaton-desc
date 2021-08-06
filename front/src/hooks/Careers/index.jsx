@@ -52,7 +52,7 @@ const CareersProvider = ({ children }) => {
           score: briefLikes[index].data.filter((l) => l.like).length
               - briefLikes[index].data.filter((l) => !l.like).length,
         }))
-        .sort((b) => b.score);
+        .sort((b) => b.score).reverse();
       setBriefs(briefsWithLikes);
       console.log('briefsWithLikes', briefsWithLikes);
       setTopVoteBrief(briefsWithLikes[0]);

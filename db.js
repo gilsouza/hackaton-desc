@@ -1110,7 +1110,7 @@ module.exports = () => {
         ],
         question_answers: [
             {
-                createdAt: "2021-08-05T03:18:21.382Z",
+                createdAt: 1628258209810,
                 userId: 1,
                 questionId: 2,
                 text: Faker.lorem.sentences(2),
@@ -1119,7 +1119,7 @@ module.exports = () => {
                 downvotes: 2,
             },
             {
-                createdAt: "2021-08-05T03:18:21.382Z",
+                createdAt: 162825820910,
                 userId: 2,
                 questionId: 2,
                 text: Faker.lorem.sentences(2),
@@ -1128,7 +1128,7 @@ module.exports = () => {
                 downvotes: 0,
             },
             {
-                createdAt: "2021-08-05T03:18:21.382Z",
+                createdAt: 1628258219810,
                 userId: 3,
                 questionId: 2,
                 text: Faker.lorem.sentences(2),
