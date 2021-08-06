@@ -1134,7 +1134,7 @@ module.exports = () => {
         ],
         questions: [
             {
-                createdAt: "2021-08-05T03:18:21.382Z",
+                createdAt: 1628258209810,
                 userId: 1,
                 text: Faker.lorem.sentences(4),
                 title: "Essa carreira tem oportunidades no RJ?",
@@ -1144,7 +1144,7 @@ module.exports = () => {
                 downvotes: 0,
             },
             {
-                createdAt: "2021-08-05T05:52:56.688Z",
+                createdAt: 1628258209910,
                 userId: 1,
                 text: Faker.lorem.sentences(4),
                 title: "Qual é o melhor curso sobre essa carreira?",
@@ -1154,7 +1154,7 @@ module.exports = () => {
                 downvotes: 0,
             },
             {
-                createdAt: "2021-08-05T05:12:28.529Z",
+                createdAt: 1628258210810,
                 userId: 2,
                 text: Faker.lorem.sentences(4),
                 title: "Podem me indicar um curso de pós que tem a ver com essa profissão?",
@@ -1164,7 +1164,7 @@ module.exports = () => {
                 downvotes: 0,
             },
             {
-                createdAt: "2021-08-05T10:55:13.933Z",
+                createdAt: 1628258212810,
                 userId: 2,
                 text: Faker.lorem.sentences(4),
                 title: "Com quantos paus se faz uma canoa?",
@@ -1174,7 +1174,7 @@ module.exports = () => {
                 downvotes: 0,
             },
             {
-                createdAt: "2021-08-05T11:30:44.139Z",
+                createdAt: 1628258214810,
                 userId: 4,
                 text: Faker.lorem.sentences(4),
                 title: "Por que tudo junto escreve separado e separado escreve tudo junto?",
