@@ -95,9 +95,13 @@ server.post("/question_answers/:id/:vote", (req, res) => {
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
-    if (req.method === "POST" && req.path === "/briefs") {
-        req.body.upvotes = 0;
-        req.body.downvotes = 0;
+    if (req.method === "POST") {
+        req.body.createdAt = Date.now();
+
+        if (req.path === "/briefs" || req.path === "/questions" || req.path === "/question_answers") {
+            req.body.upvotes = 0;
+            req.body.downvotes = 0;
+        }
     }
     // Continue to JSON Server router
     next();
