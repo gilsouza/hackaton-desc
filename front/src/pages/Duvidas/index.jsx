@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import axios from 'axios';
 import { useCareers } from '../../hooks/Careers';
 import { Button } from '../../components/Button';
@@ -21,6 +23,10 @@ import {
   AnswerText,
   AnswerUsername,
   HeaderHorizontalContainer,
+  AnswerContainer,
+  RightContainer,
+  VotesContainer,
+  VotesNumber,
 } from './styles';
 
 const Duvidas = () => {
@@ -41,7 +47,23 @@ const Duvidas = () => {
 
     setSelectedQuestion(question);
 
-    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/questions/${questionId}/question_anwsers?_expand=user`);
+    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${questionId}`);
+
+    setCurrentAnswers(data);
+  };
+
+  const handleUpArrowClick = async (id) => {
+    await axios.post(`https://hackaton-desc-back.vercel.app/question_answers/${id}/upvote`);
+
+    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${id}`);
+
+    setCurrentAnswers(data);
+  };
+
+  const handleDownArrowClick = async (id) => {
+    await axios.post(`https://hackaton-desc-back.vercel.app/question_answers/${id}/downvote`);
+
+    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${id}`);
 
     setCurrentAnswers(data);
   };
@@ -62,13 +84,20 @@ const Duvidas = () => {
       <HorizontalLine />
       <AnswersTitle>Principais respostas:</AnswersTitle>
       {currentAnswers.length > 0 ? currentAnswers.map((answer) => (
-        <>
-          <AnswerText>{answer.text}</AnswerText>
-          <AnswerUsername>
-            Respondido por
-            {` ${answer.user.name}`}
-          </AnswerUsername>
-        </>
+        <AnswerContainer key={answer.id}>
+          <VotesContainer>
+            <KeyboardArrowUpIcon onClick={handleUpArrowClick} />
+            <VotesNumber>{answer.upvotes - answer.downvotes}</VotesNumber>
+            <KeyboardArrowDownIcon onClick={handleDownArrowClick} />
+          </VotesContainer>
+          <RightContainer>
+            <AnswerText>{answer.text}</AnswerText>
+            <AnswerUsername>
+              Respondido por
+              {` ${answer.user.name}`}
+            </AnswerUsername>
+          </RightContainer>
+        </AnswerContainer>
       )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
     </>
   );

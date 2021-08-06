@@ -19,6 +19,7 @@ export const QuestionListItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: background-color 0.5s;
 
   :hover {
     background-color: #efefef;
@@ -58,29 +59,6 @@ export const QuestionListItemUsername = styled.div`
   font-size: 10px;
   color: #777;
   margin-bottom: 10px;
-`;
-
-export const SeeMoreButton = styled.button`
-  border: none;
-  border-radius: 18px;
-  height: 36px;
-  width: 72px;
-  cursor: pointer;
-  background-color: var(--primary-color);
-  box-shadow: 0 0 4px #999;
-  outline: none;
-  background-position: center;
-  transition: background 0.5s;
-
-  :hover {
-    background-color: var(--primary-color-dark);
-  }
-
-  :active {
-    background-color: #10F89F;
-    background-size: 100%;
-    transition: background 0s;
-  }
 `;
 
 export const BackButton = styled.button`
@@ -144,4 +122,24 @@ export const HeaderHorizontalContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 10px;
   width: 100%;
+`;
+
+export const AnswerContainer = styled.div`
+  display: flex;
+  align-items: center;;
+  margin-left: 30px;
+`;
+
+export const RightContainer = styled.div`
+  text-align: left;
+`;
+
+export const VotesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const VotesNumber = styled.div`
+  font-size: 20px;
 `;
