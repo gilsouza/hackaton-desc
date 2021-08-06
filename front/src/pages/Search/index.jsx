@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import {
   AbsoluteWithAnimation, AsyncSelectStyled, PageContainer,
 } from './styles';
@@ -12,14 +13,26 @@ const Search = () => {
   const [careerSelected, setCareerSelected] = useState(false);
   const history = useHistory();
 
+  const [defaultValue, setDefaultValue] = useState([]);
+
   const [searchText, setSearchText] = useState('');
 
-  const searchCareers = async () => {
-    const carrers = await getCareersByFragment(searchText, false);
-    if (searchText) {
-      return carrers.map((c) => ({ ...c, label: c.name }));
+  useEffect(() => {
+    async function load() {
+      const { data } = await axios.get('https://hackaton-desc.herokuapp.com/careers');
+
+      setDefaultValue(data.map((c) => ({ ...c, label: c.name })));
     }
-    return [];
+
+    load();
+  }, []);
+
+  const searchCareers = async () => {
+    const carrersRes = await getCareersByFragment(searchText, false);
+    if (searchText) {
+      return carrersRes.map((c) => ({ ...c, label: c.name }));
+    }
+    return carrersRes;
   };
 
   const handleCardClick = (id) => {
@@ -43,6 +56,7 @@ const Search = () => {
       </AbsoluteWithAnimation>
       {!careerSelected && (
         <AsyncSelectStyled
+          defaultOptions={defaultValue}
           loadOptions={searchCareers}
           placeholder="Busque por uma carreira"
           onInputChange={setSearchText}
