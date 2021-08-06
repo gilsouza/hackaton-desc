@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.button`
   background-color: var(--primary-color);
   border-radius: 40px;
-  border: 1px solid black;
+  border: 1px solid var(--secondary-color);
   display: flex;
   align-items: center;
   justify-content: center;

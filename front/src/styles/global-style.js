@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --primary-color: #00E88F;
     --primary-color-dark: #00C86F;
-    --secondary-color: black;
+    --secondary-color: rgb(25, 26, 26);
     --third-color: white;
     --background-color: #F5F5F5;
   }
