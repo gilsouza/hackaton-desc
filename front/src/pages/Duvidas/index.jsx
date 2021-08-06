@@ -82,7 +82,6 @@ const Duvidas = () => {
 
     closeModal();
 
-    setCurrentQuestionId(data.id);
     setSelectedQuestion(data);
     setCurrentAnswers([]);
     getQuestions();
@@ -90,7 +89,7 @@ const Duvidas = () => {
 
   return (
     <PageContainer>
-      {currentQuestionId
+      {currentQuestionId && selectedQuestion
         ? (
           <Question
             onUpdate={setCurrentAnswers}
