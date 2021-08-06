@@ -16,8 +16,6 @@ const Rankings = () => {
     getRatingsWithCareer();
   }, []);
 
-  console.log(ratingsWithCareer);
-
   const sortedCareers = useMemo(() => {
     const grouped = ratingsWithCareer.reduce((rv, x) => {
       // eslint-disable-next-line no-param-reassign
@@ -45,8 +43,7 @@ const Rankings = () => {
     };
   }, [ratingsWithCareer]);
 
-  console.log(sortedCareers);
-
+  console.log('sortedCareers', sortedCareers);
   return (
     <>
       <Header />
@@ -55,14 +52,16 @@ const Rankings = () => {
           <RakingHeader>
             <HeaderText>Raking de carreiras</HeaderText>
           </RakingHeader>
-          {ratingsWithCareer && ratingsWithCareer.length > 0 && (
+          {sortedCareers.mostSalaryRange && sortedCareers.mostSalaryRange.length > 0 && (
           <ContentContainer>
             <Title>Top 10 carreiras por salário</Title>
             <Row>
-              <CareerCard
-                career={sortedCareers.mostSalaryRange[0].career}
-                score={sortedCareers.mostSalaryRange[0].averages.salaryRange}
-              />
+              {sortedCareers.mostSalaryRange.map((s) => (
+                <CareerCard
+                  career={s.career}
+                  score={s.averages.salaryRange}
+                />
+              ))}
             </Row>
           </ContentContainer>
           )}
