@@ -84,7 +84,9 @@ const Duvidas = () => {
 
     setSelectedQuestion(data);
     setCurrentAnswers([]);
-    getQuestions();
+    getQuestions().then(() => {
+      setCurrentQuestionId(data.id);
+    });
   };
 
   return (

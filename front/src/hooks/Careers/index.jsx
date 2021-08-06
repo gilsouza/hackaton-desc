@@ -83,10 +83,13 @@ const CareersProvider = ({ children }) => {
       const { data } = await axios.get(`${API_URL}/questions?careerId=${currentCareer?.id}&_expand=user`);
 
       setQuestions(data);
-    } else {
-      setQuestions([]);
+      setLoading(false);
+      return data;
     }
+    setQuestions([]);
     setLoading(false);
+
+    return [];
   };
 
   const getRatings = async () => {
