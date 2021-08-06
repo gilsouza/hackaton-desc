@@ -25,7 +25,7 @@ const Depoimentos = () => {
           </UserContainer>
           <LikeContainer>
             <ThumbDown style={{ color: '#9d0000' }} />
-            <Score>{brief.score ? (Math.sign(brief.score) ? '+' : '-') + brief.score : 0}</Score>
+            <Score>{brief.score ? (Math.sign(brief.score) > 0 ? '+' : '-') + Math.abs(brief.score) : 0}</Score>
             <ThumbUp style={{ color: '#006b00' }} />
           </LikeContainer>
         </Card>
