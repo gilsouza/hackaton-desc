@@ -2,6 +2,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Add, Check, RateReview } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import {
+  ButtonLogo,
   CarrerHeader,
   ContentContainer,
   PageBackground,
@@ -15,6 +16,8 @@ import { Tabs } from '../../components/Tabs';
 import { Button } from '../../components/Button';
 import { useCareers } from '../../hooks/Careers';
 import { Header } from '../../components/Header';
+import { Img } from '../../components/Header/styles';
+import logo from '../../assets/logo.svg';
 
 const tabs = [
   {
@@ -81,7 +84,12 @@ const Profession = () => {
         <PageContainer>
           <ProfessionHeader>
             <CarrerHeader>
-              <ProfessionText>{currentCareer?.name}</ProfessionText>
+              <Row>
+                <ProfessionText>{currentCareer?.name}</ProfessionText>
+                <ButtonLogo data-tip="Temos esse curso no Descomplica ✓">
+                  <Img src={logo} alt="logo" height={30} />
+                </ButtonLogo>
+              </Row>
               <Row>
                 <Button
                   text={hasFollowed.includes(currentCareer ? currentCareer.id : '') ? 'Seguindo' : 'Seguir'}

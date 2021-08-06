@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import { Profession } from './pages/Profession';
 import { Search } from './pages/Search';
 import { NotFound } from './pages/NotFound';
@@ -37,6 +38,7 @@ function App() {
           </Switch>
         </Router>
       </CareersProvider>
+      <ReactTooltip />
     </div>
   );
 }

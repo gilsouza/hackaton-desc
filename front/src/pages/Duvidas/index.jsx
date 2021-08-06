@@ -70,6 +70,8 @@ const Duvidas = () => {
     }
   }, [currentQuestionId]);
 
+  console.log('currentQuestionId', currentQuestionId);
+
   const handleSendQuestion = async () => {
     const { data } = await axios.post('https://hackaton-desc.herokuapp.com/questions', {
       userId: 1,
@@ -112,7 +114,9 @@ const Duvidas = () => {
             <HorizontalLine />
             <QuestionList
               questions={questions}
-              handleClick={(questionId) => setCurrentQuestionId(questionId)}
+              handleClick={(questionId) => {
+                setCurrentQuestionId(questionId);
+              }}
             />
           </>
         )}
@@ -131,7 +135,7 @@ const Duvidas = () => {
           <ModalTitleInput placeholder="título" onChange={(e) => setNewQuestionTitle(e.target.value)} />
           <ModalText>Elabore sua pergunta:</ModalText>
           <ModalTextArea onChange={(e) => setNewQuestionContent(e.target.value)} />
-          <Button text="Enviar" style={{ alignSelf: 'center', width: 80 }} onClick={handleSendQuestion} />
+          <Button disabled={!newQuestionContent || !newQuestionTitle} text="Enviar" style={{ alignSelf: 'center', width: 80 }} onClick={handleSendQuestion} />
         </ModalContainer>
       </Modal>
     </PageContainer>

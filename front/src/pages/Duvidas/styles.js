@@ -185,6 +185,9 @@ export const ModalTitle = styled.div`
 export const ModalTitleInput = styled.input`
   width: 80%;
   outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid black;
 `;
 
 export const ModalText = styled.div`
@@ -194,7 +197,10 @@ export const ModalText = styled.div`
 export const ModalTextArea = styled.textarea`
   resize: none;
   width: 80%;
+  border: 1px solid black;
   height: 80px;
+  border-radius: 10px;
+  padding: 10px;
   outline: none;
   margin-bottom: 20px;
 `;
