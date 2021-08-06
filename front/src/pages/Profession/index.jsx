@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Add, RateReview } from '@material-ui/icons';
 import { useEffect } from 'react';
 import {
@@ -34,6 +34,7 @@ const tabs = [
 ];
 const Profession = () => {
   const { profissao } = useParams();
+  const history = useHistory();
   const { currentCarrer, getCarrerById } = useCareers();
 
   useEffect(() => {
@@ -48,7 +49,14 @@ const Profession = () => {
             <ProfessionText>{currentCarrer.name}</ProfessionText>
             <Row>
               <Button text="Seguir" sufixIcon={<Add />} />
-              <Button style={{ marginLeft: 5 }} text="Avaliar" sufixIcon={<RateReview />} />
+              <Button
+                style={{ marginLeft: 5 }}
+                text="Avaliar"
+                sufixIcon={<RateReview />}
+                onClick={() => {
+                  history.push(`/avaliar/${profissao}`);
+                }}
+              />
             </Row>
           </CarrerHeader>
           <Tabs tabs={tabs} />
