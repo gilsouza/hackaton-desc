@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Faker = require("faker");
+const lodash = require("lodash");
 
 const MAX_TIME_EXPERIENCE = 4;
 
@@ -109,43 +110,16 @@ module.exports = () => {
                 id: "regional-paradigm-engineer",
             },
         ],
-        salaries: [
-            {
-                createdAt: "2021-08-05T07:14:05.100Z",
-                value: Faker.finance.amount(0, 50000, 2),
-                time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-                id: "1",
-                userId: "1",
-            },
-            {
-                createdAt: "2021-08-05T18:09:23.048Z",
-                value: Faker.finance.amount(0, 50000, 2),
-                time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-                id: "2",
-                userId: "2",
-            },
-            {
-                createdAt: "2021-08-05T06:53:29.899Z",
-                value: Faker.finance.amount(0, 50000, 2),
-                time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-                id: "3",
-                userId: "3",
-            },
-            {
-                createdAt: "2021-08-05T04:51:49.290Z",
-                value: Faker.finance.amount(0, 50000, 2),
-                time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-                id: "4",
-                userId: "4",
-            },
-            {
-                createdAt: "2021-08-05T11:09:12.751Z",
-                value: Faker.finance.amount(0, 50000, 2),
-                time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-                id: "5",
-                userId: "5",
-            },
-        ],
+        salaries: lodash.times(120, (n) => ({
+            createdAt: Faker.date.between(
+                `2020-${(Faker.datatype.number(11) + 1).toString().padStart(2, "0")}-01`,
+                `2020-${(Faker.datatype.number(11) + 1).toString().padStart(2, "0")}-05`
+            ),
+            value: Faker.finance.amount(0, 50000, 2),
+            time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
+            id: n,
+            userId: Faker.datatype.number(4) + 1,
+        })),
         rating: [
             {
                 createdAt: "2021-08-05T08:01:13.408Z",
