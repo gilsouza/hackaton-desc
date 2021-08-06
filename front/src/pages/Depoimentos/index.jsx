@@ -9,7 +9,6 @@ const Depoimentos = () => {
     getBriefs();
   }, [currentCareer]);
 
-  console.log('briefs', briefs);
   return (
     <PageContainer>
       {briefs.length ? briefs.map((brief, index) => (
