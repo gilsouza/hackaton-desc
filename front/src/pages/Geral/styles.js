@@ -39,9 +39,15 @@ export const SectionTitle = styled.p`
   margin-bottom: 12px;
     font-weight: 600;
 `;
-export const Salary = styled.p`
-    font-size: 24px;
+export const Salary = styled.div`
+    font-size: ${(props) => (props.size === 'lg' ? 32 : 24)}px;
     font-weight: 600;
+`;
+export const SalaryContainer = styled.div`
+  font-size: 24px;
+  margin: 0 12px;
+  margin-bottom: ${(props) => (props.size === 'lg' ? 32 : 24)}px;
+  text-align: center;
 `;
 
 export const Section = styled.div`
@@ -66,6 +72,7 @@ export const BoxRatings = styled.div`
   justify-content: center;
   align-items: center;
     flex-direction: row;
+  margin: 12px 0;
 `;
 
 export const Rating = styled.div`

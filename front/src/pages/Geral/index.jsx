@@ -10,7 +10,7 @@ import {
   LabelResult,
   LabelResultGeral,
   PageContainer,
-  Rating, Salary,
+  Rating, Salary, SalaryContainer,
   Section, SectionContainer,
   SectionTitle,
 } from './styles';
@@ -144,40 +144,12 @@ const Geral = () => {
   const salarioAltaExperiencia = salaries
     .filter((salarie) => salarie.time_experience === 2)
     .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
+  const salarioAltissimaExperiencia = salaries
+    .filter((salarie) => salarie.time_experience === 3)
+    .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
 
-  return (
-    <PageContainer>
-      {renderRateSection()}
-      <HorizontalLine />
-      {topVoteBrief && renderBriefSection()}
-      <HorizontalLine />
-      {renderDuvidas()}
-      <HorizontalLine />
-      <Section>
-        <SectionTitle>Salário medio:</SectionTitle>
-        <GeneralResults>
-          <Salary>
-            R$
-            {parseFloat(salarioMedio).toFixed(2)}
-          </Salary>
-
-          <BoxRatings>
-            <Salary>
-              R$
-              {parseFloat(salarioBaixaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioMediaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioAltaExperiencia).toFixed(2)}
-            </Salary>
-          </BoxRatings>
-        </GeneralResults>
-      </Section>
-      <HorizontalLine />
+  function renderWordCloud() {
+    return (
       <Section>
         <SectionTitle>Palavras chaves principais:</SectionTitle>
         <SectionContainer>
@@ -195,6 +167,76 @@ const Geral = () => {
           />
         </SectionContainer>
       </Section>
+    );
+  }
+
+  function renderSalaries() {
+    return (
+      <Section>
+        <SectionTitle>Salário medio:</SectionTitle>
+        <GeneralResults>
+          <SalaryContainer size="lg">
+            <Salary size="lg">
+              R$
+              {parseFloat(salarioMedio).toFixed(2)}
+            </Salary>
+            <LabelResult>Salário médio total</LabelResult>
+          </SalaryContainer>
+
+          <BoxRatings>
+            {!!salarioBaixaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioBaixaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salarios médios de 0 a 3 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioMediaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioMediaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 3 a 6 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioAltaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 6 a 9 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioAltissimaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltissimaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 9 ou mais anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+          </BoxRatings>
+        </GeneralResults>
+      </Section>
+    );
+  }
+
+  return (
+    <PageContainer>
+      {renderRateSection()}
+      <HorizontalLine />
+      {topVoteBrief && renderBriefSection()}
+      <HorizontalLine />
+      {renderDuvidas()}
+      <HorizontalLine />
+      {salarioMedio && renderSalaries()}
+      <HorizontalLine />
+      {words.length > 50 && renderWordCloud()}
     </PageContainer>
   );
 };

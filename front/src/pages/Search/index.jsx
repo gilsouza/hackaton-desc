@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AbsoluteWithAnimation, AsyncSelectStyled, PageContainer } from './styles';
+import {
+  AbsoluteWithAnimation, AsyncSelectStyled, PageContainer,
+} from './styles';
 import { useCareers } from '../../hooks/Careers';
 import { Logo } from '../../components/Logo';
+import { Button } from '../../components/Button';
 
 const Search = () => {
   const { getCareersByFragment } = useCareers();
@@ -26,6 +29,13 @@ const Search = () => {
     }, 2000);
   };
 
+  const handleRankingClick = () => {
+    setCareerSelected(true);
+    setTimeout(() => {
+      history.push('/rankings');
+    }, 2000);
+  };
+
   return (
     <PageContainer>
       <AbsoluteWithAnimation careerSelected={careerSelected}>
@@ -39,6 +49,17 @@ const Search = () => {
           onChange={(option) => handleCardClick(option.id)}
           noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
         />
+      )}
+      {!careerSelected && (
+      <Button
+        text="ranking de carreira"
+        onClick={handleRankingClick}
+        style={{
+          marginTop: 10,
+          borderRadius: 5,
+          width: 800,
+        }}
+      />
       )}
     </PageContainer>
   );

@@ -91,22 +91,22 @@ const Salario = () => {
 
   return (
     <PageContainer>
-      <ChartTitle>Salarios de 0 a 3 anos de experiência</ChartTitle>
+      <ChartTitle>Salários de 0 a 3 anos de experiência</ChartTitle>
       <Bar
         data={datas[0]}
         options={options}
       />
-      <ChartTitle>Salarios de 3 a 6 anos de experiência</ChartTitle>
+      <ChartTitle>Salários de 3 a 6 anos de experiência</ChartTitle>
       <Bar
         data={datas[1]}
         options={options}
       />
-      <ChartTitle>Salarios de 6 a 9 anos de experiência</ChartTitle>
+      <ChartTitle>Salários de 6 a 9 anos de experiência</ChartTitle>
       <Bar
         data={datas[2]}
         options={options}
       />
-      <ChartTitle>Salarios de 9 ou mais anos de experiência</ChartTitle>
+      <ChartTitle>Salários de 9 ou mais anos de experiência</ChartTitle>
       <Bar
         data={datas[3]}
         options={options}
