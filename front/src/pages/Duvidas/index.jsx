@@ -84,23 +84,23 @@ const Duvidas = () => {
 
     const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${questionId}`);
 
-    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
+    setCurrentAnswers(data);
   };
 
   const handleUpArrowClick = async (id) => {
     await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/upvote`);
 
-    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${id}`);
+    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${selectedQuestion.id}`);
 
-    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
+    setCurrentAnswers(data);
   };
 
   const handleDownArrowClick = async (id) => {
     await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/downvote`);
 
-    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${id}`);
+    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${selectedQuestion.id}`);
 
-    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
+    setCurrentAnswers(data);
   };
 
   const handleSendQuestion = async () => {
@@ -132,8 +132,7 @@ const Duvidas = () => {
 
     const { data: userData } = await axios.get('https://hackaton-desc.herokuapp.com/users?id=1');
 
-    setCurrentAnswers((prev) => [...prev, { ...data, user: userData[0] }]
-      .sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
+    setCurrentAnswers((prev) => [...prev, { ...data, user: userData[0] }]);
   };
 
   const renderQuestion = () => (
@@ -154,22 +153,24 @@ const Duvidas = () => {
       </AnswerQuestionContainer>
       <HorizontalLine />
       <AnswersTitle>Principais respostas:</AnswersTitle>
-      {currentAnswers.length > 0 ? currentAnswers.map((answer) => (
-        <AnswerContainer key={answer.id}>
-          <VotesContainer>
-            <KeyboardArrowUpIcon onClick={handleUpArrowClick} />
-            <VotesNumber>{answer.upvotes - answer.downvotes}</VotesNumber>
-            <KeyboardArrowDownIcon onClick={handleDownArrowClick} />
-          </VotesContainer>
-          <RightContainer>
-            <AnswerText>{answer.text}</AnswerText>
-            <AnswerUsername>
-              Respondido por
-              {` ${answer.user && answer.user.name}`}
-            </AnswerUsername>
-          </RightContainer>
-        </AnswerContainer>
-      )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
+      {currentAnswers.length > 0 ? currentAnswers
+        .sort((q1, q2) => (q1.upvotes - q1.downvotes < q2.upvotes - q2.downvotes ? 1 : -1))
+        .map((answer) => (
+          <AnswerContainer key={answer.id}>
+            <VotesContainer>
+              <KeyboardArrowUpIcon onClick={() => handleUpArrowClick(answer.id)} />
+              <VotesNumber>{answer.upvotes - answer.downvotes}</VotesNumber>
+              <KeyboardArrowDownIcon onClick={() => handleDownArrowClick(answer.id)} />
+            </VotesContainer>
+            <RightContainer>
+              <AnswerText>{answer.text}</AnswerText>
+              <AnswerUsername>
+                Respondido por
+                {` ${answer.user && answer.user.name}`}
+              </AnswerUsername>
+            </RightContainer>
+          </AnswerContainer>
+        )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
     </>
   );
 
