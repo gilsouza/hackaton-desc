@@ -3,7 +3,7 @@ import { Score, Title, Card } from './styles';
 
 const CareerCard = ({ career, score }) => (
   <Card>
-    <Title>{career.name}</Title>
+    <Title>{career}</Title>
     {score !== null && (
     <Score>
       {score}

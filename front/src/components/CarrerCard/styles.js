@@ -9,6 +9,7 @@ export const Score = styled.div`
 
 export const Title = styled.div`
   font-size: 24px;
+  margin-bottom: 10px;
   color: white;
 `;
 
@@ -18,6 +19,10 @@ export const Card = styled.div`
   box-shadow: 2px 2px 5px #919191;
   padding: 16px;
   display: flex;
+  justify-content: space-between;
+  min-width: 200px;
+  text-align: center;
+  margin: 10px;
   background-color: var(--secondary-color);
   flex-direction: column;
 `;
