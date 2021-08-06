@@ -10,7 +10,7 @@ export const Card = styled.div`
 `;
 
 export const Avatar = styled.img`
-    border-radius: 60px;
+  border-radius: 60px;
   height: 60px;
   width: 60px;
 `;
