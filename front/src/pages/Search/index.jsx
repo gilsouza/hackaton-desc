@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  PageContainer, AsyncSelectStyled,
+  PageContainer, AsyncSelectStyled, AbsoluteWithAnimation,
 } from './styles';
 import { useCareers } from '../../hooks/Careers';
 import { Logo } from '../../components/Logo';
 
 const Search = () => {
   const { getCareersByFragment } = useCareers();
+  const [careerSelected, setCareerSelected] = useState(false);
   const history = useHistory();
 
   const [searchText, setSearchText] = useState('');
@@ -21,12 +22,18 @@ const Search = () => {
   };
 
   const handleCardClick = (id) => {
-    history.push(`/profissao/${id}/`);
+    setCareerSelected(true);
+    setTimeout(() => {
+      history.push(`/profissao/${id}/`);
+    }, 2000);
   };
 
   return (
     <PageContainer>
-      <Logo size="lg" />
+      <AbsoluteWithAnimation careerSelected={careerSelected}>
+        <Logo size={careerSelected ? 'md' : 'lg'} />
+      </AbsoluteWithAnimation>
+      {!careerSelected && (
       <AsyncSelectStyled
         loadOptions={searchCareers}
         placeholder="Busque por uma carreira"
@@ -34,6 +41,7 @@ const Search = () => {
         onChange={(option) => handleCardClick(option.id)}
         noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
       />
+      )}
     </PageContainer>
   );
 };
