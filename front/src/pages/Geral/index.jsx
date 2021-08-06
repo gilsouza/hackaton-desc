@@ -154,7 +154,7 @@ const Geral = () => {
   function renderWordCloud() {
     return (
       <Section>
-        <SectionTitle>Palavras-chave principais:</SectionTitle>
+        <SectionTitle>{`Quando um Profissional de ${currentCareer.name} pensa na profissão, ele lembra de:`}</SectionTitle>
         <SectionContainer>
           <ReactWordcloud
             style={{ height: 400, width: 600 }}
