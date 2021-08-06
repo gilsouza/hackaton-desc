@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import ReactStars from 'react-stars';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
@@ -15,15 +16,19 @@ import {
 import { averagePropInList } from '../../util/math';
 import { HorizontalLine } from '../Duvidas/styles';
 import { BriefCard } from '../../components/BriefCard';
+import { QuestionList } from '../../components/QuestionList';
 
 const Geral = () => {
+  const { pathname } = useLocation();
+  const history = useHistory();
   const {
-    getRatings, ratings, currentCareer, getBriefs, topVoteBrief,
+    getRatings, ratings, currentCareer, getBriefs, topVoteBrief, questions, getQuestions,
   } = useCareers();
 
   useEffect(() => {
     getRatings();
     getBriefs();
+    getQuestions();
   }, [currentCareer]);
 
   const happinessAverage = useMemo(() => averagePropInList(ratings, 'happiness'), [ratings]);
@@ -106,6 +111,16 @@ const Geral = () => {
       <HorizontalLine />
       {topVoteBrief && renderBriefSection()}
       <HorizontalLine />
+      <Section>
+        <SectionTitle>Duvidas recentes:</SectionTitle>
+        <QuestionList
+          questions={questions}
+          maxSize={3}
+          handleClick={(currentQuestionId) => {
+            history.push(`${pathname}duvidas`, currentQuestionId);
+          }}
+        />
+      </Section>
     </PageContainer>
   );
 };

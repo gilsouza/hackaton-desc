@@ -1,22 +1,12 @@
 import { useEffect, useState } from 'react';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { useHistory } from 'react-router-dom';
 import { useCareers } from '../../hooks/Careers';
 import { Button } from '../../components/Button';
 import {
-  AnswerContainer,
-  AnswerQuestionContainer,
-  AnswersTitle,
-  AnswerText,
-  AnswerUsername,
-  BackButton,
   HeaderHorizontalContainer,
-  HorizontalContainer,
   HorizontalLine,
   ModalContainer,
   ModalHeader,
@@ -25,19 +15,9 @@ import {
   ModalTitle,
   ModalTitleInput,
   PageContainer,
-  QuestionListItemContainer,
-  QuestionListItemLeft,
-  QuestionListItemRight,
-  QuestionListItemText,
-  QuestionListItemTitle,
-  QuestionListItemUsername,
-  QuestionText,
-  QuestionTitle,
-  RightContainer,
-  StyledTextArea,
-  VotesContainer,
-  VotesNumber,
 } from './styles';
+import { Question } from '../../components/Question';
+import { QuestionList } from '../../components/QuestionList';
 
 const customStyles = {
   content: {
@@ -51,15 +31,14 @@ const customStyles = {
 };
 
 const Duvidas = () => {
-  const [currentQuestionId, setCurrentQuestionId] = useState(0);
+  const history = useHistory();
+  const [currentQuestionId, setCurrentQuestionId] = useState(history.location.state || 0);
   const [currentAnswers, setCurrentAnswers] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [newQuestionTitle, setNewQuestionTitle] = useState('');
   const [newQuestionContent, setNewQuestionContent] = useState('');
-
-  const [answerQuestionText, setAnswerQuestionText] = useState('');
 
   const { getQuestions, questions, currentCareer } = useCareers();
 
@@ -76,8 +55,6 @@ const Duvidas = () => {
   };
 
   const handleClick = async (questionId) => {
-    setCurrentQuestionId(questionId);
-
     const [question] = questions.filter((q) => q.id === questionId);
 
     setSelectedQuestion(question);
@@ -87,21 +64,11 @@ const Duvidas = () => {
     setCurrentAnswers(data);
   };
 
-  const handleUpArrowClick = async (id) => {
-    await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/upvote`);
-
-    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${selectedQuestion.id}`);
-
-    setCurrentAnswers(data);
-  };
-
-  const handleDownArrowClick = async (id) => {
-    await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/downvote`);
-
-    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${selectedQuestion.id}`);
-
-    setCurrentAnswers(data);
-  };
+  useEffect(() => {
+    if (currentQuestionId) {
+      handleClick(currentQuestionId);
+    }
+  }, [currentQuestionId]);
 
   const handleSendQuestion = async () => {
     const { data } = await axios.post('https://hackaton-desc.herokuapp.com/questions', {
@@ -121,111 +88,34 @@ const Duvidas = () => {
     getQuestions();
   };
 
-  const handleAnswerQuestion = async () => {
-    const { data } = await axios.post('https://hackaton-desc.herokuapp.com/question_answers', {
-      userId: 1,
-      questionId: selectedQuestion.id,
-      text: answerQuestionText,
-      upvotes: 0,
-      downvotes: 0,
-    });
-
-    const { data: userData } = await axios.get('https://hackaton-desc.herokuapp.com/users?id=1');
-
-    setCurrentAnswers((prev) => [...prev, { ...data, user: userData[0] }]);
-  };
-
-  const renderQuestion = () => (
-    <>
-      <HorizontalContainer>
-        <BackButton onClick={() => setCurrentQuestionId(0)}>
-          <ChevronLeftIcon />
-          {' '}
-          Voltar
-        </BackButton>
-      </HorizontalContainer>
-      <HorizontalLine />
-      <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
-      <QuestionText>{selectedQuestion.text}</QuestionText>
-      <AnswerQuestionContainer>
-        <StyledTextArea onChange={(e) => setAnswerQuestionText(e.target.value)} />
-        <Button text="Responder Pergunta" onClick={handleAnswerQuestion} />
-      </AnswerQuestionContainer>
-      <HorizontalLine />
-      <AnswersTitle>Principais respostas:</AnswersTitle>
-      {currentAnswers.length > 0 ? currentAnswers
-        .sort((q1, q2) => (q1.upvotes - q1.downvotes < q2.upvotes - q2.downvotes ? 1 : -1))
-        .map((answer) => (
-          <AnswerContainer key={answer.id}>
-            <VotesContainer>
-              <KeyboardArrowUpIcon onClick={() => handleUpArrowClick(answer.id)} />
-              <VotesNumber>{answer.upvotes - answer.downvotes}</VotesNumber>
-              <KeyboardArrowDownIcon onClick={() => handleDownArrowClick(answer.id)} />
-            </VotesContainer>
-            <RightContainer>
-              <AnswerText>{answer.text}</AnswerText>
-              <AnswerUsername>
-                Respondido por
-                {` ${answer.user && answer.user.name}`}
-              </AnswerUsername>
-            </RightContainer>
-          </AnswerContainer>
-        )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
-    </>
-  );
-
-  const renderQuestionList = () => {
-    if (!questions.length) {
-      return <div>Essa carreira ainda não tem perguntas!</div>;
-    }
-
-    return questions.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)).map((question) => (
-      <div key={question.id} style={{ width: '100%' }}>
-        <QuestionListItemContainer
-          key={question.id}
-          onClick={() => {
-            handleClick(question.id);
-          }}
-        >
-          <QuestionListItemLeft>
-            <QuestionListItemTitle>
-              {question.title}
-            </QuestionListItemTitle>
-            <QuestionListItemText>
-              {question.text.length > 120 ? `${question.text.slice(0, 120)}...` : question.text}
-            </QuestionListItemText>
-            <QuestionListItemUsername>
-              Perguntado por
-              {' '}
-              {question.user && question.user.name}
-            </QuestionListItemUsername>
-          </QuestionListItemLeft>
-          <QuestionListItemRight>
-            <ChevronRightIcon />
-          </QuestionListItemRight>
-        </QuestionListItemContainer>
-        <HorizontalLine />
-      </div>
-    ));
-  };
-
   return (
     <PageContainer>
-      {currentQuestionId ? renderQuestion() : (
-        <>
-          {' '}
-          <HeaderHorizontalContainer>
-            <div>
-              {questions.length}
-              {' '}
-              dúvidas encontradas.
-            </div>
-            <Button text="Fazer Pergunta" onClick={openModal} />
-          </HeaderHorizontalContainer>
-          <HorizontalLine />
-          {renderQuestionList()}
-        </>
-      )}
+      {currentQuestionId
+        ? (
+          <Question
+            onUpdate={setCurrentAnswers}
+            onClick={() => setCurrentQuestionId(0)}
+            currentAnswers={currentAnswers}
+            selectedQuestion={selectedQuestion}
+          />
+        ) : (
+          <>
+            {' '}
+            <HeaderHorizontalContainer>
+              <div>
+                {questions.length}
+                {' '}
+                dúvidas encontradas.
+              </div>
+              <Button text="Fazer Pergunta" onClick={openModal} />
+            </HeaderHorizontalContainer>
+            <HorizontalLine />
+            <QuestionList
+              questions={questions}
+              handleClick={(questionId) => setCurrentQuestionId(questionId)}
+            />
+          </>
+        )}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
