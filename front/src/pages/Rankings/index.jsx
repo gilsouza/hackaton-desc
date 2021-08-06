@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { useEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Header } from '../../components/Header';
 import {
   ContentContainer, HeaderText, PageContainer, RakingHeader, Row, Title,
@@ -10,6 +11,7 @@ import { PageBackground } from '../Profession/styles';
 import { CareerCard } from '../../components/CarrerCard';
 
 const Rankings = () => {
+  const history = useHistory();
   const { getRatingsWithCareer, ratingsWithCareer } = useCareers();
 
   useEffect(() => {
@@ -47,7 +49,9 @@ const Rankings = () => {
   }, [ratingsWithCareer]);
 
   console.log('sortedCareers', sortedCareers);
-  const onCardPress = () => {};
+  const onCardPress = (careerId) => {
+    history.push(`/profissao/${careerId}/`);
+  };
   return (
     <>
       <Header />
