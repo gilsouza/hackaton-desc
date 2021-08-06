@@ -87,7 +87,7 @@ const CareersProvider = ({ children }) => {
     setLoading(true);
 
     if (currentCareer?.id) {
-      const { data } = await axios.get(`${API_URL}/ratings?careerId=${currentCareer?.id}`);
+      const { data } = await axios.get(`${API_URL}/ratings?careerId=${currentCareer?.id}&_expand=user`);
 
       setRatings(data);
     } else {

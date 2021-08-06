@@ -58,9 +58,9 @@ export const BoxRatings = styled.div`
 `;
 
 export const Rating = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin: 0 8px;
   margin-bottom: 8px;

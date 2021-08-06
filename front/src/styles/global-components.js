@@ -14,3 +14,9 @@ export const Avatar = styled.img`
   height: 60px;
   width: 60px;
 `;
+
+export const AvatarSmall = styled.img`
+  border-radius: 60px;
+  height: 30px;
+  width: 30px;
+`;
