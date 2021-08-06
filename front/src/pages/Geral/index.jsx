@@ -10,8 +10,8 @@ import {
   LabelResult,
   LabelResultGeral,
   PageContainer,
-  Rating, Salary,
-  Section,
+  Rating, Salary, SalaryContainer,
+  Section, SectionContainer,
   SectionTitle,
 } from './styles';
 import { averagePropInList } from '../../util/math';
@@ -22,34 +22,22 @@ import { QuestionList } from '../../components/QuestionList';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
-const words = [
-  {
-    text: 'told',
-    value: 64,
-  },
-  {
-    text: 'mistake',
-    value: 11,
-  },
-  {
-    text: 'thought',
-    value: 16,
-  },
-  {
-    text: 'bad',
-    value: 17,
-  },
-];
-
 const Geral = () => {
   const { pathname } = useLocation();
   const history = useHistory();
   const {
     getRatings, ratings, currentCareer, getBriefs,
+    briefs,
     topVoteBrief,
     questions, getQuestions, getSalaries, salaries,
   } = useCareers();
 
+  const wordsGroped = briefs.map((brief) => brief.text).reduce((a, b) => `${a} ${b}`, '').split(' ').reduce((a, value) => {
+    const total = a;
+    total[value] = (total[value] || 0) + 1;
+    return total;
+  }, {});
+  const words = Object.keys(wordsGroped).map((word) => ({ text: word, value: wordsGroped[word] }));
   useEffect(() => {
     getRatings();
     getBriefs();
@@ -101,7 +89,7 @@ const Geral = () => {
   function renderRateSection() {
     return (
       <Section withoutTopMargin>
-        <SectionTitle>Avaliação media:</SectionTitle>
+        <SectionTitle>Avaliação média:</SectionTitle>
         <GeneralResults>
           <LabelResultGeral>Avaliação geral:</LabelResultGeral>
           <ReactStars
@@ -156,6 +144,87 @@ const Geral = () => {
   const salarioAltaExperiencia = salaries
     .filter((salarie) => salarie.time_experience === 2)
     .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
+  const salarioAltissimaExperiencia = salaries
+    .filter((salarie) => salarie.time_experience === 3)
+    .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
+
+  function renderWordCloud() {
+    return (
+      <Section>
+        <SectionTitle>Palavras chaves principais:</SectionTitle>
+        <SectionContainer>
+          <ReactWordcloud
+            style={{ height: 400, width: 600 }}
+            words={words}
+            options={{
+              enableTooltip: true,
+              fontFamily: 'impact',
+              fontSizes: [5, 80],
+              padding: 1,
+              scale: 'sqrt',
+              spiral: 'archimedean',
+            }}
+          />
+        </SectionContainer>
+      </Section>
+    );
+  }
+
+  function renderSalaries() {
+    return (
+      <Section>
+        <SectionTitle>Salário medio:</SectionTitle>
+        <GeneralResults>
+          <SalaryContainer size="lg">
+            <Salary size="lg">
+              R$
+              {parseFloat(salarioMedio).toFixed(2)}
+            </Salary>
+            <LabelResult>Salário médio total</LabelResult>
+          </SalaryContainer>
+
+          <BoxRatings>
+            {!!salarioBaixaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioBaixaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salarios médios de 0 a 3 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioMediaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioMediaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 3 a 6 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioAltaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 6 a 9 anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+            {!!salarioAltissimaExperiencia && (
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltissimaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>Salário médio de 9 ou mais anos de experiência</LabelResult>
+            </SalaryContainer>
+            )}
+          </BoxRatings>
+        </GeneralResults>
+      </Section>
+    );
+  }
 
   return (
     <PageContainer>
@@ -165,33 +234,9 @@ const Geral = () => {
       <HorizontalLine />
       {renderDuvidas()}
       <HorizontalLine />
-      <Section>
-        <SectionTitle>Salário medio:</SectionTitle>
-        <GeneralResults>
-          <Salary>
-            R$
-            {parseFloat(salarioMedio).toFixed(2)}
-          </Salary>
-
-          <BoxRatings>
-            <Salary>
-              R$
-              {parseFloat(salarioBaixaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioMediaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioAltaExperiencia).toFixed(2)}
-            </Salary>
-          </BoxRatings>
-        </GeneralResults>
-      </Section>
-      <div style={{ height: 400, width: 600 }}>
-        <ReactWordcloud words={words} />
-      </div>
+      {salarioMedio && renderSalaries()}
+      <HorizontalLine />
+      {words.length > 50 && renderWordCloud()}
     </PageContainer>
   );
 };
