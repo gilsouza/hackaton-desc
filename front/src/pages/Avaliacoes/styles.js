@@ -28,6 +28,13 @@ export const LabelResult = styled(TextResult)`
     font-size: 20px;
 `;
 
+export const LabelRatingResult = styled(LabelResult)`
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--primary-color-dark);
+    font: 500;
+`;
+
 export const BoxRatings = styled.div`
     display: flex;
     justify-content: flex-start;
