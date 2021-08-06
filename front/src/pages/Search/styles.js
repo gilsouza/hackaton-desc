@@ -1,9 +1,13 @@
 import styled from 'styled-components';
+import AsyncSelect from 'react-select/async';
 
 export const PageContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  background-color: var(--secondary-color);
   padding: 20px;
 `;
 
@@ -12,12 +16,10 @@ export const SearchInput = styled.input`
   flex: 1;
   border: none;
   font-size: 16px;
+  background-color: transparent;
+  color: white;
   outline: none;
   width: 100%;
-`;
-
-export const SearchFrom = styled.form`
-  width: 90%;
 `;
 
 export const SearchContainer = styled.div`
@@ -33,29 +35,12 @@ export const SearchContainer = styled.div`
   height: 36px;
   width: 800px;
   margin-bottom: 24px;
+  color: white;
 `;
 
-export const NotFoundText = styled.div`
-  margin-top: 52px;
-  font-size: 24px;
-  color: #aaa;
-`;
-
-export const CareerCard = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 84px;
-  width: 60%;
-  padding: 12px;
-  border-bottom: 1px solid #aaa;
-  transition: background-color 0.3s;
-
-  :hover {
-    background-color: #efefef;
-    cursor: pointer;
-  }
+export const AsyncSelectStyled = styled(AsyncSelect)`
+  width: 800px;
+  background-color: transparent;
 `;
 
 export const CareerCardText = styled.div`

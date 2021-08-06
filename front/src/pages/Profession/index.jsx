@@ -9,6 +9,7 @@ import ProfissionNavigation from '../../navigations/ProfissionNavigation';
 import { Tabs } from '../../components/Tabs';
 import { Button } from '../../components/Button';
 import { useCareers } from '../../hooks/Careers';
+import { Header } from '../../components/Header';
 
 const tabs = [
   {
@@ -58,30 +59,34 @@ const Profession = () => {
   };
 
   return (
-    <PageBackground>
-      <PageContainer>
-        <ProfessionHeader>
-          <CarrerHeader>
-            <ProfessionText>{currentCareer?.name}</ProfessionText>
-            <Row>
-              <Button text={hasFollowed ? 'Seguindo' : 'Seguir'} sufixIcon={hasFollowed ? <Check /> : <Add />} onClick={handleFollow} />
-              <Button
-                style={{ marginLeft: 5 }}
-                text="Avaliar"
-                sufixIcon={<RateReview />}
-                onClick={() => {
-                  history.push(`/avaliar/${profissao}/1`);
-                }}
-              />
-            </Row>
-          </CarrerHeader>
-          <Tabs tabs={tabs} />
-        </ProfessionHeader>
-        <ContentContainer>
-          <ProfissionNavigation />
-        </ContentContainer>
-      </PageContainer>
-    </PageBackground>
+    <>
+
+      <Header />
+      <PageBackground>
+        <PageContainer>
+          <ProfessionHeader>
+            <CarrerHeader>
+              <ProfessionText>{currentCareer?.name}</ProfessionText>
+              <Row>
+                <Button text={hasFollowed ? 'Seguindo' : 'Seguir'} sufixIcon={hasFollowed ? <Check /> : <Add />} onClick={handleFollow} />
+                <Button
+                  style={{ marginLeft: 5 }}
+                  text="Avaliar"
+                  sufixIcon={<RateReview />}
+                  onClick={() => {
+                    history.push(`/avaliar/${profissao}/1`);
+                  }}
+                />
+              </Row>
+            </CarrerHeader>
+            <Tabs tabs={tabs} />
+          </ProfessionHeader>
+          <ContentContainer>
+            <ProfissionNavigation />
+          </ContentContainer>
+        </PageContainer>
+      </PageBackground>
+    </>
   );
 };
 

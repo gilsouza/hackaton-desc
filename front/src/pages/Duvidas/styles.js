@@ -14,11 +14,16 @@ export const HorizontalLine = styled.div`
 `;
 
 export const QuestionListItemContainer = styled.div`
-  margin-top: 10px;
+  padding-top: 10px;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  :hover {
+    background-color: #efefef;
+    cursor: pointer;
+  }
 `;
 
 export const QuestionListItemLeft = styled.div`
@@ -91,6 +96,8 @@ export const BackButton = styled.button`
 export const HorizontalContainer = styled.div`
   display: flex;
   flex: 1;
+  justify-content: space-between;
+  width: 100%;
   align-items: center;
   margin-bottom: 10px;
 `;
@@ -99,6 +106,7 @@ export const QuestionTitle = styled.div`
   font-size: 30px;
   margin-left: 30px;
   margin-bottom: 30px;
+  margin-top: 30px;
   color: #333;
 `;
 
@@ -127,4 +135,13 @@ export const AnswerUsername = styled.div`
   color: #777;
   margin-bottom: 10px;
   margin-left: 30px;
+`;
+
+export const HeaderHorizontalContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
 `;

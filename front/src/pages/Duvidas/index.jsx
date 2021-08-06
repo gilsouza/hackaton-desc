@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import axios from 'axios';
 import { useCareers } from '../../hooks/Careers';
+import { Button } from '../../components/Button';
 import {
   PageContainer,
   HorizontalLine,
@@ -11,7 +13,6 @@ import {
   QuestionListItemUsername,
   QuestionListItemLeft,
   QuestionListItemRight,
-  SeeMoreButton,
   BackButton,
   HorizontalContainer,
   QuestionTitle,
@@ -19,6 +20,7 @@ import {
   AnswersTitle,
   AnswerText,
   AnswerUsername,
+  HeaderHorizontalContainer,
 } from './styles';
 
 const Duvidas = () => {
@@ -52,7 +54,9 @@ const Duvidas = () => {
           {' '}
           Voltar
         </BackButton>
+        <Button text="Responder Pergunta" />
       </HorizontalContainer>
+      <HorizontalLine />
       <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       <QuestionText>{selectedQuestion.text}</QuestionText>
       <HorizontalLine />
@@ -65,7 +69,7 @@ const Duvidas = () => {
             {` ${answer.user.name}`}
           </AnswerUsername>
         </>
-      )) : <div>Nenhuma resposta encontrada</div>}
+      )) : <div style={{ marginLeft: 30 }}>Nenhuma resposta encontrada</div>}
     </>
   );
 
@@ -74,7 +78,7 @@ const Duvidas = () => {
 
     return questions.map((question, index) => (
       <div key={question.id} style={{ width: '100%' }}>
-        <QuestionListItemContainer key={question.id}>
+        <QuestionListItemContainer key={question.id} onClick={() => { handleClick(question.id); }}>
           <QuestionListItemLeft>
             <QuestionListItemTitle>
               {question.title}
@@ -89,7 +93,7 @@ const Duvidas = () => {
             </QuestionListItemUsername>
           </QuestionListItemLeft>
           <QuestionListItemRight>
-            <SeeMoreButton onClick={() => { handleClick(question.id); }}>Ver Mais</SeeMoreButton>
+            <ChevronRightIcon />
           </QuestionListItemRight>
         </QuestionListItemContainer>
         {index !== questions.length - 1 && <HorizontalLine />}
@@ -99,7 +103,21 @@ const Duvidas = () => {
 
   return (
     <PageContainer>
-      {currentQuestionId ? renderQuestion() : renderQuestionList()}
+      {currentQuestionId ? renderQuestion() : (
+        <>
+          {' '}
+          <HeaderHorizontalContainer>
+            <div>
+              {questions.length}
+              {' '}
+              dúvidas encontradas.
+            </div>
+            <Button text="Fazer Pergunta" />
+          </HeaderHorizontalContainer>
+          <HorizontalLine />
+          {renderQuestionList()}
+        </>
+      )}
     </PageContainer>
   );
 };

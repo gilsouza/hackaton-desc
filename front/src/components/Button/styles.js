@@ -1,20 +1,27 @@
 import styled from 'styled-components';
 
+const getBackgroundColor = (disabled, selected) => {
+  if (disabled) {
+    return 'gray';
+  }
+  return selected ? 'var(--primary-color-dark)' : 'var(--primary-color)';
+};
 export const PageContainer = styled.button`
-  background-color: var(--primary-color);
+  background-color: ${(props) => getBackgroundColor(props.disabled, props.selected)};
   border-radius: 40px;
   border: none;
+  box-shadow: 0 0 4px #999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
   font-weight: 500;
   font-size: 14px;
-  cursor: pointer;
+  cursor: ${(props) => (!props.disabled ? 'pointer' : 'block')};
   transition: background 0.5s;
 
   :hover {
-    background-color: var(--primary-color-dark);
+    background-color: ${(props) => !props.disabled && 'var(--primary-color-dark)'};
   }
 
   :active {

@@ -1,28 +1,26 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
-    max-width: 800px;
+    max-width: 900px;
   width: 100%;
+  border-radius: 15px;
+  background-color: white;
 `;
 
 export const PageBackground = styled.div`
-  padding: 20px;
   flex: 1;
   justify-content: center;
   display: flex;
-  background-color: var(--background-color);
+  background-color: #e0e0e0;
 `;
 export const ContentContainer = styled.div`
   padding: 20px;
   flex: 1;
   background-color: var(--third-color);
   border-radius: 0 0 5px 5px;
-  border: 1px solid var(--secondary-color);
 `;
 export const ProfessionHeader = styled.div`
-  background-color: var(--secondary-color);
-  padding: 12px 20px 0 20px;
-  border-radius: 5px 5px 0 0 ;
+  background-color: var(--secondary-color);  padding: 12px 20px 0 20px;
 `;
 export const CarrerHeader = styled.div`
   display: flex;

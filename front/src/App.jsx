@@ -7,7 +7,6 @@ import {
 import { Profession } from './pages/Profession';
 import { Search } from './pages/Search';
 import { NotFound } from './pages/NotFound';
-import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global-style';
 import { CareersProvider } from './hooks/Careers';
 import { Avaliar } from './pages/Avaliar';
@@ -17,7 +16,6 @@ function App() {
     <div className="App">
       <CareersProvider>
         <GlobalStyle />
-        <Header />
         <Router>
           <Switch>
             <Route path="/" exact>

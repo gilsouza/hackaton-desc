@@ -15,7 +15,7 @@ module.exports = () => {
                 phone: "222-805-5425 x402",
                 city: "Noahstad",
                 state: "Oregon",
-                role: "Dynamic",
+                role: "Dog",
                 gender: "Cis Woman",
                 id: 1,
             },
