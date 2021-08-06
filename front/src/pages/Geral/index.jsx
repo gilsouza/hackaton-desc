@@ -11,7 +11,7 @@ import {
   LabelResultGeral,
   PageContainer,
   Rating, Salary,
-  Section,
+  Section, SectionContainer,
   SectionTitle,
 } from './styles';
 import { averagePropInList } from '../../util/math';
@@ -22,34 +22,22 @@ import { QuestionList } from '../../components/QuestionList';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
-const words = [
-  {
-    text: 'told',
-    value: 64,
-  },
-  {
-    text: 'mistake',
-    value: 11,
-  },
-  {
-    text: 'thought',
-    value: 16,
-  },
-  {
-    text: 'bad',
-    value: 17,
-  },
-];
-
 const Geral = () => {
   const { pathname } = useLocation();
   const history = useHistory();
   const {
     getRatings, ratings, currentCareer, getBriefs,
+    briefs,
     topVoteBrief,
     questions, getQuestions, getSalaries, salaries,
   } = useCareers();
 
+  const wordsGroped = briefs.map((brief) => brief.text).reduce((a, b) => `${a} ${b}`, '').split(' ').reduce((a, value) => {
+    const total = a;
+    total[value] = (total[value] || 0) + 1;
+    return total;
+  }, {});
+  const words = Object.keys(wordsGroped).map((word) => ({ text: word, value: wordsGroped[word] }));
   useEffect(() => {
     getRatings();
     getBriefs();
@@ -101,7 +89,7 @@ const Geral = () => {
   function renderRateSection() {
     return (
       <Section withoutTopMargin>
-        <SectionTitle>Avaliação media:</SectionTitle>
+        <SectionTitle>Avaliação média:</SectionTitle>
         <GeneralResults>
           <LabelResultGeral>Avaliação geral:</LabelResultGeral>
           <ReactStars
@@ -189,9 +177,13 @@ const Geral = () => {
           </BoxRatings>
         </GeneralResults>
       </Section>
-      <div style={{ height: 400, width: 600 }}>
-        <ReactWordcloud words={words} />
-      </div>
+      <HorizontalLine />
+      <Section>
+        <SectionTitle>Palavras chaves principais:</SectionTitle>
+        <SectionContainer>
+          <ReactWordcloud style={{ height: 400, width: 600 }} words={words} />
+        </SectionContainer>
+      </Section>
     </PageContainer>
   );
 };

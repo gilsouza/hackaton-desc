@@ -49,6 +49,13 @@ export const Section = styled.div`
   padding-top: ${(props) => (props.withoutTopMargin ? 0 : '12px')}
 `;
 
+export const SectionContainer = styled.div`
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const LabelRatingResult = styled(LabelResult)`
     font-size: 20px;
     color: var(--primary-color-dark);
