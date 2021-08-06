@@ -50,6 +50,7 @@ const Step1 = () => {
               cacheOptions
               loadOptions={searchCareers}
               placeholder="Desenvolvedor..."
+              noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
               onInputChange={setSearchText}
               value={selectedCareer}
               onChange={(option) => setSelectedCareer(option)}
