@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const RateContext = createContext({});
 
-const API_URL = 'https://hackaton-desc-back.vercel.app';
+const API_URL = 'https://hackaton-desc.herokuapp.com';
 const RateProvider = ({ children }) => {
   const [rateState, setRateState] = useState({});
 

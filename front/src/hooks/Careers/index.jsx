@@ -4,7 +4,7 @@ import { Loading } from '../../components/Loading';
 
 const CareersContext = createContext({});
 
-const API_URL = 'https://hackaton-desc-back.vercel.app';
+const API_URL = 'https://hackaton-desc.herokuapp.com';
 
 const CareersProvider = ({ children }) => {
   const [careers, setCarrers] = useState([]);
