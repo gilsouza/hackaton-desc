@@ -4,6 +4,9 @@ import dayjs from 'dayjs';
 import { ChartTitle, PageContainer } from './styles';
 import { useCareers } from '../../hooks/Careers';
 
+require('dayjs/locale/pt-br');
+
+dayjs.locale('pt-br');
 const Salario = () => {
   const { salaries, getSalaries } = useCareers();
   useEffect(() => {
