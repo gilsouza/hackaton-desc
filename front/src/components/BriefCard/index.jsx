@@ -1,8 +1,7 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 import { Avatar, Card } from '../../styles/global-components';
 import {
-  Button,
-  LikeContainer, Name, Quote, Role, Score, UserContainer,
+  Button, LikeContainer, Name, Quote, Role, Score, UserContainer,
 } from '../../pages/Depoimentos/styles';
 import { useCareers } from '../../hooks/Careers';
 

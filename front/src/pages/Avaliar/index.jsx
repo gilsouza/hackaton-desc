@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
-  PageContainer, PageBackground, ProfessionHeader,
-  CarrerHeader, ProfessionText, ContentContainer,
+  CarrerHeader,
+  ContentContainer,
+  PageBackground,
+  PageContainer,
+  ProfessionHeader,
+  ProfessionText,
 } from './styles';
 import { useCareers } from '../../hooks/Careers';
 import { Steps } from '../../components/Steps';

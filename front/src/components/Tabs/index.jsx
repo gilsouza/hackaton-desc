@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
-  TabsContainer, Tab, BottomBorder, Container,
+  BottomBorder, Container, Tab, TabsContainer,
 } from './styles';
 
 const Tabs = ({ tabs }) => {

@@ -99,7 +99,6 @@ const CareersProvider = ({ children }) => {
 
   const sendRate = async (briefId, like) => {
     setLoading(true);
-    console.log('like', briefId);
 
     if (briefId) {
       const { data } = await axios.post(`${API_URL}/briefs/${briefId}/${like ? 'upvote' : 'downvote'}`);

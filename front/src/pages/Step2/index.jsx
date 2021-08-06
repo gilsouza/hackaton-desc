@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactStars from 'react-stars';
 import { Button } from '../../components/Button';
-import { Title, Container, Row } from '../Avaliar/styles';
+import { Container, Row, Title } from '../Avaliar/styles';
 import { useRate } from '../../hooks/Rate';
 
 const Step2 = () => {

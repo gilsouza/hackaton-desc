@@ -1,4 +1,4 @@
-import { PageContainer, IconContainer } from './styles';
+import { IconContainer, PageContainer } from './styles';
 
 const Button = ({
   text, sufixIcon, prefixIcon, style, onClick, disabled, selected,

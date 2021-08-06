@@ -9,7 +9,7 @@ export const UserContainer = styled.div`
   flex-direction: column;
 `;
 export const Button = styled.div`
-    cursor: pointer;
+  cursor: pointer;
   display: flex;
 `;
 export const LikeContainer = styled.div`
@@ -21,7 +21,7 @@ export const Score = styled.div`
   margin: 0 8px;
 `;
 export const Name = styled.span`
-    margin: 2px 0;
+  margin: 2px 0;
   font-size: 16px;
 `;
 export const Role = styled.span`

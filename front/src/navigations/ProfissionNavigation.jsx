@@ -1,7 +1,4 @@
-import {
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Salario } from '../pages/Salario';
 import { Depoimentos } from '../pages/Depoimentos';
 import { Duvidas } from '../pages/Duvidas';
