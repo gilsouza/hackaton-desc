@@ -74,7 +74,7 @@ const User = () => {
                         key={car}
                         onClick={() => { history.push(`/profissao/${car}/`); }}
                         career={careerName}
-                        score={2}
+                        score={3.5}
                       />
                     );
                   }) : <div>Nenhuma carreira está sendo seguida</div>}
