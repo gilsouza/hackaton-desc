@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import axios from 'axios';
 import { useCareers } from '../../hooks/Careers';
 import {
   PageContainer,
@@ -10,17 +12,49 @@ import {
   QuestionListItemLeft,
   QuestionListItemRight,
   SeeMoreButton,
+  BackButton,
+  HorizontalContainer,
+  QuestionTitle,
+  QuestionText,
 } from './styles';
 
 const Duvidas = () => {
-  const { getQuestions, questions, currentCareer } = useCareers();
+  const [currentQuestionId, setCurrentQuestionId] = useState(0);
+  const [currentAnswers, setCurrentAnswers] = useState([]);
+  const [selectedQuestion, setSelectedQuestion] = useState({});
+
+  const { getQuestions, questions } = useCareers();
+
   useEffect(() => {
     getQuestions();
-  }, [currentCareer]);
+  }, []);
 
-  const handleClick = () => {
+  const handleClick = async (questionId) => {
+    setCurrentQuestionId(questionId);
 
+    const [question] = questions.filter((q) => q.id === questionId);
+
+    setSelectedQuestion(question);
+
+    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/questions/${questionId}/question_anwsers?_expand=user`);
+
+    setCurrentAnswers(data);
   };
+
+  const renderQuestion = () => (
+    <>
+      <HorizontalContainer>
+        <BackButton onClick={() => setCurrentQuestionId(0)}>
+          <ChevronLeftIcon />
+          {' '}
+          Voltar
+        </BackButton>
+        <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
+      </HorizontalContainer>
+      <QuestionText>{selectedQuestion.text}</QuestionText>
+      {currentAnswers.map((answer) => <QuestionText>{answer.text}</QuestionText>)}
+    </>
+  );
 
   const renderQuestionList = () => {
     if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }
@@ -42,7 +76,7 @@ const Duvidas = () => {
             </QuestionListItemUsername>
           </QuestionListItemLeft>
           <QuestionListItemRight>
-            <SeeMoreButton onClick={handleClick}>Ver Mais</SeeMoreButton>
+            <SeeMoreButton onClick={() => { handleClick(question.id); }}>Ver Mais</SeeMoreButton>
           </QuestionListItemRight>
         </QuestionListItemContainer>
         {index !== questions.length - 1 && <HorizontalLine />}
@@ -52,7 +86,7 @@ const Duvidas = () => {
 
   return (
     <PageContainer>
-      {renderQuestionList()}
+      {currentQuestionId ? renderQuestion() : renderQuestionList()}
     </PageContainer>
   );
 };

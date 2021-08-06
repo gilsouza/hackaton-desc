@@ -77,3 +77,31 @@ export const SeeMoreButton = styled.button`
     transition: background 0s;
   }
 `;
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 90px;
+  outline: none;
+  background-color: white;
+  border: none;
+`;
+
+export const HorizontalContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+export const QuestionTitle = styled.div`
+  font-size: 30px;
+  color: #333;
+`;
+
+export const QuestionText = styled.div`
+  margin-left: 30px;
+  text-align: left;
+  margin-bottom: 30px;
+`;
