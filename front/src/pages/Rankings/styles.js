@@ -21,6 +21,8 @@ export const ContentContainer = styled.div`
 `;
 export const Row = styled.div`
     display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
 `;
 export const Title = styled.div`
     margin-bottom: 12px;
