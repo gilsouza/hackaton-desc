@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import axios from 'axios';
 import { useCareers } from '../../hooks/Careers';
 import { Button } from '../../components/Button';
@@ -12,7 +13,7 @@ import {
   QuestionListItemUsername,
   QuestionListItemLeft,
   QuestionListItemRight,
-  SeeMoreButton,
+  // SeeMoreButton,
   BackButton,
   HorizontalContainer,
   QuestionTitle,
@@ -76,7 +77,7 @@ const Duvidas = () => {
 
     return questions.map((question, index) => (
       <div key={question.id} style={{ width: '100%' }}>
-        <QuestionListItemContainer key={question.id}>
+        <QuestionListItemContainer key={question.id} onClick={() => { handleClick(question.id); }}>
           <QuestionListItemLeft>
             <QuestionListItemTitle>
               {question.title}
@@ -91,7 +92,7 @@ const Duvidas = () => {
             </QuestionListItemUsername>
           </QuestionListItemLeft>
           <QuestionListItemRight>
-            <SeeMoreButton onClick={() => { handleClick(question.id); }}>Ver Mais</SeeMoreButton>
+            <ChevronRightIcon />
           </QuestionListItemRight>
         </QuestionListItemContainer>
         {index !== questions.length - 1 && <HorizontalLine />}

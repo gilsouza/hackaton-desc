@@ -14,11 +14,16 @@ export const HorizontalLine = styled.div`
 `;
 
 export const QuestionListItemContainer = styled.div`
-  margin-top: 10px;
+  padding-top: 10px;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  :hover {
+    background-color: #efefef;
+    cursor: pointer;
+  }
 `;
 
 export const QuestionListItemLeft = styled.div`

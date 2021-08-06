@@ -48,7 +48,6 @@ const Search = () => {
     return (careers.map((career) => (
       <CareerCard key={career.id} onClick={() => { handleCardClick(career.id); }}>
         <CareerCardText>{career.name}</CareerCardText>
-
         <ChevronRightIcon />
       </CareerCard>
     )));
