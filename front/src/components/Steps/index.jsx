@@ -6,7 +6,7 @@ const Steps = ({ steps, selectedIndex }) => (
   <StepsContainer>
     <Line>
 
-      <LineProgress width={selectedIndex * (100 / 3)} />
+      <LineProgress width={selectedIndex * (100 / 2)} />
     </Line>
     <StepsAbsolute>
       {steps.map((step, index) => (

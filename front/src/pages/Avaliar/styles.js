@@ -20,7 +20,14 @@ export const ContentContainer = styled.div`
   border-radius: 0 0 5px 5px;
   border: 1px solid black;
 `;
+export const Container = styled.div`
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 export const Title = styled.div`
+    margin-top: 20px;
 `;
 export const ProfessionHeader = styled.div`
   background-color: black;
@@ -49,4 +56,5 @@ export const Row = styled.div`
 export const AsyncSelectStyled = styled(AsyncSelect)`
   margin-top: 10px;
   margin-bottom: 20px;
+  min-width: 400px;
 `;

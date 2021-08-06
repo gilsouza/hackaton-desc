@@ -1,7 +1,9 @@
 import { ArrowRight } from '@material-ui/icons';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { AsyncSelectStyled, Row, Title } from '../Avaliar/styles';
+import {
+  AsyncSelectStyled, Container, Row, Title,
+} from '../Avaliar/styles';
 import { Button } from '../../components/Button';
 import { useCareers } from '../../hooks/Careers';
 
@@ -16,14 +18,14 @@ const Step1 = () => {
 
   console.log(selectedCareer, salarie);
   const searchCareers = async () => {
-    const carrers = await getCareersByFragment(searchText);
+    const carrers = await getCareersByFragment(searchText, false);
     if (searchText) {
       return carrers.map((c) => ({ ...c, label: c.name }));
     }
     return [];
   };
   return (
-    <>
+    <Container>
       <Title>Você está empregado(a) no momento?</Title>
       <Row>
         <Button text="Sim" onClick={() => setIsEmployed(true)} />
@@ -55,7 +57,7 @@ const Step1 = () => {
         sufixIcon={<ArrowRight />}
         onClick={() => history.push(pathname.replace('1', '2'))}
       />
-    </>
+    </Container>
   );
 };
 
