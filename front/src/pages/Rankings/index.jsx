@@ -5,6 +5,7 @@ import {
   ContentContainer, HeaderText, PageContainer, RakingHeader, Row, Title,
 } from './styles';
 import { useCareers } from '../../hooks/Careers';
+import { averagePropInList } from '../../util/math';
 import { PageBackground } from '../Profession/styles';
 import { CareerCard } from '../../components/CarrerCard';
 
@@ -15,16 +16,34 @@ const Rankings = () => {
     getRatingsWithCareer();
   }, []);
 
-  const groupRatingsByCareer = useMemo(() => {
+  const sortedCareers = useMemo(() => {
     const grouped = ratingsWithCareer.reduce((rv, x) => {
       // eslint-disable-next-line no-param-reassign
       (rv[x.careerId] = rv[x.careerId] || []).push(x);
       return rv;
     }, {});
-    return grouped;
+
+    const averages = Object.keys(grouped)
+      .map((career) => ({
+        career,
+        averages: {
+          happiness: averagePropInList(grouped[career], 'happiness'),
+          salaryRange: averagePropInList(grouped[career], 'salary_range'),
+          employability: averagePropInList(grouped[career], 'employability'),
+        },
+      }));
+
+    return {
+      mostEmployability: averages.slice()
+        .sort((a, b) => a.averages.employability - b.averages.employability),
+      mostSalaryRange: averages.slice()
+        .sort((a, b) => a.averages.salary_range - b.averages.salary_range),
+      mostHappiness: averages.slice()
+        .sort((a, b) => a.averages.happiness - b.averages.happiness),
+    };
   }, [ratingsWithCareer]);
 
-  console.log(groupRatingsByCareer);
+  console.log(sortedCareers);
 
   return (
     <>
@@ -34,11 +53,14 @@ const Rankings = () => {
           <RakingHeader>
             <HeaderText>Raking de carreiras</HeaderText>
           </RakingHeader>
-          {groupRatingsByCareer && Object.keys(groupRatingsByCareer).length > 0 && (
+          {sortedCareers && Object.keys(sortedCareers).length > 0 && (
           <ContentContainer>
             <Title>Top 10 carreiras por salário</Title>
             <Row>
-              <CareerCard career={groupRatingsByCareer.jornalismo[0].career} property="salary_satisfaction" score={groupRatingsByCareer.jornalismo[0].salary_satisfaction} />
+              <CareerCard
+                career={sortedCareers.mostSalaryRange[0].career}
+                score={sortedCareers.mostSalaryRange[0].averages.salaryRange}
+              />
             </Row>
           </ContentContainer>
           )}
