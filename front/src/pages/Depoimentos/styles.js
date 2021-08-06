@@ -29,5 +29,6 @@ export const Role = styled.span`
 `;
 export const Quote = styled.q`
   color: #505050;
-  font-style: italic
+  font-style: italic;
+  text-align: center;
 `;

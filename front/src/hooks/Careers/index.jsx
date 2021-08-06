@@ -106,8 +106,10 @@ const CareersProvider = ({ children }) => {
         const briefIndex = briefs.findIndex((b) => b.id === briefId);
         const newState = [...lastValue];
         newState[briefIndex] = { ...data, score: data.upvotes - data.downvotes };
-        return newState
+        const briefsState = newState
           .sort((b, a) => (b.score < a.score ? 1 : -1));
+        setTopVoteBrief(briefsState[0]);
+        return briefsState;
       }));
     }
 

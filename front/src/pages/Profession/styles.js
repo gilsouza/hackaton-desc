@@ -12,7 +12,9 @@ export const PageBackground = styled.div`
   justify-content: center;
   display: flex;
   background-color: #e0e0e0;
+  background-image: url("https://www.pngkey.com/png/full/180-1800744_diagonal-line-png.png");
 `;
+
 export const ContentContainer = styled.div`
   padding: 20px;
   flex: 1;
