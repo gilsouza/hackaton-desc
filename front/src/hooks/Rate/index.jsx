@@ -18,6 +18,7 @@ const RateProvider = ({ children }) => {
       employability: rateState.employability,
       salary_satisfaction: rateState.salarySatisfaction,
       careerId: rateState.careerId,
+      userId: 1,
     });
 
     if (rateState.brief) {

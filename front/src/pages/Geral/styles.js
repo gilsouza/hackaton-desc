@@ -39,6 +39,10 @@ export const SectionTitle = styled.p`
   margin-bottom: 12px;
     font-weight: 600;
 `;
+export const Salary = styled.p`
+    font-size: 24px;
+    font-weight: 600;
+`;
 
 export const Section = styled.div`
   padding-bottom: 12px;

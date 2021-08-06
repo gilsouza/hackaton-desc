@@ -27,7 +27,9 @@
     "react-select": "^4.3.1",
     "react-select-search": "^3.0.8",
     "react-stars": "^2.2.5",
+    "react-wordcloud": "^1.2.7",
     "styled-components": "^5.3.0",
+    "tippy.js": "^6.3.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
