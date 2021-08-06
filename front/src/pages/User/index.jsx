@@ -35,7 +35,7 @@ const User = () => {
 
     const storageCareers = JSON.parse(localStorage.getItem('dc-has-followed'));
 
-    setFollowedCareers(storageCareers);
+    setFollowedCareers(storageCareers || []);
   }, []);
 
   return (
@@ -62,7 +62,7 @@ const User = () => {
                   Você está seguindo as seguintes carreiras:
                 </FollowedCareersTitle>
                 <FlexContainer>
-                  {followedCareers.map((car) => {
+                  {followedCareers.length > 0 ? followedCareers.map((car) => {
                     const [carr] = allCareers.filter((c) => c.id === car);
 
                     if (!carr) { return null; }
@@ -77,7 +77,7 @@ const User = () => {
                         score={2}
                       />
                     );
-                  })}
+                  }) : <div>Nenhuma carreira está sendo seguida</div>}
                 </FlexContainer>
               </FollowedCareersContainer>
             </ContentContainer>
