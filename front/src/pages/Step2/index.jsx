@@ -10,7 +10,6 @@ const Step2 = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const [quality, setQuality] = useState(3);
-  console.log('quality', quality);
 
   const { setRateState } = useRate();
   useEffect(() => {

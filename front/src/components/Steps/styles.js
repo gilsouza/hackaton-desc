@@ -16,7 +16,7 @@ export const StepsAbsolute = styled.div`
 `;
 
 export const Line = styled.div`
-  background-color: black;
+  background-color: var(--secondary-color);
   width: 100px;
   top: 20px;
   height: 10px;
@@ -37,6 +37,6 @@ border-radius: 50px;
   align-items: center;
   height: 50px;
   width: 50px;
-  background-color: ${(props) => (props.selected ? 'var(--primary-color)' : 'black')};
+  background-color: ${(props) => (props.selected ? 'var(--primary-color)' : 'var(--secondary-color)')};
   color: ${(props) => (!props.selected ? 'var(--primary-color)' : 'white')};
 `;

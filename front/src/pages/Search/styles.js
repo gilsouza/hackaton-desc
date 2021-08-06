@@ -60,5 +60,5 @@ export const CareerCard = styled.div`
 
 export const CareerCardText = styled.div`
   font-size: 24px;
-  color: black;
+  color: var(--secondary-color);
 `;

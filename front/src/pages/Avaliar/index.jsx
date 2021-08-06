@@ -12,7 +12,6 @@ import { RateProvider } from '../../hooks/Rate';
 const Avaliar = () => {
   const { profissao, step } = useParams();
   const { currentCareer, getCareerById } = useCareers();
-  console.log('step', step);
 
   useEffect(() => {
     if (!currentCareer) {
