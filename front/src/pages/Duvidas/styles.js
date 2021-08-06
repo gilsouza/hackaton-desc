@@ -97,6 +97,8 @@ export const HorizontalContainer = styled.div`
 
 export const QuestionTitle = styled.div`
   font-size: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
   color: #333;
 `;
 
@@ -104,4 +106,25 @@ export const QuestionText = styled.div`
   margin-left: 30px;
   text-align: left;
   margin-bottom: 30px;
+`;
+
+export const AnswersTitle = styled.div`
+  font-size: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  color: #333;
+  margin-top: 20px;
+`;
+
+export const AnswerText = styled.div`
+  margin-left: 30px;
+  text-align: left;
+  margin-bottom: 10px;
+`;
+
+export const AnswerUsername = styled.div`
+  font-size: 10px;
+  color: #777;
+  margin-bottom: 10px;
+  margin-left: 30px;
 `;

@@ -16,6 +16,9 @@ import {
   HorizontalContainer,
   QuestionTitle,
   QuestionText,
+  AnswersTitle,
+  AnswerText,
+  AnswerUsername,
 } from './styles';
 
 const Duvidas = () => {
@@ -49,10 +52,20 @@ const Duvidas = () => {
           {' '}
           Voltar
         </BackButton>
-        <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       </HorizontalContainer>
+      <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       <QuestionText>{selectedQuestion.text}</QuestionText>
-      {currentAnswers.map((answer) => <QuestionText>{answer.text}</QuestionText>)}
+      <HorizontalLine />
+      <AnswersTitle>Principais respostas:</AnswersTitle>
+      {currentAnswers.length > 0 ? currentAnswers.map((answer) => (
+        <>
+          <AnswerText>{answer.text}</AnswerText>
+          <AnswerUsername>
+            Respondido por
+            {` ${answer.user.name}`}
+          </AnswerUsername>
+        </>
+      )) : <div>Nenhuma resposta encontrada</div>}
     </>
   );
 
