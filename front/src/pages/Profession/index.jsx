@@ -46,7 +46,7 @@ const Profession = () => {
       <PageContainer>
         <ProfessionHeader>
           <CarrerHeader>
-            <ProfessionText>{currentCareer.name}</ProfessionText>
+            <ProfessionText>{currentCareer?.name}</ProfessionText>
             <Row>
               <Button text="Seguir" sufixIcon={<Add />} />
               <Button

@@ -3,17 +3,15 @@ import { useCareers } from '../../hooks/Careers';
 import { PageContainer } from './styles';
 
 const Avaliacoes = () => {
-  const { getRatings, ratings, currentCarrer } = useCareers();
+  const { getRatings, ratings, currentCareer } = useCareers();
 
   useEffect(() => {
     getRatings();
-  }, [currentCarrer]);
+  }, [currentCareer]);
 
   return (
     <PageContainer>
-      {ratings.map((rating) => {
-        <span>{rating.happines}</span>;
-      })}
+      {ratings.map((rating) => <span>{rating.happines}</span>)}
     </PageContainer>
   );
 };
