@@ -41,9 +41,8 @@ server.post("/briefs/:id/:vote", (req, res) => {
             res.status(201).send({ ...briefs[briefIndex], user });
         } else if (req.params.vote === "downvote") {
             briefs[briefIndex].downvotes = briefs[briefIndex].downvotes + 1;
-            router.db.set("briefs", { ...briefs[briefIndex], user });
-
-            res.status(201).send(briefs[briefIndex]);
+            router.db.set("briefs", briefs);
+            res.status(201).send({ ...briefs[briefIndex], user });
         }
         res.status(404).send();
     } else {
