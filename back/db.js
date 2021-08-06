@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Faker = require("faker");
 
-const MAX_TIME_EXPERIENCE = 10;
+const MAX_TIME_EXPERIENCE = 4;
 
 module.exports = () => {
     const data = {
@@ -241,14 +241,16 @@ module.exports = () => {
                 createdAt: "2021-08-05T00:12:02.256Z",
                 like: false,
                 id: "6",
-                question_anwsers: 2,
+                question_anwserId: 1,
+                questionId: 1,
                 userId: 5,
             },
             {
                 createdAt: "2021-08-05T00:12:02.256Z",
                 like: false,
                 id: "7",
-                question_anwsers: 2,
+                question_anwserId: 1,
+                questionId: 1,
                 userId: 5,
             },
         ],
