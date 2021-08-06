@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-color: rgb(25, 26, 26);
     --third-color: white;
     --background-color: #F5F5F5;
+    --box-border-color: #DDD;
   }
 
 `;
