@@ -17,7 +17,7 @@ const tabs = [
     path: '',
   },
   {
-    name: 'Duvidas',
+    name: 'Dúvidas',
     path: 'duvidas',
   },
   {

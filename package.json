@@ -1,0 +1,19 @@
+{
+  "name": "hackaton-desc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd back && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilsouza/hackaton-desc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilsouza/hackaton-desc/issues"
+  },
+  "homepage": "https://github.com/gilsouza/hackaton-desc#readme"
+}

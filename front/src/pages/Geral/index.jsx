@@ -3,16 +3,22 @@ import ReactStars from 'react-stars';
 import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
-  GeneralResults, LabelRatingResult, LabelResult, PageContainer, Rating, TotalResult,
+  GeneralResults, LabelRatingResult,
+  LabelResult, LabelResultGeral, PageContainer, Rating, SectionTitle,
 } from './styles';
 import { averagePropInList } from '../../util/math';
+import { HorizontalLine } from '../Duvidas/styles';
 
 const Geral = () => {
-  const { getRatings, ratings, currentCareer } = useCareers();
+  const {
+    getRatings, ratings, currentCareer, getBriefs, topVoteBrief,
+  } = useCareers();
 
   useEffect(() => {
     getRatings();
+    getBriefs();
   }, [currentCareer]);
+  console.log('topVoteBrief', topVoteBrief);
 
   const happinessAverage = useMemo(() => averagePropInList(ratings, 'happiness'), [ratings]);
 
@@ -45,7 +51,7 @@ const Geral = () => {
       <ReactStars
         value={average}
         count={5}
-        size={20}
+        size={16}
         edit={false}
         half
         color1="#DDD"
@@ -57,15 +63,13 @@ const Geral = () => {
 
   return (
     <PageContainer>
-      <TotalResult>
-        {`> ${ratings.length} avaliações encontradas`}
-      </TotalResult>
+      <SectionTitle>Avaliação media:</SectionTitle>
       <GeneralResults>
-        <LabelResult>Avaliação geral:</LabelResult>
+        <LabelResultGeral>Avaliação geral:</LabelResultGeral>
         <ReactStars
           value={generalAverage}
           count={5}
-          size={54}
+          size={24}
           edit={false}
           half
           color2="#00E88F"
@@ -77,6 +81,7 @@ const Geral = () => {
         {averages.map((item) => renderRatingBox(item))}
       </BoxRatings>
 
+      <HorizontalLine />
     </PageContainer>
   );
 };
