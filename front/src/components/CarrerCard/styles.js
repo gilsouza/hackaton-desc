@@ -22,6 +22,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: space-between;
   min-width: 200px;
+  max-width: 200px;
   text-align: center;
   margin: 10px;
   background-color: var(--secondary-color);
