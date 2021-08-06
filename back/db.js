@@ -114,7 +114,7 @@ module.exports = () => {
             createdAt: Faker.date.between(`2020-09-01`, `2021-08-31`),
             value: Faker.finance.amount(0, 50000, 2),
             time_experience: Faker.datatype.number(MAX_TIME_EXPERIENCE),
-            id: n,
+            id: n + 1,
             userId: Faker.datatype.number(4) + 1,
         })),
         rating: [
