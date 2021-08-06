@@ -49,7 +49,7 @@ const Step1 = () => {
                     checked={salaryRange === 0}
                     onChange={() => setSalaryRange(0)}
                   />
-                  0 a 2000
+                  Até R$ 2.000,00
 
                 </td>
                 <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -60,7 +60,7 @@ const Step1 = () => {
                     checked={salaryRange === 1}
                     onChange={() => setSalaryRange(1)}
                   />
-                  2001 a 5000
+                  De R$ 2001 a R$ 5.000,00
 
                 </td>
                 <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -71,7 +71,7 @@ const Step1 = () => {
                     checked={salaryRange === 2}
                     onChange={() => setSalaryRange(2)}
                   />
-                  Mais de 5000
+                  Mais de R$ 5.000,00
 
                 </td>
               </tr>
@@ -89,7 +89,7 @@ const Step1 = () => {
                     checked={timeEmployed === 0}
                     onChange={() => setTimeEmployed(0)}
                   />
-                  {'< 1 ano'}
+                  Menos de 1 ano
 
                 </td>
                 <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -100,7 +100,7 @@ const Step1 = () => {
                     checked={timeEmployed === 1}
                     onChange={() => setTimeEmployed(1)}
                   />
-                  1 a 3 anos
+                  De 1 a 3 anos
 
                 </td>
                 <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -111,7 +111,7 @@ const Step1 = () => {
                     checked={timeEmployed === 2}
                     onChange={() => setTimeEmployed(2)}
                   />
-                  3 a 5 anos
+                  De 3 a 5 anos
 
                 </td>
                 <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -122,7 +122,7 @@ const Step1 = () => {
                     checked={timeEmployed === 3}
                     onChange={() => setTimeEmployed(3)}
                   />
-                  {'> 5 anos'}
+                  Mais de 5 anos
 
                 </td>
               </tr>
