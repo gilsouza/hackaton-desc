@@ -21,7 +21,7 @@ const tabs = [
   },
   {
     name: 'Salários',
-    path: 'salarios',
+    path: 'salario',
   },
   {
     name: 'Depoimentos',
