@@ -10,7 +10,7 @@ import {
   LabelResult,
   LabelResultGeral,
   PageContainer,
-  Rating, Salary,
+  Rating, Salary, SalaryContainer,
   Section, SectionContainer,
   SectionTitle,
 } from './styles';
@@ -144,6 +144,9 @@ const Geral = () => {
   const salarioAltaExperiencia = salaries
     .filter((salarie) => salarie.time_experience === 2)
     .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
+  const salarioAltissimaExperiencia = salaries
+    .filter((salarie) => salarie.time_experience === 3)
+    .reduce((a, b) => ((a + parseFloat(b.value)) / 2), 0);
 
   return (
     <PageContainer>
@@ -156,24 +159,43 @@ const Geral = () => {
       <Section>
         <SectionTitle>Salário medio:</SectionTitle>
         <GeneralResults>
-          <Salary>
-            R$
-            {parseFloat(salarioMedio).toFixed(2)}
-          </Salary>
+          <SalaryContainer size="lg">
+            <Salary size="lg">
+              R$
+              {parseFloat(salarioMedio).toFixed(2)}
+            </Salary>
+            <LabelResult>Salário médio total</LabelResult>
+          </SalaryContainer>
 
           <BoxRatings>
-            <Salary>
-              R$
-              {parseFloat(salarioBaixaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioMediaExperiencia).toFixed(2)}
-            </Salary>
-            <Salary>
-              R$
-              {parseFloat(salarioAltaExperiencia).toFixed(2)}
-            </Salary>
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioBaixaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>teste</LabelResult>
+            </SalaryContainer>
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioMediaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>teste</LabelResult>
+            </SalaryContainer>
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>teste</LabelResult>
+            </SalaryContainer>
+            <SalaryContainer>
+              <Salary>
+                R$
+                {parseFloat(salarioAltissimaExperiencia).toFixed(2)}
+              </Salary>
+              <LabelResult>teste</LabelResult>
+            </SalaryContainer>
           </BoxRatings>
         </GeneralResults>
       </Section>

@@ -23,8 +23,7 @@ const Step3 = () => {
     }));
   }, [brief]);
   const onAnimationFinished = () => {
-    sendRate();
-    history.push(`/profissao/${profissao}/`);
+    sendRate().then(() => history.push(`/profissao/${profissao}/`));
   };
   const defaultOptions = {
     loop: false,

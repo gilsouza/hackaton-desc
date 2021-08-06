@@ -21,6 +21,17 @@ const RateProvider = ({ children }) => {
       userId: 1,
     });
 
+    if (rateState.salaryRange) {
+      await axios.post(`${API_URL}/salaries`,
+        {
+          value: Math.random()
+              * (((rateState.salaryRange + 1) * 2000) - rateState.salaryRange * 2000)
+              + rateState.salaryRange * 2000,
+          time_experience: rateState.timeEmployed,
+          userId: 1,
+          careerId: rateState.careerId,
+        });
+    }
     if (rateState.brief) {
       await axios.post(`${API_URL}/briefs`, {
         text: rateState.brief,
