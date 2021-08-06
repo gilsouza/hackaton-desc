@@ -27,7 +27,12 @@ export const TextResult = styled.span``;
 
 export const LabelResult = styled(TextResult)`
     font-size: 12px;
+  text-align: center;
     font-weight: 600;
+`;
+export const LabelResultSalary = styled(LabelResult)`
+    width: 150px;
+  display: block;
 `;
 export const LabelResultGeral = styled(TextResult)`
     font-size: 16px;
@@ -45,8 +50,9 @@ export const Salary = styled.div`
 `;
 export const SalaryContainer = styled.div`
     font-size: 24px;
-    margin: 0 12px;
-    margin-bottom: ${(props) => (props.size === 'lg' ? 32 : 24)}px;
+  margin: 0 12px;
+    margin-bottom: 12px;
+    margin-top: ${(props) => (props.size === 'lg' ? 32 : 24)}px;
     text-align: center;
 `;
 
