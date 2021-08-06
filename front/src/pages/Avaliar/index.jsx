@@ -1,21 +1,41 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
-  PageContainer, PageBackground, ProfessionHeader, CarrerHeader, ProfessionText,
+  PageContainer, PageBackground, ProfessionHeader,
+  CarrerHeader, ProfessionText, ContentContainer,
 } from './styles';
 import { useCareers } from '../../hooks/Careers';
+import { Steps } from '../../components/Steps';
+import StepsNavigations from '../../navigations/StepsNavigation';
 
 const Avaliar = () => {
-  const { currentCarrer } = useCareers();
+  const { profissao, step } = useParams();
+  const { currentCareer, getCareerById } = useCareers();
+  console.log('step', step);
+
+  useEffect(() => {
+    if (!currentCareer) {
+      getCareerById(profissao, false);
+    }
+  }, [currentCareer]);
+
   return (
     <PageBackground>
       <PageContainer>
         <ProfessionHeader>
           <CarrerHeader>
             <ProfessionText>
-
-              {`Avaliar - ${currentCarrer.name}`}
+              {`Avaliar - ${currentCareer?.name}`}
             </ProfessionText>
           </CarrerHeader>
         </ProfessionHeader>
+        <ContentContainer>
+          <Steps
+            steps={new Array(3).fill()}
+            selectedIndex={parseFloat(step) - 1}
+          />
+          <StepsNavigations />
+        </ContentContainer>
       </PageContainer>
     </PageBackground>
   );

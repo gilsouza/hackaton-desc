@@ -8,11 +8,11 @@ require('dayjs/locale/pt-br');
 
 dayjs.locale('pt-br');
 const Salario = () => {
-  const { salaries, getSalaries, currentCarrer } = useCareers();
+  const { salaries, getSalaries, currentCareer } = useCareers();
 
   useEffect(() => {
     getSalaries();
-  }, [currentCarrer]);
+  }, [currentCareer]);
 
   const lastMonths = new Array(12).fill().map((l, index) => dayjs().add(-index, 'month')).reverse();
   const getSalariesByMonths = (timeExperience) => lastMonths.map(

@@ -8,10 +8,10 @@ import { useCareers } from '../../hooks/Careers';
 import { Avatar, Card } from '../../styles/global-components';
 
 const Depoimentos = () => {
-  const { getBriefs, briefs, currentCarrer } = useCareers();
+  const { getBriefs, briefs, currentCareer } = useCareers();
   useEffect(() => {
     getBriefs();
-  }, [currentCarrer]);
+  }, [currentCareer]);
 
   return (
     <PageContainer>

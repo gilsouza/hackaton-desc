@@ -8,7 +8,7 @@ import { Duvidas } from '../pages/Duvidas';
 import { Geral } from '../pages/Geral';
 import { Avaliacoes } from '../pages/Avaliacoes';
 
-function App() {
+function ProfissionNavigation() {
   return (
     <Switch>
       <Route path="/profissao/:profissao/salario" exact>
@@ -30,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProfissionNavigation;

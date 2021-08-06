@@ -4,11 +4,11 @@ import { PageContainer } from './styles';
 import { averagePropInList } from '../../util/math';
 
 const Avaliacoes = () => {
-  const { getRatings, ratings, currentCarrer } = useCareers();
+  const { getRatings, ratings, currentCareer } = useCareers();
 
   useEffect(() => {
     getRatings();
-  }, [currentCarrer]);
+  }, [currentCareer]);
 
   const happinessAvarage = useMemo(() => averagePropInList(ratings, 'happiness'), [ratings]);
 

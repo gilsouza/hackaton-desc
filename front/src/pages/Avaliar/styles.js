@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AsyncSelect from 'react-select/async';
 
 export const PageContainer = styled.div`
     max-width: 800px;
@@ -19,6 +20,8 @@ export const ContentContainer = styled.div`
   border-radius: 0 0 5px 5px;
   border: 1px solid black;
 `;
+export const Title = styled.div`
+`;
 export const ProfessionHeader = styled.div`
   background-color: black;
   padding: 12px 20px 0 20px;
@@ -28,7 +31,6 @@ export const CarrerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
 `;
 
 export const ProfessionText = styled.p`
@@ -40,4 +42,11 @@ export const ProfessionText = styled.p`
 
 export const Row = styled.div`
     display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
+export const AsyncSelectStyled = styled(AsyncSelect)`
+  margin-top: 10px;
+  margin-bottom: 20px;
 `;
