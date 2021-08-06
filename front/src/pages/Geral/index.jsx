@@ -8,7 +8,7 @@ import {
   GeneralResults,
   LabelRatingResult,
   LabelResult,
-  LabelResultGeral,
+  LabelResultGeral, LabelResultSalary,
   PageContainer,
   Rating, Salary, SalaryContainer,
   Section, SectionContainer,
@@ -191,7 +191,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioMedio).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salario médio até 1 ano de experiência</LabelResult>
+              <LabelResultSalary>Salario médio até 1 ano de experiência</LabelResultSalary>
             </SalaryContainer>
             )}
             {!!salarioMediaExperiencia && (
@@ -199,7 +199,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioMediaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 1 a 3 anos de experiência</LabelResult>
+              <LabelResultSalary>Salário médio de 1 a 3 anos de experiência</LabelResultSalary>
             </SalaryContainer>
             )}
             {!!salarioAltaExperiencia && (
@@ -207,7 +207,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioAltaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 3 a 5 anos de experiência</LabelResult>
+              <LabelResultSalary>Salário médio de 3 a 5 anos de experiência</LabelResultSalary>
             </SalaryContainer>
             )}
             {!!salarioAltissimaExperiencia && (
@@ -215,7 +215,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioAltissimaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 5 ou mais anos de experiência</LabelResult>
+              <LabelResultSalary>Salário médio de 5 ou mais anos de experiência</LabelResultSalary>
             </SalaryContainer>
             )}
           </BoxRatings>
