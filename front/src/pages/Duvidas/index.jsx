@@ -70,8 +70,6 @@ const Duvidas = () => {
     }
   }, [currentQuestionId]);
 
-  console.log('currentQuestionId', currentQuestionId);
-
   const handleSendQuestion = async () => {
     const { data } = await axios.post('https://hackaton-desc.herokuapp.com/questions', {
       userId: 1,
