@@ -10,6 +10,12 @@ export const PageContainer = styled.div`
   background-color: var(--secondary-color);
   padding: 20px;
 `;
+export const AbsoluteWithAnimation = styled.div`
+  position: absolute;
+  left: ${(props) => (props.careerSelected ? 'calc(50vw - 400px)' : 'calc(50% - 200px)')};
+  top: ${(props) => (props.careerSelected ? '10px' : 'calc(50% - 200px)')};
+  transition: left 2s, top 2s;
+`;
 
 export const SearchInput = styled.input`
   display: flex;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Img = styled.img`
   margin-right: 5px;
+  transition: height 2s, width 2s;
 `;
 export const HeaderContainer = styled.div`
   height: 60px;
