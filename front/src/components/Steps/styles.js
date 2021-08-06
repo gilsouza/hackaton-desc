@@ -22,6 +22,12 @@ export const Line = styled.div`
   height: 10px;
   position: absolute;
 `;
+export const LineProgress = styled.div`
+  width: ${(props) => props.width}px;
+  height: 10px;
+  position: absolute;
+  background-color: var(--primary-color);
+`;
 
 export const Step = styled.div`
 border-radius: 50px;

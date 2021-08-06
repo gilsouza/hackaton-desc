@@ -1,17 +1,19 @@
 import {
-  StepsContainer, Step, Line, StepsAbsolute,
+  StepsContainer, Step, Line, StepsAbsolute, LineProgress,
 } from './styles';
 
-const Steps = ({ steps, selectedIndex, onClick }) => (
+const Steps = ({ steps, selectedIndex }) => (
   <StepsContainer>
-    <Line />
+    <Line>
+
+      <LineProgress width={selectedIndex * (100 / 3)} />
+    </Line>
     <StepsAbsolute>
       {steps.map((step, index) => (
         <Step
-          onClick={() => onClick(index)}
-          selected={selectedIndex === index}
+          selected={selectedIndex >= index}
         >
-          {index}
+          {index + 1}
         </Step>
       ))}
     </StepsAbsolute>
