@@ -1,7 +1,7 @@
 var jsonServer = require("json-server");
 var db = require("./db.js");
 var fs = require("fs");
-const cors = require('cors');
+const cors = require("cors");
 
 var server = jsonServer.create();
 
@@ -16,16 +16,16 @@ var middlewares = jsonServer.defaults();
 var port = process.env.PORT || 5000;
 
 server.use(
-  cors({
-      origin: true,
-      credentials: true,
-      preflightContinue: false,
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  })
+    cors({
+        origin: true,
+        credentials: true,
+        preflightContinue: false,
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    })
 );
-server.options('*', cors());
+server.options("*", cors());
 server.use(middlewares);
 server.use(router);
 server.listen(port, function () {
-  console.log("JSON Server is running on http://localhost:" + port);
+    console.log("JSON Server is running on http://localhost:" + port);
 });
