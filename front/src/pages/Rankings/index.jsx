@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { useEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Header } from '../../components/Header';
 import {
   ContentContainer, HeaderText, PageContainer, RakingHeader, Row, Title,
@@ -10,6 +11,7 @@ import { PageBackground } from '../Profession/styles';
 import { CareerCard } from '../../components/CarrerCard';
 
 const Rankings = () => {
+  const history = useHistory();
   const { getRatingsWithCareer, ratingsWithCareer } = useCareers();
 
   useEffect(() => {
@@ -47,14 +49,16 @@ const Rankings = () => {
   }, [ratingsWithCareer]);
 
   console.log('sortedCareers', sortedCareers);
-
+  const onCardPress = (careerId) => {
+    history.push(`/profissao/${careerId}/`);
+  };
   return (
     <>
       <Header />
       <PageBackground>
         <PageContainer>
           <RakingHeader>
-            <HeaderText>Raking de carreiras</HeaderText>
+            <HeaderText>Ranking de carreiras</HeaderText>
           </RakingHeader>
           {sortedCareers.mostSalarySatisfaction
           && sortedCareers.mostSalarySatisfaction.length > 0 && (
@@ -63,8 +67,37 @@ const Rankings = () => {
             <Row>
               {sortedCareers.mostSalarySatisfaction.map((s) => (
                 <CareerCard
+                  onClick={() => onCardPress(s.careerId)}
                   career={s.career}
                   score={s.averages.salarySatisfaction}
+                />
+              ))}
+            </Row>
+          </ContentContainer>
+          )}
+          {sortedCareers.mostHappiness && sortedCareers.mostHappiness.length > 0 && (
+          <ContentContainer>
+            <Title>Top 10 carreiras por qualidade de vida</Title>
+            <Row>
+              {sortedCareers.mostHappiness.map((s) => (
+                <CareerCard
+                  onClick={() => onCardPress(s.careerId)}
+                  career={s.career}
+                  score={s.averages.happiness}
+                />
+              ))}
+            </Row>
+          </ContentContainer>
+          )}
+          {sortedCareers.mostEmployability && sortedCareers.mostEmployability.length > 0 && (
+          <ContentContainer>
+            <Title>Top 10 carreiras por empregabilidade</Title>
+            <Row>
+              {sortedCareers.mostEmployability.map((s) => (
+                <CareerCard
+                  onClick={() => onCardPress(s.careerId)}
+                  career={s.career}
+                  score={s.averages.employability}
                 />
               ))}
             </Row>

@@ -15,6 +15,7 @@ export const Title = styled.div`
 
 export const Card = styled.div`
   border-radius: 5px;
+  cursor: ${(props) => props.onClick && 'pointer'};
   border: 1px solid var(--secondary-color);
   box-shadow: 2px 2px 5px #919191;
   padding: 16px;
