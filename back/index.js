@@ -25,6 +25,78 @@ server.use(
 );
 server.options("*", cors());
 server.use(middlewares);
+
+server.post("/briefs/:id/:vote", (req, res) => {
+    const briefs = router.db.get("briefs").value();
+    const briefIndex = briefs.findIndex((item) => item.id === Number(req.params.id));
+
+    if (briefIndex > -1) {
+        if (req.params.vote === "upvote") {
+            briefs[briefIndex].upvotes = briefs[briefIndex].upvotes + 1;
+            router.db.set("briefs", briefs);
+            res.status(201).send();
+        } else if (req.params.vote === "downvote") {
+            briefs[briefIndex].downvotes = briefs[briefIndex].downvotes + 1;
+            router.db.set("briefs", briefs);
+            res.status(201).send();
+        }
+        res.status(404).send();
+    } else {
+        res.status(404).send();
+    }
+});
+
+server.post("/questions/:id/:vote", (req, res) => {
+    const questions = router.db.get("questions").value();
+    const questionIndex = questions.findIndex((item) => item.id === Number(req.params.id));
+
+    if (questionIndex > -1) {
+        if (req.params.vote === "upvote") {
+            questions[questionIndex].upvotes = questions[questionIndex].upvotes + 1;
+            router.db.set("questions", questions);
+            res.status(201).send();
+        } else if (req.params.vote === "downvote") {
+            questions[questionIndex].downvotes = questions[questionIndex].downvotes + 1;
+            router.db.set("questions", questions);
+            res.status(201).send();
+        }
+        res.status(404).send();
+    } else {
+        res.status(404).send();
+    }
+});
+
+server.post("/question_answers/:id/:vote", (req, res) => {
+    const question_answers = router.db.get("question_answers").value();
+    const question_answerIndex = question_answers.findIndex((item) => item.id === Number(req.params.id));
+
+    if (question_answerIndex > -1) {
+        if (req.params.vote === "upvote") {
+            question_answers[question_answerIndex].upvotes = question_answers[question_answerIndex].upvotes + 1;
+            router.db.set("question_answers", question_answers);
+            res.status(201).send();
+        } else if (req.params.vote === "downvote") {
+            question_answers[question_answerIndex].downvotes = question_answers[question_answerIndex].downvotes + 1;
+            router.db.set("question_answers", question_answers);
+            res.status(201).send();
+        }
+        res.status(404).send();
+    } else {
+        res.status(404).send();
+    }
+});
+
+// To handle POST, PUT and PATCH you need to use a body-parser
+// You can use the one used by JSON Server
+server.use(jsonServer.bodyParser);
+server.use((req, res, next) => {
+    if (req.method === "POST") {
+        req.body.createdAt = Date.now();
+    }
+    // Continue to JSON Server router
+    next();
+});
+
 server.use(router);
 server.listen(port, function () {
     console.log("JSON Server is running on http://localhost:" + port);
