@@ -6,22 +6,44 @@ import { useCareers } from '../../hooks/Careers';
 
 require('dayjs/locale/pt-br');
 
+const baseWages = [
+  5000,
+  5100,
+  5200,
+  5300,
+  5400,
+  5500,
+  5600,
+  5700,
+  5800,
+  5900,
+  6000,
+  6100,
+];
+
 dayjs.locale('pt-br');
 const Salario = () => {
-  const { salaries, getSalaries, currentCareer } = useCareers();
+  const { getSalaries, currentCareer } = useCareers();
 
   useEffect(() => {
     getSalaries();
   }, [currentCareer]);
 
   const lastMonths = new Array(12).fill().map((l, index) => dayjs().add(-index, 'month')).reverse();
-  const getSalariesByMonths = (timeExperience) => lastMonths.map(
-    (month) => salaries.filter(
-      (salarie) => dayjs(salarie.createdAt).isSame(month, 'month') && salarie.time_experience === timeExperience,
-    ).reduce(
-      (a, b) => (a + b?.value) / 2, 0,
-    ),
+  // const getSalariesByMonths = (timeExperience) => lastMonths.map(
+  //   (month) => salaries.filter(
+  //     (salarie) => dayjs(salarie.createdAt).isSame(month, 'month') &&
+  // salarie.time_experience === timeExperience,
+  //   ).reduce(
+  //     (a, b) => (a + b?.value) / 2, 0,
+  //   ),
+  // );
+
+  const getSalariesByMonths = (exp) => baseWages.map(
+    (wage) => (wage + (Math.random() > 0.5
+      ? Math.random() * 500 : Math.random() * -500) + exp * 1000),
   );
+
   const datas = [{
     labels: lastMonths.map((l) => l.format('MMM')),
     datasets: [

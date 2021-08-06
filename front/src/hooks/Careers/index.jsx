@@ -11,7 +11,7 @@ const CareersProvider = ({ children }) => {
   const [salaries, setSalaries] = useState([]);
   const [loadding, setLoading] = useState(false);
   const [briefs, setBriefs] = useState([]);
-  const [currentCareer, setcurrentCareer] = useState(null);
+  const [currentCareer, setCurrentCareer] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [ratings, setRatings] = useState([]);
 
@@ -31,9 +31,9 @@ const CareersProvider = ({ children }) => {
     setLoading(showLoading);
     const { data } = await axios.get(`${API_URL}/careers?id=${id}`);
     if (data.length) {
-      setcurrentCareer(data[0]);
+      setCurrentCareer(data[0]);
     } else {
-      setcurrentCareer(null);
+      setCurrentCareer(null);
     }
     setLoading(false);
   };
