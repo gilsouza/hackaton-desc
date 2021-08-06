@@ -16,10 +16,12 @@ const Rankings = () => {
     getRatingsWithCareer();
   }, []);
 
+  console.log(ratingsWithCareer);
+
   const sortedCareers = useMemo(() => {
     const grouped = ratingsWithCareer.reduce((rv, x) => {
       // eslint-disable-next-line no-param-reassign
-      (rv[x.careerId] = rv[x.careerId] || []).push(x);
+      (rv[x.career.name] = rv[x.career.name] || []).push(x);
       return rv;
     }, {});
 
@@ -53,7 +55,7 @@ const Rankings = () => {
           <RakingHeader>
             <HeaderText>Raking de carreiras</HeaderText>
           </RakingHeader>
-          {sortedCareers && Object.keys(sortedCareers).length > 0 && (
+          {ratingsWithCareer && ratingsWithCareer.length > 0 && (
           <ContentContainer>
             <Title>Top 10 carreiras por salário</Title>
             <Row>
