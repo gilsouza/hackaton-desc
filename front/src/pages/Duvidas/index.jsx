@@ -13,7 +13,6 @@ import {
   QuestionListItemUsername,
   QuestionListItemLeft,
   QuestionListItemRight,
-  // SeeMoreButton,
   BackButton,
   HorizontalContainer,
   QuestionTitle,
@@ -55,7 +54,9 @@ const Duvidas = () => {
           {' '}
           Voltar
         </BackButton>
+        <Button text="Responder Pergunta" />
       </HorizontalContainer>
+      <HorizontalLine />
       <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       <QuestionText>{selectedQuestion.text}</QuestionText>
       <HorizontalLine />
@@ -102,16 +103,21 @@ const Duvidas = () => {
 
   return (
     <PageContainer>
-      <HeaderHorizontalContainer>
-        <div>
-          {questions.length}
+      {currentQuestionId ? renderQuestion() : (
+        <>
           {' '}
-          dúvidas encontradas.
-        </div>
-        <Button text="Fazer Pergunta" style={{ alignSelf: 'center' }} />
-      </HeaderHorizontalContainer>
-      <HorizontalLine />
-      {currentQuestionId ? renderQuestion() : renderQuestionList()}
+          <HeaderHorizontalContainer>
+            <div>
+              {questions.length}
+              {' '}
+              dúvidas encontradas.
+            </div>
+            <Button text="Fazer Pergunta" />
+          </HeaderHorizontalContainer>
+          <HorizontalLine />
+          {renderQuestionList()}
+        </>
+      )}
     </PageContainer>
   );
 };

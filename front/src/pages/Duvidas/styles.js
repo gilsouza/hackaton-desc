@@ -96,6 +96,8 @@ export const BackButton = styled.button`
 export const HorizontalContainer = styled.div`
   display: flex;
   flex: 1;
+  justify-content: space-between;
+  width: 100%;
   align-items: center;
   margin-bottom: 10px;
 `;
@@ -104,6 +106,7 @@ export const QuestionTitle = styled.div`
   font-size: 30px;
   margin-left: 30px;
   margin-bottom: 30px;
+  margin-top: 30px;
   color: #333;
 `;
 
