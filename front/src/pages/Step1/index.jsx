@@ -12,19 +12,21 @@ const Step1 = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const { getCareersByFragment } = useCareers();
-  const { setRateState } = useRate();
-  const [isEmployed, setIsEmployed] = useState();
+  const { setRateState, rateState } = useRate();
+  const [isEmployed, setIsEmployed] = useState(rateState.isEmployed);
   const [searchText, setSearchText] = useState('');
-  const [selectedCareer, setSelectedCareer] = useState('');
-  const [salaryRange, setSalaryRange] = useState(null);
+  const [selectedCareer, setSelectedCareer] = useState(rateState.selectedCareer);
+  const [salaryRange, setSalaryRange] = useState(rateState.salaryRange);
 
   useEffect(() => {
     setRateState((previosRateState) => ({
       ...previosRateState,
-      careerId: selectedCareer,
+      careerId: selectedCareer?.id,
+      selectedCareer,
       salaryRange,
+      isEmployed,
     }));
-  }, [salaryRange, selectedCareer]);
+  }, [salaryRange, selectedCareer, isEmployed]);
 
   const searchCareers = async () => {
     const carrers = await getCareersByFragment(searchText, false);
@@ -47,10 +49,10 @@ const Step1 = () => {
             <AsyncSelectStyled
               cacheOptions
               loadOptions={searchCareers}
-              defaultOptions
               placeholder="Desenvolvedor..."
               onInputChange={setSearchText}
-              onChange={({ id }) => setSelectedCareer(id)}
+              value={selectedCareer}
+              onChange={(option) => setSelectedCareer(option)}
             />
             <Title>Qual a sua faixa de salário atual?</Title>
             <Row>
