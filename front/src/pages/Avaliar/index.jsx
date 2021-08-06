@@ -8,6 +8,7 @@ import { useCareers } from '../../hooks/Careers';
 import { Steps } from '../../components/Steps';
 import StepsNavigations from '../../navigations/StepsNavigation';
 import { RateProvider } from '../../hooks/Rate';
+import { Header } from '../../components/Header';
 
 const Avaliar = () => {
   const { profissao, step } = useParams();
@@ -20,26 +21,29 @@ const Avaliar = () => {
   }, [currentCareer]);
 
   return (
-    <PageBackground>
-      <RateProvider>
-        <PageContainer>
-          <ProfessionHeader>
-            <CarrerHeader>
-              <ProfessionText>
-                {`Avaliar - ${currentCareer?.name}`}
-              </ProfessionText>
-            </CarrerHeader>
-          </ProfessionHeader>
-          <ContentContainer>
-            <Steps
-              steps={new Array(3).fill()}
-              selectedIndex={parseFloat(step) - 1}
-            />
-            <StepsNavigations />
-          </ContentContainer>
-        </PageContainer>
-      </RateProvider>
-    </PageBackground>
+    <>
+      <Header />
+      <PageBackground>
+        <RateProvider>
+          <PageContainer>
+            <ProfessionHeader>
+              <CarrerHeader>
+                <ProfessionText>
+                  {`Avaliar - ${currentCareer?.name}`}
+                </ProfessionText>
+              </CarrerHeader>
+            </ProfessionHeader>
+            <ContentContainer>
+              <Steps
+                steps={new Array(3).fill()}
+                selectedIndex={parseFloat(step) - 1}
+              />
+              <StepsNavigations />
+            </ContentContainer>
+          </PageContainer>
+        </RateProvider>
+      </PageBackground>
+    </>
   );
 };
 

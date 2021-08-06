@@ -15,12 +15,12 @@ export const HeaderContainer = styled.div`
 
 export const HeaderText = styled.h1`
   color: var(--primary-color);
-  font-size: 26px;
+  font-size: ${(props) => (props.size === 'lg' ? 54 : 26)}px;
   font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 22px;
+  line-height: ${(props) => (props.size === 'lg' ? 44 : 22)}px;
 `;
 
 export const Name = styled.h1`

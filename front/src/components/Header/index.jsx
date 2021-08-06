@@ -1,19 +1,13 @@
 import {
-  HeaderContainer, HeaderText, Img, LeftContainer, Name, Row,
+  HeaderContainer, Name, Row,
 } from './styles';
-import logo from '../../assets/logo.svg';
 import snow from '../../assets/snow.png';
 import { Avatar } from '../../styles/global-components';
+import { Logo } from '../Logo';
 
 const Header = () => (
   <HeaderContainer>
-    <LeftContainer onClick={() => window.location.replace('/')}>
-      <Img src={logo} alt="logo" height={50} />
-      <HeaderText>
-        <span>descomplica</span>
-        <span>carreiras</span>
-      </HeaderText>
-    </LeftContainer>
+    <Logo />
     <Row>
       <Name>Snow</Name>
       <Avatar src={snow} />

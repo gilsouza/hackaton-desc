@@ -6,6 +6,7 @@ import {
   PageContainer, SearchInput, SearchContainer, SearchFrom, NotFoundText, CareerCard, CareerCardText,
 } from './styles';
 import { useCareers } from '../../hooks/Careers';
+import { Logo } from '../../components/Logo';
 
 const Search = () => {
   const { getCareersByFragment, careers } = useCareers();
@@ -55,11 +56,12 @@ const Search = () => {
 
   return (
     <PageContainer>
+      <Logo size="lg" />
       <SearchContainer>
         <SearchFrom onSubmit={searchCareers}>
           <SearchInput value={searchText} onInput={handleInputChange} placeholder="Busque por uma carreira" />
         </SearchFrom>
-        <SearchIcon />
+        <SearchIcon color="white" />
       </SearchContainer>
       {renderSearchResult()}
     </PageContainer>

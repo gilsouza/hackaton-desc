@@ -4,6 +4,9 @@ export const PageContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  background-color: var(--secondary-color);
   padding: 20px;
 `;
 
@@ -12,6 +15,8 @@ export const SearchInput = styled.input`
   flex: 1;
   border: none;
   font-size: 16px;
+  background-color: transparent;
+  color: white;
   outline: none;
   width: 100%;
 `;
@@ -33,6 +38,7 @@ export const SearchContainer = styled.div`
   height: 36px;
   width: 800px;
   margin-bottom: 24px;
+  color: white;
 `;
 
 export const NotFoundText = styled.div`
@@ -51,9 +57,11 @@ export const CareerCard = styled.div`
   padding: 12px;
   border-bottom: 1px solid #aaa;
   transition: background-color 0.3s;
+  background-color: #efefef;
+  margin: 10px 0;
+  border-radius: 20px;
 
   :hover {
-    background-color: #efefef;
     cursor: pointer;
   }
 `;
