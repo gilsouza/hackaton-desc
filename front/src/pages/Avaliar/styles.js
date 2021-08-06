@@ -29,6 +29,18 @@ export const Container = styled.div`
 export const Title = styled.div`
     margin-top: 20px;
 `;
+export const TextArea = styled.textarea`
+    margin-top: 20px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 16px;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+`;
 export const ProfessionHeader = styled.div`
   background-color: black;
   padding: 12px 20px 0 20px;

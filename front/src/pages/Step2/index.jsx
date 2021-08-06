@@ -1,9 +1,10 @@
 import { ArrowRight } from '@material-ui/icons';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactStars from 'react-stars';
 import { Button } from '../../components/Button';
 import { Title, Container } from '../Avaliar/styles';
+import { useRate } from '../../hooks/Rate';
 
 const Step2 = () => {
   const history = useHistory();
@@ -11,6 +12,13 @@ const Step2 = () => {
   const [quality, setQuality] = useState(3);
   console.log('quality', quality);
 
+  const { setRateState } = useRate();
+  useEffect(() => {
+    setRateState((previosRateState) => ({
+      ...previosRateState,
+      quality,
+    }));
+  }, [quality]);
   return (
     <Container>
       <Title>Avalie a carreira de acordo com sua qualidade de vida</Title>
