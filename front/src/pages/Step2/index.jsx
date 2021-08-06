@@ -9,9 +9,9 @@ import { useRate } from '../../hooks/Rate';
 const Step2 = () => {
   const history = useHistory();
   const { pathname } = useLocation();
-  const [happiness, setHappiness] = useState(3);
-  const [employability, setEmployability] = useState(3);
-  const [salarySatisfaction, setSalarySatisfaction] = useState(3);
+  const [happiness, setHappiness] = useState(null);
+  const [employability, setEmployability] = useState(null);
+  const [salarySatisfaction, setSalarySatisfaction] = useState(null);
 
   const { setRateState } = useRate();
   useEffect(() => {
@@ -22,15 +22,17 @@ const Step2 = () => {
       salarySatisfaction,
     }));
   }, [happiness, salarySatisfaction, employability]);
+  console.log(happiness, salarySatisfaction, employability);
   return (
     <Container>
       <Title>Avalie a carreira de acordo com sua qualidade de vida</Title>
-      <ReactStars count={5} ratingChanged={setHappiness} size={54} />
+      <ReactStars value={happiness} count={5} onChange={setHappiness} size={54} />
       <Title>Avalie o quanto satisfeito você esta com seu salário</Title>
-      <ReactStars count={5} ratingChanged={setSalarySatisfaction} size={54} />
+      <ReactStars value={salarySatisfaction} count={5} onChange={setSalarySatisfaction} size={54} />
       <Title>Avalie a carreira em relação a empregabilidade</Title>
-      <ReactStars count={5} ratingChanged={setEmployability} size={54} />
+      <ReactStars value={employability} count={5} onChange={setEmployability} size={54} />
       <Button
+        disabled={!happiness || !salarySatisfaction || !employability}
         text="Proximo passo"
         sufixIcon={<ArrowRight />}
         onClick={() => history.push(pathname.replace('2', '3'))}

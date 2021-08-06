@@ -63,6 +63,7 @@ export const Row = styled.div`
     display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 export const AsyncSelectStyled = styled(AsyncSelect)`

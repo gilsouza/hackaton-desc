@@ -16,7 +16,7 @@ const Step1 = () => {
   const [isEmployed, setIsEmployed] = useState();
   const [searchText, setSearchText] = useState('');
   const [selectedCareer, setSelectedCareer] = useState('');
-  const [salaryRange, setSalaryRange] = useState(0);
+  const [salaryRange, setSalaryRange] = useState(null);
 
   useEffect(() => {
     setRateState((previosRateState) => ({
@@ -38,7 +38,7 @@ const Step1 = () => {
       <Title>Você está empregado(a) no momento?</Title>
       <Row>
         <Button text="Sim" onClick={() => setIsEmployed(true)} />
-        <Button text="Não" onClick={() => history.goBack()} />
+        <Button style={{ marginLeft: 8 }} text="Não" onClick={() => history.goBack()} />
       </Row>
       {
           isEmployed && (
@@ -54,12 +54,13 @@ const Step1 = () => {
             />
             <Title>Qual a sua faixa de salário atual?</Title>
             <Row>
-              <Button text="0 a 2000" onClick={() => setSalaryRange(0)} />
-              <Button text="2001 a 5000" onClick={() => setSalaryRange(1)} />
-              <Button text="Mais de 5000" onClick={() => setSalaryRange(2)} />
+              <Button selected={salaryRange === 0} text="0 a 2000" onClick={() => setSalaryRange(0)} />
+              <Button selected={salaryRange === 1} style={{ margin: '0 8px' }} text="2001 a 5000" onClick={() => setSalaryRange(1)} />
+              <Button selected={salaryRange === 2} text="Mais de 5000" onClick={() => setSalaryRange(2)} />
             </Row>
             <Button
               text="Proximo passo"
+              disabled={salaryRange === null || !selectedCareer}
               sufixIcon={<ArrowRight />}
               onClick={() => history.push(pathname.replace('1', '2'))}
             />

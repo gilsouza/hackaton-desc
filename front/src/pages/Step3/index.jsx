@@ -1,13 +1,14 @@
 import { Check } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container, TextArea, Title } from '../Avaliar/styles';
 import { Button } from '../../components/Button';
 import { useRate } from '../../hooks/Rate';
 import animationData from '../../assets/50867-sending-mail.json';
 
 const Step3 = () => {
+  const { profissao } = useParams();
   const history = useHistory();
   const { setRateState, sendRate } = useRate();
   const [brief, setBrief] = useState();
@@ -21,7 +22,7 @@ const Step3 = () => {
   }, [brief, submited]);
   const onAnimationFinished = () => {
     sendRate();
-    history.push('');
+    history.push(`/profissao/${profissao}/`);
   };
   const defaultOptions = {
     loop: false,
@@ -35,6 +36,7 @@ const Step3 = () => {
           <Title>Digite um depoimento sobre sua carreira atual</Title>
           <TextArea onChange={(event) => setBrief(event.target.value)} value={brief} />
           <Button
+            disabled={brief?.length < 20}
             text="Enviar avaliação"
             sufixIcon={<Check />}
             onClick={() => setSubimited(true)}
