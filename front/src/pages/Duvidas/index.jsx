@@ -59,6 +59,8 @@ const Duvidas = () => {
   const [newQuestionTitle, setNewQuestionTitle] = useState('');
   const [newQuestionContent, setNewQuestionContent] = useState('');
 
+  const [answerQuestionText, setAnswerQuestionText] = useState('');
+
   const { getQuestions, questions, currentCareer } = useCareers();
 
   useEffect(() => {
@@ -80,29 +82,29 @@ const Duvidas = () => {
 
     setSelectedQuestion(question);
 
-    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${questionId}`);
+    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${questionId}`);
 
-    setCurrentAnswers(data);
+    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
   };
 
   const handleUpArrowClick = async (id) => {
-    await axios.post(`https://hackaton-desc-back.vercel.app/question_answers/${id}/upvote`);
+    await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/upvote`);
 
-    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${id}`);
+    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${id}`);
 
-    setCurrentAnswers(data);
+    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
   };
 
   const handleDownArrowClick = async (id) => {
-    await axios.post(`https://hackaton-desc-back.vercel.app/question_answers/${id}/downvote`);
+    await axios.post(`https://hackaton-desc.herokuapp.com/question_answers/${id}/downvote`);
 
-    const { data } = await axios.get(`https://hackaton-desc-back.vercel.app/question_answers?_expand=user&questionId=${id}`);
+    const { data } = await axios.get(`https://hackaton-desc.herokuapp.com/question_answers?_expand=user&questionId=${id}`);
 
-    setCurrentAnswers(data);
+    setCurrentAnswers(data.sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
   };
 
   const handleSendQuestion = async () => {
-    const { data } = await axios.post('https://hackaton-desc-back.vercel.app/questions', {
+    const { data } = await axios.post('https://hackaton-desc.herokuapp.com/questions', {
       userId: 1,
       text: newQuestionContent,
       title: newQuestionTitle,
@@ -119,6 +121,21 @@ const Duvidas = () => {
     getQuestions();
   };
 
+  const handleAnswerQuestion = async () => {
+    const { data } = await axios.post('https://hackaton-desc.herokuapp.com/question_answers', {
+      userId: 1,
+      questionId: selectedQuestion,
+      text: answerQuestionText,
+      upvotes: 0,
+      downvotes: 0,
+    });
+
+    const { data: userData } = await axios.get('https://hackaton-desc.herokuapp.com/users?id=1');
+
+    setCurrentAnswers((prev) => [...prev, { ...data, user: userData[0] }]
+      .sort((q1, q2) => (q1.createdAt < q2.createdAt ? 1 : -1)));
+  };
+
   const renderQuestion = () => (
     <>
       <HorizontalContainer>
@@ -132,8 +149,8 @@ const Duvidas = () => {
       <QuestionTitle>{selectedQuestion.title}</QuestionTitle>
       <QuestionText>{selectedQuestion.text}</QuestionText>
       <AnswerQuestionContainer>
-        <StyledTextArea />
-        <Button text="Responder Pergunta" />
+        <StyledTextArea onChange={(e) => setAnswerQuestionText(e.target.value)} />
+        <Button text="Responder Pergunta" onClick={handleAnswerQuestion} />
       </AnswerQuestionContainer>
       <HorizontalLine />
       <AnswersTitle>Principais respostas:</AnswersTitle>
@@ -148,7 +165,7 @@ const Duvidas = () => {
             <AnswerText>{answer.text}</AnswerText>
             <AnswerUsername>
               Respondido por
-              {` ${answer.user.name}`}
+              {` ${answer.user && answer.user.name}`}
             </AnswerUsername>
           </RightContainer>
         </AnswerContainer>
@@ -172,7 +189,7 @@ const Duvidas = () => {
             <QuestionListItemUsername>
               Perguntado por
               {' '}
-              {question.user.name}
+              {question.user && question.user.name}
             </QuestionListItemUsername>
           </QuestionListItemLeft>
           <QuestionListItemRight>
