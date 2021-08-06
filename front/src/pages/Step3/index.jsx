@@ -1,8 +1,10 @@
-import { Check } from '@material-ui/icons';
+import { ArrowLeft, Check } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
-import { useHistory, useParams } from 'react-router-dom';
-import { Container, TextArea, Title } from '../Avaliar/styles';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
+import {
+  Container, Row, TextArea, Title,
+} from '../Avaliar/styles';
 import { Button } from '../../components/Button';
 import { useRate } from '../../hooks/Rate';
 import animationData from '../../assets/50867-sending-mail.json';
@@ -10,16 +12,16 @@ import animationData from '../../assets/50867-sending-mail.json';
 const Step3 = () => {
   const { profissao } = useParams();
   const history = useHistory();
-  const { setRateState, sendRate } = useRate();
-  const [brief, setBrief] = useState();
+  const { pathname } = useLocation();
+  const { setRateState, sendRate, rateState } = useRate();
+  const [brief, setBrief] = useState(rateState.brief);
   const [submited, setSubimited] = useState(false);
   useEffect(() => {
     setRateState((previosState) => ({
       ...previosState,
       brief,
-      submited,
     }));
-  }, [brief, submited]);
+  }, [brief]);
   const onAnimationFinished = () => {
     sendRate();
     history.push(`/profissao/${profissao}/`);
@@ -35,12 +37,21 @@ const Step3 = () => {
         <>
           <Title>Digite um depoimento sobre sua carreira atual</Title>
           <TextArea onChange={(event) => setBrief(event.target.value)} value={brief} />
-          <Button
-            disabled={brief?.length < 20}
-            text="Enviar avaliação"
-            sufixIcon={<Check />}
-            onClick={() => setSubimited(true)}
-          />
+          <Row>
+
+            <Button
+              text="Voltar passo"
+              prefixIcon={<ArrowLeft />}
+              style={{ marginRight: 8 }}
+              onClick={() => history.push(pathname.replace('3', '2'))}
+            />
+            <Button
+              disabled={!brief || brief.length < 20}
+              text="Enviar avaliação"
+              sufixIcon={<Check />}
+              onClick={() => setSubimited(true)}
+            />
+          </Row>
         </>
       ) : (
         <Lottie
