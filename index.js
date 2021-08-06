@@ -34,11 +34,11 @@ server.post("/briefs/:id/:vote", (req, res) => {
         if (req.params.vote === "upvote") {
             briefs[briefIndex].upvotes = briefs[briefIndex].upvotes + 1;
             router.db.set("briefs", briefs);
-            res.status(201).send();
+            res.status(201).send(briefs[briefIndex]);
         } else if (req.params.vote === "downvote") {
             briefs[briefIndex].downvotes = briefs[briefIndex].downvotes + 1;
             router.db.set("briefs", briefs);
-            res.status(201).send();
+            res.status(201).send(briefs[briefIndex]);
         }
         res.status(404).send();
     } else {
@@ -54,11 +54,11 @@ server.post("/questions/:id/:vote", (req, res) => {
         if (req.params.vote === "upvote") {
             questions[questionIndex].upvotes = questions[questionIndex].upvotes + 1;
             router.db.set("questions", questions);
-            res.status(201).send();
+            res.status(201).send(questions[questionIndex]);
         } else if (req.params.vote === "downvote") {
             questions[questionIndex].downvotes = questions[questionIndex].downvotes + 1;
             router.db.set("questions", questions);
-            res.status(201).send();
+            res.status(201).send(questions[questionIndex]);
         }
         res.status(404).send();
     } else {
@@ -74,11 +74,11 @@ server.post("/question_answers/:id/:vote", (req, res) => {
         if (req.params.vote === "upvote") {
             question_answers[question_answerIndex].upvotes = question_answers[question_answerIndex].upvotes + 1;
             router.db.set("question_answers", question_answers);
-            res.status(201).send();
+            res.status(201).send(question_answers[question_answerIndex]);
         } else if (req.params.vote === "downvote") {
             question_answers[question_answerIndex].downvotes = question_answers[question_answerIndex].downvotes + 1;
             router.db.set("question_answers", question_answers);
-            res.status(201).send();
+            res.status(201).send(question_answers[question_answerIndex]);
         }
         res.status(404).send();
     } else {
