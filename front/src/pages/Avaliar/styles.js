@@ -22,18 +22,19 @@ export const ContentContainer = styled.div`
   border-radius: 0 0 5px 5px;
 `;
 export const Container = styled.div`
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 export const Title = styled.div`
     margin-top: 20px;
+    margin-bottom: 10px;
 `;
 export const TextArea = styled.textarea`
   margin-top: 20px;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 200px;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
   margin-bottom: 20px;
@@ -63,7 +64,7 @@ export const Row = styled.div`
     display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 export const AsyncSelectStyled = styled(AsyncSelect)`

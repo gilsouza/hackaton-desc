@@ -41,7 +41,7 @@ const Step1 = () => {
           <Row>
             <tbody style={{ display: 'flex', flexDirection: 'column' }}>
               <tr style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio1"
@@ -52,7 +52,7 @@ const Step1 = () => {
                   Até R$ 2.000,00
 
                 </td>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio2"
@@ -63,7 +63,7 @@ const Step1 = () => {
                   De R$ 2001 a R$ 5.000,00
 
                 </td>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio3"
@@ -81,7 +81,7 @@ const Step1 = () => {
           <Row>
             <tbody style={{ display: 'flex', flexDirection: 'column' }}>
               <tr style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio-employed1"
@@ -92,7 +92,7 @@ const Step1 = () => {
                   Menos de 1 ano
 
                 </td>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio-employed2"
@@ -103,7 +103,7 @@ const Step1 = () => {
                   De 1 a 3 anos
 
                 </td>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio-employed3"
@@ -114,7 +114,7 @@ const Step1 = () => {
                   De 3 a 5 anos
 
                 </td>
-                <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <td style={{ display: 'flex', flexDirection: 'row' }}>
                   <input
                     type="radio"
                     name="radio-employed4"

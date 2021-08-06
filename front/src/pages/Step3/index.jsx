@@ -45,7 +45,7 @@ const Step3 = () => {
               onClick={() => history.push(pathname.replace('3', '2'))}
             />
             <Button
-              disabled={brief.length < 20 && !(brief.length === 0)}
+              disabled={brief.length < 20}
               text={brief.length === 0 ? 'Pular passo' : 'Enviar avaliação'}
               sufixIcon={<Check />}
               onClick={() => setSubimited(true)}

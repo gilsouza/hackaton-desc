@@ -30,7 +30,7 @@ const Step2 = () => {
         value={happiness}
         count={5}
         onChange={setHappiness}
-        size={54}
+        size={45}
         color1="#DDD"
         color2="#00C86F"
       />
@@ -39,7 +39,7 @@ const Step2 = () => {
         value={salarySatisfaction}
         count={5}
         onChange={setSalarySatisfaction}
-        size={54}
+        size={45}
         color1="#DDD"
         color2="#00C86F"
       />
@@ -48,7 +48,7 @@ const Step2 = () => {
         value={employability}
         count={5}
         onChange={setEmployability}
-        size={54}
+        size={45}
         color1="#DDD"
         color2="#00C86F"
       />
