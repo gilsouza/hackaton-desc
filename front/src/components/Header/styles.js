@@ -4,16 +4,18 @@ export const Img = styled.img`
   margin-right: 5px;
 `;
 export const HeaderContainer = styled.div`
-  position: absolute;
-  width: calc(100% - 40px);
-  z-index: 0;
   height: 60px;
   padding: 20px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 800px;
+`;
+export const HeaderBackground = styled.div`
   background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
 `;
 
 export const HeaderText = styled.h1`

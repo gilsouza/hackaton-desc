@@ -61,8 +61,8 @@ const Profession = () => {
   return (
     <>
 
+      <Header />
       <PageBackground>
-        <Header />
         <PageContainer>
           <ProfessionHeader>
             <CarrerHeader>
