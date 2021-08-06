@@ -15,6 +15,7 @@ const CareersProvider = ({ children }) => {
   const [currentCareer, setCurrentCareer] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [ratings, setRatings] = useState([]);
+  const [ratingsWithCareer, setRatingsWithCareer] = useState([]);
 
   const getCareersByFragment = async (fragment, showLoading = true) => {
     setLoading(showLoading);
@@ -97,6 +98,15 @@ const CareersProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getRatingsWithCareer = async () => {
+    setLoading(true);
+
+    const { data } = await axios.get(`${API_URL}/ratings?_expand=career`);
+    setRatingsWithCareer(data);
+
+    setLoading(false);
+  };
+
   const sendRate = async (briefId, like) => {
     setLoading(true);
 
@@ -132,6 +142,8 @@ const CareersProvider = ({ children }) => {
       ratings,
       topVoteBrief,
       sendRate,
+      getRatingsWithCareer,
+      ratingsWithCareer,
     }}
     >
       {children}

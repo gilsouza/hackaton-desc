@@ -6,6 +6,7 @@ import { NotFound } from './pages/NotFound';
 import { GlobalStyle } from './styles/global-style';
 import { CareersProvider } from './hooks/Careers';
 import { Avaliar } from './pages/Avaliar';
+import { Rankings } from './pages/Rankings';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/avaliar/:profissao/:step" exact>
               <Avaliar />
+            </Route>
+            <Route path="/rankings" exact>
+              <Rankings />
             </Route>
             <Route>
               <NotFound />
