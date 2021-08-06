@@ -26,7 +26,7 @@ function App() {
             <Route path="/profissao/:profissao/*" exact>
               <Profession />
             </Route>
-            <Route path="/avaliar/:profissao/*" exact>
+            <Route path="/avaliar/:profissao/:step" exact>
               <Avaliar />
             </Route>
             <Route>

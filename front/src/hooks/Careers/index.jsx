@@ -27,8 +27,8 @@ const CareersProvider = ({ children }) => {
     return data;
   };
 
-  const getCareerById = async (id) => {
-    setLoading(true);
+  const getCareerById = async (id, showLoading = true) => {
+    setLoading(showLoading);
     const { data } = await axios.get(`${API_URL}/careers?id=${id}`);
     if (data.length) {
       setcurrentCareer(data[0]);

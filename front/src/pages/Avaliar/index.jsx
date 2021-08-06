@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   PageContainer, PageBackground, ProfessionHeader,
@@ -9,9 +9,9 @@ import { Steps } from '../../components/Steps';
 import StepsNavigations from '../../navigations/StepsNavigation';
 
 const Avaliar = () => {
-  const { profissao } = useParams();
+  const { profissao, step } = useParams();
   const { currentCareer, getCareerById } = useCareers();
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  console.log('step', step);
 
   useEffect(() => {
     if (!currentCareer) {
@@ -32,8 +32,7 @@ const Avaliar = () => {
         <ContentContainer>
           <Steps
             steps={new Array(3).fill()}
-            selectedIndex={selectedIndex}
-            onClick={(index) => (index < selectedIndex ? setSelectedIndex(index) : null)}
+            selectedIndex={parseFloat(step) - 1}
           />
           <StepsNavigations />
         </ContentContainer>
