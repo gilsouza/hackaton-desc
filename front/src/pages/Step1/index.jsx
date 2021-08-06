@@ -84,7 +84,7 @@ const Step1 = () => {
                   <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <input
                       type="radio"
-                      name="radio1"
+                      name="radio-employed1"
                       value={0}
                       checked={timeEmployed === 0}
                       onChange={() => setTimeEmployed(0)}
@@ -95,7 +95,7 @@ const Step1 = () => {
                   <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <input
                       type="radio"
-                      name="radio2"
+                      name="radio-employed2"
                       value={1}
                       checked={timeEmployed === 1}
                       onChange={() => setTimeEmployed(1)}
@@ -106,7 +106,7 @@ const Step1 = () => {
                   <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <input
                       type="radio"
-                      name="radio3"
+                      name="radio-employed3"
                       value={2}
                       checked={timeEmployed === 2}
                       onChange={() => setTimeEmployed(2)}
@@ -117,7 +117,7 @@ const Step1 = () => {
                   <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <input
                       type="radio"
-                      name="radio3"
+                      name="radio-employed4"
                       value={2}
                       checked={timeEmployed === 3}
                       onChange={() => setTimeEmployed(3)}
@@ -130,7 +130,7 @@ const Step1 = () => {
             </Row>
             <Button
               text="Proximo passo"
-              disabled={salaryRange === null}
+              disabled={salaryRange === undefined || timeEmployed === undefined}
               sufixIcon={<ArrowRight />}
               onClick={() => history.push(pathname.replace('1', '2'))}
             />

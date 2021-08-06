@@ -4,13 +4,14 @@ import { Loading } from '../../components/Loading';
 
 const CareersContext = createContext({});
 
-const API_URL = 'https://hackaton-desc-back.vercel.app';
+const API_URL = 'https://hackaton-desc.herokuapp.com';
 
 const CareersProvider = ({ children }) => {
   const [careers, setCarrers] = useState([]);
   const [salaries, setSalaries] = useState([]);
   const [loadding, setLoading] = useState(false);
   const [briefs, setBriefs] = useState([]);
+  const [topVoteBrief, setTopVoteBrief] = useState(null);
   const [currentCareer, setCurrentCareer] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [ratings, setRatings] = useState([]);
@@ -44,8 +45,19 @@ const CareersProvider = ({ children }) => {
       const { data } = await axios.get(`${API_URL}/careers/${currentCareer?.id}/briefs?_expand=user`);
 
       const briefLikes = await Promise.all(data.map((brief) => axios.get(`${API_URL}/briefs/${brief.id}/likes`)));
-      setBriefs(data.map((d, index) => ({ ...d, likes: briefLikes[index].data })));
+      const briefsWithLikes = data
+        .map((d, index) => ({
+          ...d,
+          likes: briefLikes[index].data,
+          score: briefLikes[index].data.filter((l) => l.like).length
+              - briefLikes[index].data.filter((l) => !l.like).length,
+        }))
+        .sort((b) => b.score);
+      setBriefs(briefsWithLikes);
+      console.log('briefsWithLikes', briefsWithLikes);
+      setTopVoteBrief(briefsWithLikes[0]);
     } else {
+      setTopVoteBrief(null);
       setBriefs([]);
     }
     setLoading(false);
@@ -103,6 +115,7 @@ const CareersProvider = ({ children }) => {
       briefs,
       salaries,
       ratings,
+      topVoteBrief,
     }}
     >
       {children}
