@@ -78,7 +78,6 @@ const Profession = () => {
 
   return (
     <>
-
       <Header />
       <PageBackground>
         <PageContainer>
@@ -86,8 +85,13 @@ const Profession = () => {
             <CarrerHeader>
               <Row>
                 <ProfessionText>{currentCareer?.name}</ProfessionText>
-                {currentCareer.link && (
-                <ButtonLogo data-tip="Temos esse curso no Descomplica ✓" onClick={window.location.href = link}>
+                {currentCareer?.link && (
+                <ButtonLogo
+                  data-tip="Temos esse curso no Descomplica ✓"
+                  onClick={() => {
+                    window.location.href = currentCareer.link;
+                  }}
+                >
                   <Img src={logo} alt="logo" height={30} />
                 </ButtonLogo>
                 )}
