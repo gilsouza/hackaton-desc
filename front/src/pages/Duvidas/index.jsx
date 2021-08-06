@@ -10,10 +10,10 @@ import {
 } from './styles';
 
 const Duvidas = () => {
-  const { getQuestions, questions } = useCareers();
+  const { getQuestions, questions, currentCarrer } = useCareers();
   useEffect(() => {
     getQuestions();
-  }, []);
+  }, [currentCarrer]);
 
   const renderQuestionList = () => {
     if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }

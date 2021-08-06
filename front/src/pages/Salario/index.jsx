@@ -8,12 +8,14 @@ require('dayjs/locale/pt-br');
 
 dayjs.locale('pt-br');
 const Salario = () => {
-  const { salaries, getSalaries } = useCareers();
+  const { salaries, getSalaries, currentCarrer } = useCareers();
+
   useEffect(() => {
     getSalaries();
-  }, []);
+  }, [currentCarrer]);
+
   const lastMonths = new Array(12).fill().map((l, index) => dayjs().add(-index, 'month')).reverse();
-  const getsalariesByMonths = (timeExperience) => lastMonths.map(
+  const getSalariesByMonths = (timeExperience) => lastMonths.map(
     (month) => salaries.filter(
       (salarie) => dayjs(salarie.createdAt).isSame(month, 'month') && salarie.time_experience === timeExperience,
     ).reduce(
@@ -24,7 +26,7 @@ const Salario = () => {
     labels: lastMonths.map((l) => l.format('MMM')),
     datasets: [
       {
-        data: getsalariesByMonths(0),
+        data: getSalariesByMonths(0),
         backgroundColor: '#00E88F',
       },
     ],
@@ -33,7 +35,7 @@ const Salario = () => {
     labels: lastMonths.map((l) => l.format('MMM')),
     datasets: [
       {
-        data: getsalariesByMonths(1),
+        data: getSalariesByMonths(1),
         backgroundColor: '#00E88F',
       },
     ],
@@ -42,7 +44,7 @@ const Salario = () => {
     labels: lastMonths.map((l) => l.format('MMM')),
     datasets: [
       {
-        data: getsalariesByMonths(2),
+        data: getSalariesByMonths(2),
         backgroundColor: '#00E88F',
       },
     ],
@@ -51,7 +53,7 @@ const Salario = () => {
     labels: lastMonths.map((l) => l.format('MMM')),
     datasets: [
       {
-        data: getsalariesByMonths(3),
+        data: getSalariesByMonths(3),
         backgroundColor: '#00E88F',
       },
     ],
