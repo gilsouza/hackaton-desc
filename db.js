@@ -989,6 +989,7 @@ module.exports = () => {
                 brief: "Omnis sint ipsam enim quasi excepturi. Quae saepe explicabo iste ex a. Placeat architecto ullam eum in libero odio rerum. Nisi itaque sit recusandae et dolorem.",
                 id: 1,
                 careerId: "jornalismo",
+                userId: 1,
             },
             {
                 createdAt: "2021-08-05T17:10:38.684Z",
@@ -1003,6 +1004,7 @@ module.exports = () => {
                 brief: "Est inventore aliquam cumque nam dolorum. Voluptatum voluptas minima dolor delectus autem ad quisquam. Esse quidem consectetur et magni ea consectetur ut dolorem quam. Corporis sit ex incidunt eaque voluptatibus odio qui in. Labore labore expedita quia et est natus quia et eos. Aut voluptas repellat eos eos sint.",
                 id: 2,
                 careerId: "jornalismo",
+                userId: 2,
             },
             {
                 createdAt: "2021-08-05T04:32:02.222Z",
@@ -1017,6 +1019,7 @@ module.exports = () => {
                 brief: "Ipsam eos eveniet accusamus omnis qui ipsum. Dicta autem perferendis asperiores molestiae. Cum suscipit quibusdam soluta. Reiciendis pariatur aut.",
                 id: 3,
                 careerId: "jornalismo",
+                userId: 3,
             },
             {
                 createdAt: "2021-08-05T01:01:57.008Z",
@@ -1031,6 +1034,7 @@ module.exports = () => {
                 brief: "Vel excepturi est ad ab molestias pariatur et ratione velit. Dolores ut sunt sed. Impedit est quia est sit. Voluptatem et sit molestiae sed veritatis laboriosam.",
                 id: 4,
                 careerId: "jornalismo",
+                userId: 4,
             },
             {
                 createdAt: "2021-08-05T08:23:07.781Z",
@@ -1045,6 +1049,7 @@ module.exports = () => {
                 brief: "Hic rerum ut repudiandae non nisi sit praesentium natus. Doloremque sequi enim. Neque ea qui. Fugiat dolor maxime iure eos deleniti aut omnis vitae ut. Consectetur provident quia et inventore veritatis et deleniti odio. Expedita labore libero libero molestiae.",
                 id: 5,
                 careerId: "jornalismo",
+                userId: 5,
             },
         ],
         likes: [
