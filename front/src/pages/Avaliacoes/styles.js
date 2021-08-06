@@ -69,6 +69,7 @@ export const UserRow = styled.div`
 
 export const UserName = styled.span`
     margin-left: 15px;
+  color: white;
 `;
 
 export const RatingsRow = styled.div`

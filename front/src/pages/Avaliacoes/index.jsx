@@ -1,10 +1,9 @@
 import { useEffect, useMemo } from 'react';
 import ReactStars from 'react-stars';
 import { useCareers } from '../../hooks/Careers';
-import { AvatarSmall } from '../../styles/global-components';
+import { AvatarSmall, Card } from '../../styles/global-components';
 import {
   BoxRatings,
-  Container,
   LabelResult,
   LabelRatingResult,
   PageContainer,
@@ -67,11 +66,11 @@ const Avaliacoes = () => {
               <AvatarSmall src={item.rating.user.avatar} />
               <UserName>{item.rating.user.name}</UserName>
             </UserRow>
-            <Container>
+            <Card>
               <RatingsRow>
                 {item.averages.map((r) => renderRatingBox(r))}
               </RatingsRow>
-            </Container>
+            </Card>
           </>
         ))}
       </RatingsContainer>
