@@ -40,6 +40,11 @@ const CareersProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getAllCareers = async () => {
+    const { data } = await axios.get(`${API_URL}/careers`);
+    return data;
+  };
+
   const getBriefs = async () => {
     setLoading(true);
     if (currentCareer?.id) {
@@ -128,6 +133,7 @@ const CareersProvider = ({ children }) => {
 
   return (
     <CareersContext.Provider value={{
+      getAllCareers,
       careers,
       currentCareer,
       getCareersByFragment,
