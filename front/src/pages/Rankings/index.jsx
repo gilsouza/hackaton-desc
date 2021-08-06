@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { useEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Header } from '../../components/Header';
 import {
   ContentContainer, HeaderText, PageContainer, RakingHeader, Row, Title,
@@ -10,6 +11,7 @@ import { PageBackground } from '../Profession/styles';
 import { CareerCard } from '../../components/CarrerCard';
 
 const Rankings = () => {
+  const history = useHistory();
   const { getRatingsWithCareer, ratingsWithCareer } = useCareers();
 
   useEffect(() => {
@@ -31,23 +33,25 @@ const Rankings = () => {
         careerId: grouped[career][0].career.id,
         averages: {
           happiness: averagePropInList(grouped[career], 'happiness'),
-          salaryRange: averagePropInList(grouped[career], 'salary_range'),
+          salarySatisfaction: averagePropInList(grouped[career], 'salary_satisfaction'),
           employability: averagePropInList(grouped[career], 'employability'),
         },
       }));
 
     return {
       mostEmployability: averages.slice()
-        .sort((a, b) => a.averages.employability - b.averages.employability),
-      mostSalaryRange: averages.slice()
-        .sort((a, b) => a.averages.salary_range - b.averages.salary_range),
+        .sort((a, b) => b.averages.employability - a.averages.employability),
+      mostSalarySatisfaction: averages.slice()
+        .sort((a, b) => b.averages.salarySatisfaction - a.averages.salarySatisfaction),
       mostHappiness: averages.slice()
-        .sort((a, b) => a.averages.happiness - b.averages.happiness),
+        .sort((a, b) => b.averages.happiness - a.averages.happiness),
     };
   }, [ratingsWithCareer]);
 
   console.log('sortedCareers', sortedCareers);
-  const onCardPress = () => {};
+  const onCardPress = (careerId) => {
+    history.push(`/profissao/${careerId}/`);
+  };
   return (
     <>
       <Header />
@@ -56,15 +60,16 @@ const Rankings = () => {
           <RakingHeader>
             <HeaderText>Ranking de carreiras</HeaderText>
           </RakingHeader>
-          {sortedCareers.mostSalaryRange && sortedCareers.mostSalaryRange.length > 0 && (
+          {sortedCareers.mostSalarySatisfaction
+          && sortedCareers.mostSalarySatisfaction.length > 0 && (
           <ContentContainer>
             <Title>Top 10 carreiras por salário</Title>
             <Row>
-              {sortedCareers.mostSalaryRange.map((s) => (
+              {sortedCareers.mostSalarySatisfaction.map((s) => (
                 <CareerCard
                   onClick={() => onCardPress(s.careerId)}
                   career={s.career}
-                  score={s.averages.salaryRange}
+                  score={s.averages.salarySatisfaction}
                 />
               ))}
             </Row>

@@ -21,6 +21,7 @@ import { QuestionList } from '../../components/QuestionList';
 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
+import { Card } from '../../styles/global-components';
 
 const Geral = () => {
   const { pathname } = useLocation();
@@ -90,22 +91,24 @@ const Geral = () => {
     return (
       <Section withoutTopMargin>
         <SectionTitle>Avaliação média:</SectionTitle>
-        <GeneralResults>
-          <LabelResultGeral>Avaliação geral:</LabelResultGeral>
-          <ReactStars
-            value={generalAverage}
-            count={5}
-            size={24}
-            edit={false}
-            half
-            color2="#00E88F"
-            color1="#DDD"
-          />
-          <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
-        </GeneralResults>
-        <BoxRatings>
-          {averages.map((item) => renderRatingBox(item))}
-        </BoxRatings>
+        <Card>
+          <GeneralResults>
+            <LabelResultGeral>Avaliação geral:</LabelResultGeral>
+            <ReactStars
+              value={generalAverage}
+              count={5}
+              size={24}
+              edit={false}
+              half
+              color2="#00E88F"
+              color1="#DDD"
+            />
+            <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
+          </GeneralResults>
+          <BoxRatings>
+            {averages.map((item) => renderRatingBox(item))}
+          </BoxRatings>
+        </Card>
       </Section>
     );
   }
@@ -174,7 +177,7 @@ const Geral = () => {
     return (
       <Section>
         <SectionTitle>Salário médio:</SectionTitle>
-        <GeneralResults>
+        <Card>
           <SalaryContainer size="lg">
             <Salary size="lg">
               R$
@@ -221,7 +224,7 @@ const Geral = () => {
             </SalaryContainer>
             )}
           </BoxRatings>
-        </GeneralResults>
+        </Card>
       </Section>
     );
   }
