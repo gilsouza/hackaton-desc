@@ -2,23 +2,24 @@ import styled from 'styled-components';
 import AsyncSelect from 'react-select/async';
 
 export const PageContainer = styled.div`
-    max-width: 800px;
+    max-width: 900px;
   width: 100%;
+  border-radius: 15px;
+  background-color: white;
 `;
 
 export const PageBackground = styled.div`
-  padding: 20px;
   flex: 1;
   justify-content: center;
   display: flex;
-  background-color: var(--background-color);
+  background-color: #e0e0e0;
+  background-image: url("https://www.pngkey.com/png/full/180-1800744_diagonal-line-png.png");
 `;
 export const ContentContainer = styled.div`
   padding: 20px;
   flex: 1;
   background-color: var(--third-color);
   border-radius: 0 0 5px 5px;
-  border: 1px solid var(--secondary-color);
 `;
 export const Container = styled.div`
     display: flex;
@@ -44,7 +45,6 @@ export const TextArea = styled.textarea`
 export const ProfessionHeader = styled.div`
   background-color: var(--secondary-color);
   padding: 12px 20px 0 20px;
-  border-radius: 5px 5px 0 0 ;
 `;
 export const CarrerHeader = styled.div`
   display: flex;

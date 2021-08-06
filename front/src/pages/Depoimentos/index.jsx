@@ -5,11 +5,11 @@ import { BriefCard } from '../../components/BriefCard';
 
 const Depoimentos = () => {
   const { getBriefs, briefs, currentCareer } = useCareers();
+
   useEffect(() => {
     getBriefs();
   }, [currentCareer]);
 
-  console.log('briefs', briefs);
   return (
     <PageContainer>
       {briefs.length ? briefs.map((brief, index) => (
