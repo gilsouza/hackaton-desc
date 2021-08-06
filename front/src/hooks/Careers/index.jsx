@@ -45,11 +45,11 @@ const CareersProvider = ({ children }) => {
       const { data } = await axios.get(`${API_URL}/careers/${currentCareer?.id}/briefs?_expand=user`);
 
       const briefsWithLikes = data
+        .sort((q1, q2) => (q1.upvotes - q1.downvotes < q2.upvotes - q2.downvotes ? 1 : -1))
         .map((brief) => ({
           ...brief,
           score: brief.upvotes - brief.downvotes,
-        }))
-        .sort((b) => b.score).reverse();
+        }));
       setBriefs(briefsWithLikes);
       setTopVoteBrief(briefsWithLikes[0]);
     } else {
