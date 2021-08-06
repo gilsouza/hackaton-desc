@@ -1,6 +1,6 @@
 import { useHistory, useParams } from 'react-router-dom';
 import { Add, RateReview } from '@material-ui/icons';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CarrerHeader, ContentContainer, PageBackground,
   PageContainer, ProfessionHeader, ProfessionText, Row,
@@ -36,10 +36,26 @@ const Profession = () => {
   const { profissao } = useParams();
   const history = useHistory();
   const { currentCareer, getCareerById } = useCareers();
+  const [hasFollowed, setHasFollowed] = useState(false);
 
   useEffect(() => {
     getCareerById(profissao);
+
+    const followed = localStorage.getItem('dc-has-followed');
+
+    setHasFollowed(followed === 'true');
   }, []);
+
+  const handleFollow = () => {
+    const newHasFollowed = !hasFollowed;
+
+    setHasFollowed(newHasFollowed);
+    if (newHasFollowed) {
+      localStorage.setItem('dc-has-followed', 'true');
+    } else {
+      localStorage.setItem('dc-has-followed', 'false');
+    }
+  };
 
   return (
     <PageBackground>
@@ -48,7 +64,7 @@ const Profession = () => {
           <CarrerHeader>
             <ProfessionText>{currentCareer?.name}</ProfessionText>
             <Row>
-              <Button text="Seguir" sufixIcon={<Add />} />
+              <Button text={hasFollowed ? 'seguindo' : 'seguir'} sufixIcon={<Add />} onClick={handleFollow} />
               <Button
                 style={{ marginLeft: 5 }}
                 text="Avaliar"
