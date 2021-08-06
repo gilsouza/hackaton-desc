@@ -6,6 +6,7 @@ import { Salario } from '../pages/Salario';
 import { Depoimentos } from '../pages/Depoimentos';
 import { Duvidas } from '../pages/Duvidas';
 import { Geral } from '../pages/Geral';
+import { Avaliacoes } from '../pages/Avaliacoes';
 
 function ProfissionNavigation() {
   return (
@@ -18,6 +19,9 @@ function ProfissionNavigation() {
       </Route>
       <Route path="/profissao/:profissao/depoimentos" exact>
         <Depoimentos />
+      </Route>
+      <Route path="/profissao/:profissao/avaliacoes" exact>
+        <Avaliacoes />
       </Route>
       <Route path="/profissao/:profissao/" exact>
         <Geral />

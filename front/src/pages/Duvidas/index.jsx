@@ -7,6 +7,9 @@ import {
   QuestionListItemText,
   QuestionListItemTitle,
   QuestionListItemUsername,
+  QuestionListItemLeft,
+  QuestionListItemRight,
+  SeeMoreButton,
 } from './styles';
 
 const Duvidas = () => {
@@ -15,23 +18,32 @@ const Duvidas = () => {
     getQuestions();
   }, [currentCareer]);
 
+  const handleClick = () => {
+
+  };
+
   const renderQuestionList = () => {
     if (!questions.length) { return <div>Essa carreira ainda não tem perguntas!</div>; }
 
     return questions.map((question, index) => (
       <div key={question.id} style={{ width: '100%' }}>
         <QuestionListItemContainer key={question.id}>
-          <QuestionListItemTitle>
-            {question.title}
-          </QuestionListItemTitle>
-          <QuestionListItemText>
-            {question.text}
-          </QuestionListItemText>
-          <QuestionListItemUsername>
-            Perguntado por
-            {' '}
-            {question.user.name}
-          </QuestionListItemUsername>
+          <QuestionListItemLeft>
+            <QuestionListItemTitle>
+              {question.title}
+            </QuestionListItemTitle>
+            <QuestionListItemText>
+              {question.text.length > 120 ? `${question.text.slice(0, 120)}...` : question.text}
+            </QuestionListItemText>
+            <QuestionListItemUsername>
+              Perguntado por
+              {' '}
+              {question.user.name}
+            </QuestionListItemUsername>
+          </QuestionListItemLeft>
+          <QuestionListItemRight>
+            <SeeMoreButton onClick={handleClick}>Ver Mais</SeeMoreButton>
+          </QuestionListItemRight>
         </QuestionListItemContainer>
         {index !== questions.length - 1 && <HorizontalLine />}
       </div>

@@ -13,6 +13,7 @@ const CareersProvider = ({ children }) => {
   const [briefs, setBriefs] = useState([]);
   const [currentCareer, setcurrentCareer] = useState(null);
   const [questions, setQuestions] = useState([]);
+  const [ratings, setRatings] = useState([]);
 
   const getCareersByFragment = async (fragment, showLoading = true) => {
     setLoading(showLoading);
@@ -74,6 +75,19 @@ const CareersProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getRatings = async () => {
+    setLoading(true);
+    if (currentCarrer?.id) {
+      const { data } = await axios.get(`${API_URL}/ratings?careerId=${currentCarrer?.id}`);
+
+      setRatings(data);
+    } else {
+      setRatings([]);
+    }
+
+    setLoading(false);
+  };
+
   return (
     <CareersContext.Provider value={{
       careers,
@@ -83,9 +97,11 @@ const CareersProvider = ({ children }) => {
       getBriefs,
       getSalaries,
       getQuestions,
+      getRatings,
       questions,
       briefs,
       salaries,
+      ratings,
     }}
     >
       {children}
