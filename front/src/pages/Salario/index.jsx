@@ -87,7 +87,6 @@ const Salario = () => {
       legend: {
         display: false,
       },
-
     },
     scales: {
       yAxes: {
@@ -101,34 +100,33 @@ const Salario = () => {
         },
       },
     },
-
   };
 
   return (
     <PageContainer>
       <Card>
-        <ChartTitle>Salários de 0 a 3 anos de experiência</ChartTitle>
+        <ChartTitle>Salários de até 1 ano de experiência</ChartTitle>
         <Bar
           data={datas[0]}
           options={options}
         />
       </Card>
       <Card>
-        <ChartTitle>Salários de 3 a 6 anos de experiência</ChartTitle>
+        <ChartTitle>Salários de 1 a 3 anos de experiência</ChartTitle>
         <Bar
           data={datas[1]}
           options={options}
         />
       </Card>
       <Card>
-        <ChartTitle>Salários de 6 a 9 anos de experiência</ChartTitle>
+        <ChartTitle>Salários de 3 a 5 anos de experiência</ChartTitle>
         <Bar
           data={datas[2]}
           options={options}
         />
       </Card>
       <Card>
-        <ChartTitle>Salários de 9 ou mais anos de experiência</ChartTitle>
+        <ChartTitle>Salários de mais de 5 anos de experiência</ChartTitle>
         <Bar
           data={datas[3]}
           options={options}

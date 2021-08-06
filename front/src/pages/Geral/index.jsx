@@ -191,7 +191,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioMedio).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salario médio de 0 a 3 anos de experiência</LabelResult>
+              <LabelResult>Salario médio até 1 ano de experiência</LabelResult>
             </SalaryContainer>
             )}
             {!!salarioMediaExperiencia && (
@@ -199,7 +199,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioMediaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 3 a 6 anos de experiência</LabelResult>
+              <LabelResult>Salário médio de 1 a 3 anos de experiência</LabelResult>
             </SalaryContainer>
             )}
             {!!salarioAltaExperiencia && (
@@ -207,7 +207,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioAltaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 6 a 9 anos de experiência</LabelResult>
+              <LabelResult>Salário médio de 3 a 5 anos de experiência</LabelResult>
             </SalaryContainer>
             )}
             {!!salarioAltissimaExperiencia && (
@@ -215,7 +215,7 @@ const Geral = () => {
               <Salary>
                 {`R$ ${parseFloat(salarioAltissimaExperiencia).toFixed(2)}`}
               </Salary>
-              <LabelResult>Salário médio de 9 ou mais anos de experiência</LabelResult>
+              <LabelResult>Salário médio de 5 ou mais anos de experiência</LabelResult>
             </SalaryContainer>
             )}
           </BoxRatings>
