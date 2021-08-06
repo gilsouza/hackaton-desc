@@ -14,19 +14,18 @@ const Step1 = () => {
   const { currentCareer } = useCareers();
   const { setRateState, rateState } = useRate();
   const [isEmployed, setIsEmployed] = useState(rateState.isEmployed);
-  // const [searchText, setSearchText] = useState('');
-  // const [selectedCareer, setSelectedCareer] = useState(rateState.selectedCareer);
+  const [timeEmployed, setTimeEmployed] = useState(rateState.timeEmployed);
   const [salaryRange, setSalaryRange] = useState(null);
 
   useEffect(() => {
     setRateState((previosRateState) => ({
       ...previosRateState,
       careerId: currentCareer?.id,
-      selectedCareer: currentCareer,
       salaryRange,
       isEmployed,
+      timeEmployed,
     }));
-  }, [salaryRange, currentCareer, isEmployed]);
+  }, [salaryRange, isEmployed, timeEmployed]);
 
   // const searchCareers = async () => {
   //   const carrers = await getCareersByFragment(searchText, false);
@@ -45,16 +44,6 @@ const Step1 = () => {
       {
           isEmployed && (
           <>
-            {/* <Title>Qual sua área de atuação?</Title>
-            <AsyncSelectStyled
-              cacheOptions
-              loadOptions={searchCareers}
-              placeholder="carreira"
-              noOptionsMessage={() => 'Não encontramos nenhuma carreira com esse nome :('}
-              onInputChange={setSearchText}
-              value={selectedCareer}
-              onChange={(option) => setSelectedCareer(option)}
-            /> */}
             <Title>Qual a sua faixa de salário atual?</Title>
             <Row>
               <tbody style={{ display: 'flex', flexDirection: 'column' }}>
@@ -90,6 +79,57 @@ const Step1 = () => {
                       onChange={() => setSalaryRange(2)}
                     />
                     Mais de 5000
+
+                  </td>
+                </tr>
+              </tbody>
+            </Row>
+            <Title>Há quanto tempo você atua no mercado de trabalho?</Title>
+            <Row>
+              <tbody style={{ display: 'flex', flexDirection: 'column' }}>
+                <tr style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                  <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <input
+                      type="radio"
+                      name="radio1"
+                      value={0}
+                      checked={timeEmployed === 0}
+                      onChange={() => setTimeEmployed(0)}
+                    />
+                    {'< 1 ano'}
+
+                  </td>
+                  <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <input
+                      type="radio"
+                      name="radio2"
+                      value={1}
+                      checked={timeEmployed === 1}
+                      onChange={() => setTimeEmployed(1)}
+                    />
+                    1 a 3 anos
+
+                  </td>
+                  <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <input
+                      type="radio"
+                      name="radio3"
+                      value={2}
+                      checked={timeEmployed === 2}
+                      onChange={() => setTimeEmployed(2)}
+                    />
+                    3 a 5 anos
+
+                  </td>
+                  <td style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <input
+                      type="radio"
+                      name="radio3"
+                      value={2}
+                      checked={timeEmployed === 3}
+                      onChange={() => setTimeEmployed(3)}
+                    />
+                    {'> 5 anos'}
 
                   </td>
                 </tr>
