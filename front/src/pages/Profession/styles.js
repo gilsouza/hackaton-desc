@@ -39,6 +39,12 @@ export const ProfessionText = styled.p`
   color: white;
 `;
 
+export const ButtonLogo = styled.div`
+    margin-left: 12px;
+  cursor: pointer;
+`;
+
 export const Row = styled.div`
     display: flex;
+  align-items: center;
 `;

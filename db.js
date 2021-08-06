@@ -99,6 +99,7 @@ module.exports = () => {
                 createdAt: "2021-08-05T16:58:00.721Z",
                 name: "Administração",
                 title: "Implementation",
+                link: 'https://descomplica.com.br/faculdade/gestao/administracao-de-empresas/',
                 description: Faker.lorem.sentences(6),
                 id: "administracao",
             },
