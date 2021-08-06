@@ -151,7 +151,7 @@ const Geral = () => {
   function renderWordCloud() {
     return (
       <Section>
-        <SectionTitle>Palavras chaves principais:</SectionTitle>
+        <SectionTitle>Palavras-chave principais:</SectionTitle>
         <SectionContainer>
           <ReactWordcloud
             style={{ height: 400, width: 600 }}
@@ -173,7 +173,7 @@ const Geral = () => {
   function renderSalaries() {
     return (
       <Section>
-        <SectionTitle>Salário medio:</SectionTitle>
+        <SectionTitle>Salário médio:</SectionTitle>
         <GeneralResults>
           <SalaryContainer size="lg">
             <Salary size="lg">
@@ -190,7 +190,7 @@ const Geral = () => {
                 R$
                 {parseFloat(salarioBaixaExperiencia).toFixed(2)}
               </Salary>
-              <LabelResult>Salarios médios de 0 a 3 anos de experiência</LabelResult>
+              <LabelResult>Salario médio de 0 a 3 anos de experiência</LabelResult>
             </SalaryContainer>
             )}
             {!!salarioMediaExperiencia && (
