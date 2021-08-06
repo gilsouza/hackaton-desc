@@ -44,17 +44,13 @@ const CareersProvider = ({ children }) => {
     if (currentCareer?.id) {
       const { data } = await axios.get(`${API_URL}/careers/${currentCareer?.id}/briefs?_expand=user`);
 
-      const briefLikes = await Promise.all(data.map((brief) => axios.get(`${API_URL}/briefs/${brief.id}/likes`)));
       const briefsWithLikes = data
-        .map((d, index) => ({
-          ...d,
-          likes: briefLikes[index].data,
-          score: briefLikes[index].data.filter((l) => l.like).length
-              - briefLikes[index].data.filter((l) => !l.like).length,
+        .map((brief) => ({
+          ...brief,
+          score: brief.upvotes - brief.downvotes,
         }))
         .sort((b) => b.score).reverse();
       setBriefs(briefsWithLikes);
-      console.log('briefsWithLikes', briefsWithLikes);
       setTopVoteBrief(briefsWithLikes[0]);
     } else {
       setTopVoteBrief(null);
@@ -101,6 +97,23 @@ const CareersProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const sendRate = async (briefId, like) => {
+    setLoading(true);
+    console.log('like', briefId);
+
+    if (briefId) {
+      const { data } = await axios.post(`${API_URL}/briefs/${briefId}/${like ? 'upvote' : 'downvote'}`);
+      setBriefs(((lastValue) => {
+        const briefIndex = briefs.findIndex((b) => b.id === briefId);
+        const newState = [...lastValue];
+        newState[briefIndex] = { ...data, score: data.upvotes - data.downvotes };
+        return newState;
+      }));
+    }
+
+    setLoading(false);
+  };
+
   return (
     <CareersContext.Provider value={{
       careers,
@@ -116,6 +129,7 @@ const CareersProvider = ({ children }) => {
       salaries,
       ratings,
       topVoteBrief,
+      sendRate,
     }}
     >
       {children}

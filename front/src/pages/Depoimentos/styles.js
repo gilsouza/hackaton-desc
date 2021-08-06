@@ -8,6 +8,10 @@ export const UserContainer = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+export const Button = styled.div`
+    cursor: pointer;
+  display: flex;
+`;
 export const LikeContainer = styled.div`
   justify-content: center;
   align-items: center;
