@@ -52,7 +52,7 @@ const Search = () => {
       )}
       {!careerSelected && (
       <Button
-        text="ranking de carreira"
+        text="ranking de carreiras"
         onClick={handleRankingClick}
         style={{
           marginTop: 10,
