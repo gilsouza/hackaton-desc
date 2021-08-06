@@ -47,7 +47,7 @@ const Step3 = () => {
             />
             <Button
               disabled={brief.length < 20 && !(brief.length === 0)}
-              text={brief.length === 0 ? 'pular' : 'Enviar avaliação'}
+              text={brief.length === 0 ? 'Pular passo' : 'Enviar avaliação'}
               sufixIcon={<Check />}
               onClick={() => setSubimited(true)}
             />
