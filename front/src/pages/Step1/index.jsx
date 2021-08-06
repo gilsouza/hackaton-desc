@@ -15,7 +15,7 @@ const Step1 = () => {
   const { setRateState, rateState } = useRate();
   const [isEmployed, setIsEmployed] = useState(rateState.isEmployed);
   const [timeEmployed, setTimeEmployed] = useState(rateState.timeEmployed);
-  const [salaryRange, setSalaryRange] = useState(null);
+  const [salaryRange, setSalaryRange] = useState(rateState.salaryRange);
 
   useEffect(() => {
     setRateState((previosRateState) => ({
@@ -27,13 +27,6 @@ const Step1 = () => {
     }));
   }, [salaryRange, isEmployed, timeEmployed]);
 
-  // const searchCareers = async () => {
-  //   const carrers = await getCareersByFragment(searchText, false);
-  //   if (searchText) {
-  //     return carrers.map((c) => ({ ...c, label: c.name }));
-  //   }
-  //   return [];
-  // };
   return (
     <Container>
       <Title>Você está empregado(a) no momento?</Title>

@@ -42,7 +42,6 @@ const Avaliacoes = () => {
   const renderRatingBox = ({ label, average }) => (
     <Rating key={label}>
       <LabelResult>{`${label}: `}</LabelResult>
-      <LabelRatingResult>{average}</LabelRatingResult>
       <ReactStars
         value={average}
         count={5}
@@ -52,6 +51,7 @@ const Avaliacoes = () => {
         color1="#DDD"
         color2="#00C86F"
       />
+      <LabelRatingResult>{average}</LabelRatingResult>
     </Rating>
   );
 
@@ -61,17 +61,17 @@ const Avaliacoes = () => {
         {`> ${ratings.length} avaliações encontradas`}
       </TotalResult>
       <GeneralResults>
-        <LabelResult>avaliação geral:</LabelResult>
-        <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
+        <LabelResult>Avaliação geral:</LabelResult>
         <ReactStars
           value={generalAverage}
           count={5}
-          size={20}
+          size={54}
           edit={false}
           half
           color2="#00E88F"
           color1="#DDD"
         />
+        <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
       </GeneralResults>
       <BoxRatings>
         {averages.map((item) => renderRatingBox(item))}
