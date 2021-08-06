@@ -23,6 +23,7 @@ export const Card = styled.div`
   justify-content: space-between;
   min-width: 200px;
   max-width: 200px;
+  min-height: 92px;
   text-align: center;
   margin: 10px;
   background-color: var(--secondary-color);

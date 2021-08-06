@@ -10,7 +10,7 @@ import {
   ProfessionText,
   BackButton,
   FollowedCareersContainer,
-  FollowedCareersTitle,
+  FollowedCareersTitle, FlexContainer,
 } from './styles';
 import { RateProvider } from '../../hooks/Rate';
 import { Header } from '../../components/Header';
@@ -61,22 +61,24 @@ const User = () => {
                 <FollowedCareersTitle>
                   Você está seguindo as seguintes carreiras:
                 </FollowedCareersTitle>
-                {followedCareers.map((car) => {
-                  const [carr] = allCareers.filter((c) => c.id === car);
+                <FlexContainer>
+                  {followedCareers.map((car) => {
+                    const [carr] = allCareers.filter((c) => c.id === car);
 
-                  if (!carr) { return null; }
+                    if (!carr) { return null; }
 
-                  const careerName = carr.name;
+                    const careerName = carr.name;
 
-                  return (
-                    <CareerCard
-                      key={car}
-                      onClick={() => { history.push(`/profissao/${car}/`); }}
-                      career={careerName}
-                      score={2}
-                    />
-                  );
-                })}
+                    return (
+                      <CareerCard
+                        key={car}
+                        onClick={() => { history.push(`/profissao/${car}/`); }}
+                        career={careerName}
+                        score={2}
+                      />
+                    );
+                  })}
+                </FlexContainer>
               </FollowedCareersContainer>
             </ContentContainer>
           </PageContainer>

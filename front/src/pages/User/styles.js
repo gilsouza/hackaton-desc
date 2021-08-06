@@ -96,6 +96,11 @@ export const FollowedCareersTitle = styled.div`
   margin-bottom: 20px;
 `;
 
+export const FlexContainer = styled.div`
+    display: flex;
+  flex-wrap: wrap;
+`;
+
 export const CareerName = styled.div`
   color: var(--primary-color-dark);
   font-size: 18px;
