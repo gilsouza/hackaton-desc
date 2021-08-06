@@ -54,7 +54,7 @@ const Profession = () => {
                 text="Avaliar"
                 sufixIcon={<RateReview />}
                 onClick={() => {
-                  history.push(`/avaliar/${profissao}`);
+                  history.push(`/avaliar/${profissao}/1`);
                 }}
               />
             </Row>
