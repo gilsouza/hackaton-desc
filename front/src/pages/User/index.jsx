@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { useHistory } from 'react-router-dom';
 import {
   CarrerHeader,
   ContentContainer,
@@ -7,20 +8,24 @@ import {
   PageContainer,
   ProfessionHeader,
   ProfessionText,
+  BackButton,
+  FollowedCareersContainer,
+  FollowedCareersTitle,
+  CareerName,
 } from './styles';
-import { useCareers } from '../../hooks/Careers';
 import { RateProvider } from '../../hooks/Rate';
 import { Header } from '../../components/Header';
 
-const Avaliar = () => {
-  const { profissao } = useParams();
-  const { currentCareer, getCareerById } = useCareers();
+const User = () => {
+  const [followedCareers, setFollowedCareers] = useState([]);
+
+  const history = useHistory();
 
   useEffect(() => {
-    if (!currentCareer) {
-      getCareerById(profissao, false);
-    }
-  }, [currentCareer]);
+    const careers = JSON.parse(localStorage.getItem('dc-has-followed'));
+
+    setFollowedCareers(careers);
+  }, []);
 
   return (
     <>
@@ -31,12 +36,28 @@ const Avaliar = () => {
             <ProfessionHeader>
               <CarrerHeader>
                 <ProfessionText>
-                  BLABLA
+                  Perfil
                 </ProfessionText>
               </CarrerHeader>
             </ProfessionHeader>
             <ContentContainer>
-              <div>okokok</div>
+              <BackButton onClick={() => { history.goBack(); }}>
+                <ChevronLeftIcon />
+                {' '}
+                Voltar
+              </BackButton>
+              <FollowedCareersContainer>
+                <FollowedCareersTitle>
+                  Você está seguindo as seguintes carreiras:
+                </FollowedCareersTitle>
+                {followedCareers.map((car) => (
+                  <CareerName onClick={() => { history.push(`/profissao/${car}/`); }}>
+                    -
+                    {' '}
+                    {car}
+                  </CareerName>
+                ))}
+              </FollowedCareersContainer>
             </ContentContainer>
           </PageContainer>
         </RateProvider>
@@ -45,4 +66,4 @@ const Avaliar = () => {
   );
 };
 
-export { Avaliar };
+export { User };

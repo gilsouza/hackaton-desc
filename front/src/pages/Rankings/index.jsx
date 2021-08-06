@@ -1,9 +1,13 @@
 /* eslint-disable no-console */
 import { useEffect, useMemo } from 'react';
 import { Header } from '../../components/Header';
-import { HeaderText, PageContainer, RakingHeader } from './styles';
+import {
+  ContentContainer, HeaderText, PageContainer, RakingHeader, Row, Title,
+} from './styles';
 import { useCareers } from '../../hooks/Careers';
 import { averagePropInList } from '../../util/math';
+import { PageBackground } from '../Profession/styles';
+import { CareerCard } from '../../components/CarrerCard';
 
 const Rankings = () => {
   const { getRatingsWithCareer, ratingsWithCareer } = useCareers();
@@ -44,11 +48,24 @@ const Rankings = () => {
   return (
     <>
       <Header />
-      <PageContainer>
-        <RakingHeader>
-          <HeaderText>Ranking de carreiras</HeaderText>
-        </RakingHeader>
-      </PageContainer>
+      <PageBackground>
+        <PageContainer>
+          <RakingHeader>
+            <HeaderText>Raking de carreiras</HeaderText>
+          </RakingHeader>
+          {sortedCareers && Object.keys(sortedCareers).length > 0 && (
+          <ContentContainer>
+            <Title>Top 10 carreiras por salário</Title>
+            <Row>
+              <CareerCard
+                career={sortedCareers.mostSalaryRange[0].career}
+                score={sortedCareers.mostSalaryRange[0].averages.salaryRange}
+              />
+            </Row>
+          </ContentContainer>
+          )}
+        </PageContainer>
+      </PageBackground>
     </>
   );
 };

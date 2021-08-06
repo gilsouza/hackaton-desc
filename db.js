@@ -1894,7 +1894,7 @@ module.exports = () => {
             {
                 createdAt: "2021-08-05T08:38:19.581Z",
                 userId: 1,
-                text: Faker.lorem.sentences(6),
+                text: 'Au au au. Au au au au! Au au, au au.',
                 id: 4,
                 careerId: "medicina",
                 upvotes: 0,
@@ -1939,7 +1939,7 @@ module.exports = () => {
             {
                 createdAt: "2021-08-05T08:38:19.581Z",
                 userId: 1,
-                text: Faker.lorem.sentences(6),
+                text: 'Au au au. Au au au au! Au au, au au.',
                 id: 9,
                 careerId: "administracao",
                 upvotes: 0,

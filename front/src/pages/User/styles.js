@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import AsyncSelect from 'react-select/async';
 
 export const PageContainer = styled.div`
-    max-width: 900px;
+  max-width: 900px;
   width: 100%;
   border-radius: 15px;
   background-color: white;
@@ -70,4 +70,35 @@ export const AsyncSelectStyled = styled(AsyncSelect)`
   margin-top: 10px;
   margin-bottom: 20px;
   min-width: 400px;
+`;
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 90px;
+  outline: none;
+  background-color: white;
+  border: none;
+`;
+
+export const FollowedCareersContainer = styled.div`
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+`;
+
+export const FollowedCareersTitle = styled.div`
+  margin-top: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+export const CareerName = styled.div`
+  color: var(--primary-color-dark);
+  font-size: 18px;
+  margin-bottom: 8px;
+  cursor: pointer;
 `;

@@ -22,7 +22,8 @@ export const ContentContainer = styled.div`
   border-radius: 0 0 5px 5px;
 `;
 export const ProfessionHeader = styled.div`
-  background-color: var(--secondary-color);  padding: 12px 20px 0 20px;
+  background-color: var(--secondary-color);  
+  padding: 12px 20px 0 20px;
 `;
 export const CarrerHeader = styled.div`
   display: flex;
