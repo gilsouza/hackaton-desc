@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useCareers } from '../../hooks/Careers';
 import { PageContainer } from './styles';
+import { averagePropInList } from '../../util/math';
 
 const Avaliacoes = () => {
   const { getRatings, ratings, currentCareer } = useCareers();
@@ -9,9 +10,19 @@ const Avaliacoes = () => {
     getRatings();
   }, [currentCareer]);
 
+  const happinessAvarage = useMemo(() => averagePropInList(ratings, 'happiness'), [ratings]);
+
+  const employabilityAvarage = useMemo(() => averagePropInList(ratings, 'employability'),
+    [ratings]);
+
+  const salarySatisfactionAvarage = useMemo(() => averagePropInList(ratings, 'salary_satisfaction'),
+    [ratings]);
+
   return (
     <PageContainer>
-      {ratings.map((rating) => <span>{rating.happines}</span>)}
+      <p>{happinessAvarage}</p>
+      <p>{employabilityAvarage}</p>
+      <p>{salarySatisfactionAvarage}</p>
     </PageContainer>
   );
 };

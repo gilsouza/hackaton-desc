@@ -77,8 +77,9 @@ const CareersProvider = ({ children }) => {
 
   const getRatings = async () => {
     setLoading(true);
-    if (currentCareer?.id) {
-      const { data } = await axios.get(`${API_URL}/ratings?careerId=${currentCareer?.id}`);
+
+    if (currentCarrer?.id) {
+      const { data } = await axios.get(`${API_URL}/ratings?careerId=${currentCarrer?.id}`);
 
       setRatings(data);
     } else {
