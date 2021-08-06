@@ -87,7 +87,21 @@ const Salario = () => {
       legend: {
         display: false,
       },
+
     },
+    scales: {
+      yAxes: {
+        ticks: {
+          color: 'white',
+        },
+      },
+      xAxes: {
+        ticks: {
+          color: 'white',
+        },
+      },
+    },
+
   };
 
   return (
