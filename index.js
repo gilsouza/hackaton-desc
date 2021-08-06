@@ -56,11 +56,11 @@ server.post("/questions/:id/:vote", (req, res) => {
 
     if (questionIndex > -1) {
         if (req.params.vote === "upvote") {
-            questions[questionIndex].upvotes = questions[questionIndex].upvotes + 1;
+            questions[questionIndex].upvotes = (questions[questionIndex].upvotes || 0) + 1;
             router.db.set("questions", questions);
             res.status(201).send(questions[questionIndex]);
         } else if (req.params.vote === "downvote") {
-            questions[questionIndex].downvotes = questions[questionIndex].downvotes + 1;
+            questions[questionIndex].downvotes = (questions[questionIndex].downvotes || 0) + 1;
             router.db.set("questions", questions);
             res.status(201).send(questions[questionIndex]);
         }
@@ -76,11 +76,12 @@ server.post("/question_answers/:id/:vote", (req, res) => {
 
     if (question_answerIndex > -1) {
         if (req.params.vote === "upvote") {
-            question_answers[question_answerIndex].upvotes = question_answers[question_answerIndex].upvotes + 1;
+            question_answers[question_answerIndex].upvotes = (question_answers[question_answerIndex].upvotes || 0) + 1;
             router.db.set("question_answers", question_answers);
             res.status(201).send(question_answers[question_answerIndex]);
         } else if (req.params.vote === "downvote") {
-            question_answers[question_answerIndex].downvotes = question_answers[question_answerIndex].downvotes + 1;
+            question_answers[question_answerIndex].downvotes =
+                (question_answers[question_answerIndex].downvotes || 0) + 1;
             router.db.set("question_answers", question_answers);
             res.status(201).send(question_answers[question_answerIndex]);
         }
@@ -94,8 +95,9 @@ server.post("/question_answers/:id/:vote", (req, res) => {
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
-    if (req.method === "POST") {
-        req.body.createdAt = Date.now();
+    if (req.method === "POST" && req.path === "/briefs") {
+        req.body.upvotes = 0;
+        req.body.downvotes = 0;
     }
     // Continue to JSON Server router
     next();
