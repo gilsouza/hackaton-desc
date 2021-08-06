@@ -35,10 +35,10 @@ const tabs = [
 const Profession = () => {
   const { profissao } = useParams();
   const history = useHistory();
-  const { currentCarrer, getCarrerById } = useCareers();
+  const { currentCareer, getCareerById } = useCareers();
 
   useEffect(() => {
-    getCarrerById(profissao);
+    getCareerById(profissao);
   }, []);
 
   return (
@@ -46,7 +46,7 @@ const Profession = () => {
       <PageContainer>
         <ProfessionHeader>
           <CarrerHeader>
-            <ProfessionText>{currentCarrer.name}</ProfessionText>
+            <ProfessionText>{currentCareer.name}</ProfessionText>
             <Row>
               <Button text="Seguir" sufixIcon={<Add />} />
               <Button

@@ -5,7 +5,7 @@ const Button = ({
 }) => (
   <PageContainer style={style} onClick={onClick}>
     {text}
-    <IconContainer>{sufixIcon}</IconContainer>
+    {sufixIcon && <IconContainer>{sufixIcon}</IconContainer>}
   </PageContainer>
 );
 

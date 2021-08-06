@@ -11,35 +11,36 @@ const CareersProvider = ({ children }) => {
   const [salaries, setSalaries] = useState([]);
   const [loadding, setLoading] = useState(false);
   const [briefs, setBriefs] = useState([]);
-  const [currentCarrer, setCurrentCarrer] = useState({});
+  const [currentCareer, setcurrentCareer] = useState(null);
   const [questions, setQuestions] = useState([]);
 
-  const getCareersByFragment = async (fragment) => {
-    setLoading(true);
+  const getCareersByFragment = async (fragment, showLoading = true) => {
+    setLoading(showLoading);
+    const { data } = await axios.get(`${API_URL}/careers?q=${fragment}`);
     if (fragment) {
-      const { data } = await axios.get(`${API_URL}/careers?q=${fragment}`);
       setCarrers(data);
     } else {
       setCarrers([]);
     }
     setLoading(false);
+    return data;
   };
 
-  const getCarrerById = async (id) => {
+  const getCareerById = async (id) => {
     setLoading(true);
     const { data } = await axios.get(`${API_URL}/careers?id=${id}`);
     if (data.length) {
-      setCurrentCarrer(data[0]);
+      setcurrentCareer(data[0]);
     } else {
-      setCurrentCarrer(null);
+      setcurrentCareer(null);
     }
     setLoading(false);
   };
 
   const getBriefs = async () => {
     setLoading(true);
-    if (currentCarrer?.id) {
-      const { data } = await axios.get(`${API_URL}/careers/${currentCarrer?.id}/briefs?_expand=user`);
+    if (currentCareer?.id) {
+      const { data } = await axios.get(`${API_URL}/careers/${currentCareer?.id}/briefs?_expand=user`);
 
       const briefLikes = await Promise.all(data.map((brief) => axios.get(`${API_URL}/briefs/${brief.id}/likes`)));
       setBriefs(data.map((d, index) => ({ ...d, likes: briefLikes[index].data })));
@@ -51,8 +52,8 @@ const CareersProvider = ({ children }) => {
 
   const getSalaries = async () => {
     setLoading(true);
-    if (currentCarrer?.id) {
-      const { data } = await axios.get(`${API_URL}/careers/${currentCarrer?.id}/salaries`);
+    if (currentCareer?.id) {
+      const { data } = await axios.get(`${API_URL}/careers/${currentCareer?.id}/salaries`);
 
       setSalaries(data);
     } else {
@@ -63,8 +64,8 @@ const CareersProvider = ({ children }) => {
 
   const getQuestions = async () => {
     setLoading(true);
-    if (currentCarrer?.id) {
-      const { data } = await axios.get(`${API_URL}/questions?careerId=${currentCarrer?.id}&_expand=user`);
+    if (currentCareer?.id) {
+      const { data } = await axios.get(`${API_URL}/questions?careerId=${currentCareer?.id}&_expand=user`);
 
       setQuestions(data);
     } else {
@@ -76,9 +77,9 @@ const CareersProvider = ({ children }) => {
   return (
     <CareersContext.Provider value={{
       careers,
-      currentCarrer,
+      currentCareer,
       getCareersByFragment,
-      getCarrerById,
+      getCareerById,
       getBriefs,
       getSalaries,
       getQuestions,
