@@ -86,9 +86,11 @@ const Profession = () => {
             <CarrerHeader>
               <Row>
                 <ProfessionText>{currentCareer?.name}</ProfessionText>
-                <ButtonLogo data-tip="Temos esse curso no Descomplica ✓">
+                {currentCareer.link && (
+                <ButtonLogo data-tip="Temos esse curso no Descomplica ✓" onClick={window.location.href = link}>
                   <Img src={logo} alt="logo" height={30} />
                 </ButtonLogo>
+                )}
               </Row>
               <Row>
                 <Button
