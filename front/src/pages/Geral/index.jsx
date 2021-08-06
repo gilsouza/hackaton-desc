@@ -4,10 +4,11 @@ import { useCareers } from '../../hooks/Careers';
 import {
   BoxRatings,
   GeneralResults, LabelRatingResult,
-  LabelResult, LabelResultGeral, PageContainer, Rating, SectionTitle,
+  LabelResult, LabelResultGeral, PageContainer, Rating, Section, SectionTitle,
 } from './styles';
 import { averagePropInList } from '../../util/math';
 import { HorizontalLine } from '../Duvidas/styles';
+import { BriefCard } from '../../components/BriefCard';
 
 const Geral = () => {
   const {
@@ -61,26 +62,44 @@ const Geral = () => {
     </Rating>
   );
 
+  function renderRateSection() {
+    return (
+      <Section withoutTopMargin>
+        <SectionTitle>Avaliação media:</SectionTitle>
+        <GeneralResults>
+          <LabelResultGeral>Avaliação geral:</LabelResultGeral>
+          <ReactStars
+            value={generalAverage}
+            count={5}
+            size={24}
+            edit={false}
+            half
+            color2="#00E88F"
+            color1="#DDD"
+          />
+          <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
+        </GeneralResults>
+        <BoxRatings>
+          {averages.map((item) => renderRatingBox(item))}
+        </BoxRatings>
+      </Section>
+    );
+  }
+
+  function renderBriefSection() {
+    return (
+      <Section>
+        <SectionTitle>Principal depoimento:</SectionTitle>
+        <BriefCard brief={topVoteBrief} />
+      </Section>
+    );
+  }
+
   return (
     <PageContainer>
-      <SectionTitle>Avaliação media:</SectionTitle>
-      <GeneralResults>
-        <LabelResultGeral>Avaliação geral:</LabelResultGeral>
-        <ReactStars
-          value={generalAverage}
-          count={5}
-          size={24}
-          edit={false}
-          half
-          color2="#00E88F"
-          color1="#DDD"
-        />
-        <LabelRatingResult>{`${generalAverage}`}</LabelRatingResult>
-      </GeneralResults>
-      <BoxRatings>
-        {averages.map((item) => renderRatingBox(item))}
-      </BoxRatings>
-
+      {renderRateSection()}
+      <HorizontalLine />
+      {topVoteBrief && renderBriefSection()}
       <HorizontalLine />
     </PageContainer>
   );

@@ -33,9 +33,16 @@ export const LabelResultGeral = styled(TextResult)`
     font-size: 16px;
     font-weight: 600;
 `;
-export const SectionTitle = styled.span`
+export const SectionTitle = styled.p`
     font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 12px;
     font-weight: 600;
+`;
+
+export const Section = styled.div`
+  padding-bottom: 12px;
+  padding-top: ${(props) => (props.withoutTopMargin ? 0 : '12px')}
 `;
 
 export const LabelRatingResult = styled(LabelResult)`
