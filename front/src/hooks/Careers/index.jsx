@@ -8,6 +8,7 @@ const API_URL = 'https://hackaton-desc-back.vercel.app';
 
 const CareersProvider = ({ children }) => {
   const [careers, setCarrers] = useState([]);
+  const [salaries, setSalaries] = useState([]);
   const [loadding, setLoading] = useState(false);
   const [briefs, setBriefs] = useState([]);
   const [currentCarrer, setCurrentCarrer] = useState({});
@@ -48,6 +49,18 @@ const CareersProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getSalaries = async () => {
+    setLoading(true);
+    if (currentCarrer?.id) {
+      const { data } = await axios.get(`${API_URL}/careers/${currentCarrer?.id}/salaries`);
+
+      setSalaries(data);
+    } else {
+      setSalaries([]);
+    }
+    setLoading(false);
+  };
+
   const getQuestions = async () => {
     setLoading(true);
     if (currentCarrer?.id) {
@@ -67,9 +80,11 @@ const CareersProvider = ({ children }) => {
       getCareersByFragment,
       getCarrerById,
       getBriefs,
+      getSalaries,
       getQuestions,
       questions,
       briefs,
+      salaries,
     }}
     >
       {children}
