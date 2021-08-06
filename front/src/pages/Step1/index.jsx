@@ -16,15 +16,15 @@ const Step1 = () => {
   const [isEmployed, setIsEmployed] = useState();
   const [searchText, setSearchText] = useState('');
   const [selectedCareer, setSelectedCareer] = useState('');
-  const [salarie, setSalarie] = useState(0);
+  const [salaryRange, setSalaryRange] = useState(0);
 
   useEffect(() => {
     setRateState((previosRateState) => ({
       ...previosRateState,
-      selectedCareer,
-      salarie,
+      careerId: selectedCareer,
+      salaryRange,
     }));
-  }, [salarie, selectedCareer]);
+  }, [salaryRange, selectedCareer]);
 
   const searchCareers = async () => {
     const carrers = await getCareersByFragment(searchText, false);
@@ -54,9 +54,9 @@ const Step1 = () => {
             />
             <Title>Qual a sua faixa de salário atual?</Title>
             <Row>
-              <Button text="0 a 2000" onClick={() => setSalarie(0)} />
-              <Button text="2001 a 5000" onClick={() => setSalarie(1)} />
-              <Button text="Mais de 5000" onClick={() => setSalarie(2)} />
+              <Button text="0 a 2000" onClick={() => setSalaryRange(0)} />
+              <Button text="2001 a 5000" onClick={() => setSalaryRange(1)} />
+              <Button text="Mais de 5000" onClick={() => setSalaryRange(2)} />
             </Row>
             <Button
               text="Proximo passo"
