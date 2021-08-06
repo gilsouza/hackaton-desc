@@ -9,9 +9,9 @@ module.exports = () => {
         users: [
             {
                 createdAt: "2021-08-05T15:26:31.532Z",
-                name: "Lee Cole",
-                avatar: "https://cdn.fakercloud.com/avatars/rikas_128.jpg",
-                email: "Kurt50@hotmail.com",
+                name: "Snow",
+                avatar: "https://hackaton-desc.vercel.app/static/media/snow.13724efb.png",
+                email: "snow@hotmail.com",
                 phone: "222-805-5425 x402",
                 city: "Noahstad",
                 state: "Oregon",

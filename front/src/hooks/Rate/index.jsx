@@ -8,7 +8,22 @@ const RateProvider = ({ children }) => {
   const [rateState, setRateState] = useState({});
 
   const sendRate = async () => {
-    await axios.post(`${API_URL}/rate`, rateState);
+    await axios.post(`${API_URL}/ratings`, {
+      is_employed: true,
+      salary_range: rateState.salaryRange,
+      time_employed: rateState.timeEmployed,
+      had_salary_increase: false,
+      happy_current_job: false,
+      happiness: rateState.happiness,
+      employability: rateState.employability,
+      salary_satisfaction: rateState.salarySatisfaction,
+      careerId: rateState.careerId,
+    });
+    await axios.post(`${API_URL}/briefs`, {
+      text: rateState.brief,
+      careerId: rateState.careerId,
+      userId: 1,
+    });
     setRateState(true);
   };
 

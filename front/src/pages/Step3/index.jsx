@@ -10,15 +10,15 @@ import animationData from '../../assets/50867-sending-mail.json';
 const Step3 = () => {
   const history = useHistory();
   const { setRateState, sendRate } = useRate();
-  const [depoimento, setDepoimento] = useState();
+  const [brief, setBrief] = useState();
   const [submited, setSubimited] = useState(false);
   useEffect(() => {
     setRateState((previosState) => ({
       ...previosState,
-      depoimento,
+      brief,
       submited,
     }));
-  }, [depoimento, submited]);
+  }, [brief, submited]);
   const onAnimationFinished = () => {
     sendRate();
     history.push('');
@@ -33,7 +33,7 @@ const Step3 = () => {
       {!submited ? (
         <>
           <Title>Digite um depoimento sobre sua carreira atual</Title>
-          <TextArea onChange={(event) => setDepoimento(event.target.value)} value={depoimento} />
+          <TextArea onChange={(event) => setBrief(event.target.value)} value={brief} />
           <Button
             text="Enviar avaliação"
             sufixIcon={<Check />}

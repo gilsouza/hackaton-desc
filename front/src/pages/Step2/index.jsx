@@ -9,23 +9,27 @@ import { useRate } from '../../hooks/Rate';
 const Step2 = () => {
   const history = useHistory();
   const { pathname } = useLocation();
-  const [quality, setQuality] = useState(3);
+  const [happiness, setHappiness] = useState(3);
+  const [employability, setEmployability] = useState(3);
+  const [salarySatisfaction, setSalarySatisfaction] = useState(3);
 
   const { setRateState } = useRate();
   useEffect(() => {
     setRateState((previosRateState) => ({
       ...previosRateState,
-      quality,
+      happiness,
+      employability,
+      salarySatisfaction,
     }));
-  }, [quality]);
+  }, [happiness, salarySatisfaction, employability]);
   return (
     <Container>
       <Title>Avalie a carreira de acordo com sua qualidade de vida</Title>
-      <ReactStars count={5} ratingChanged={setQuality} size={54} />
+      <ReactStars count={5} ratingChanged={setHappiness} size={54} />
       <Title>Avalie o quanto satisfeito você esta com seu salário</Title>
-      <ReactStars count={5} ratingChanged={setQuality} size={54} />
+      <ReactStars count={5} ratingChanged={setSalarySatisfaction} size={54} />
       <Title>Avalie a carreira em relação a empregabilidade</Title>
-      <ReactStars count={5} ratingChanged={setQuality} size={54} />
+      <ReactStars count={5} ratingChanged={setEmployability} size={54} />
       <Button
         text="Proximo passo"
         sufixIcon={<ArrowRight />}
