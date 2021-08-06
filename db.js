@@ -109,6 +109,7 @@ module.exports = () => {
                 title: "Usability",
                 description: Faker.lorem.sentences(6),
                 id: "desenvolvedor",
+                link: 'https://descomplica.com.br/faculdade/tecnologia/analise-e-desenvolvimento-de-sistemas/'
             },
             {
                 createdAt: "2021-08-05T16:53:51.040Z",
@@ -116,6 +117,7 @@ module.exports = () => {
                 title: "Operations",
                 description: Faker.lorem.sentences(6),
                 id: "professor-de-geografia",
+                link: 'https://descomplica.com.br/faculdade/educacao/pedagogia/'
             },
             {
                 createdAt: "2021-08-05T16:53:51.040Z",
@@ -130,6 +132,7 @@ module.exports = () => {
                 title: "Operations",
                 description: Faker.lorem.sentences(6),
                 id: "marketing",
+                link: 'https://descomplica.com.br/faculdade/gestao/marketing/'
             },
             {
                 createdAt: "2021-08-05T16:53:51.040Z",
