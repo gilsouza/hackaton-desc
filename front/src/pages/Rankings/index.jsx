@@ -25,9 +25,12 @@ const Rankings = () => {
       return rv;
     }, {});
 
+    console.log('@@@@', grouped);
+
     const averages = Object.keys(grouped)
       .map((career) => ({
         career,
+        careerId: grouped[career][0].career.id,
         averages: {
           happiness: averagePropInList(grouped[career], 'happiness'),
           salaryRange: averagePropInList(grouped[career], 'salary_range'),
