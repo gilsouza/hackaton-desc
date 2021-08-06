@@ -31,13 +31,18 @@ server.post("/briefs/:id/:vote", (req, res) => {
     const briefIndex = briefs.findIndex((item) => item.id === Number(req.params.id));
 
     if (briefIndex > -1) {
+        const brief = briefs[briefIndex];
+        const users = router.db.get("users").value();
+        const user = users.filter((item) => item.id === brief.userId)[0];
+
         if (req.params.vote === "upvote") {
             briefs[briefIndex].upvotes = briefs[briefIndex].upvotes + 1;
             router.db.set("briefs", briefs);
-            res.status(201).send(briefs[briefIndex]);
+            res.status(201).send({ ...briefs[briefIndex], user });
         } else if (req.params.vote === "downvote") {
             briefs[briefIndex].downvotes = briefs[briefIndex].downvotes + 1;
-            router.db.set("briefs", briefs);
+            router.db.set("briefs", { ...briefs[briefIndex], user });
+
             res.status(201).send(briefs[briefIndex]);
         }
         res.status(404).send();
