@@ -13,8 +13,8 @@ const Step3 = () => {
   const { profissao } = useParams();
   const history = useHistory();
   const { pathname } = useLocation();
-  const { setRateState, sendRate, rateState } = useRate();
-  const [brief, setBrief] = useState(rateState.brief);
+  const { setRateState, sendRate } = useRate();
+  const [brief, setBrief] = useState('');
   const [submited, setSubimited] = useState(false);
   useEffect(() => {
     setRateState((previosState) => ({
@@ -46,8 +46,8 @@ const Step3 = () => {
               onClick={() => history.push(pathname.replace('3', '2'))}
             />
             <Button
-              disabled={!brief || brief.length < 20}
-              text="Enviar avaliação"
+              disabled={brief.length < 20 && !(brief.length === 0)}
+              text={brief.length === 0 ? 'pular' : 'Enviar avaliação'}
               sufixIcon={<Check />}
               onClick={() => setSubimited(true)}
             />

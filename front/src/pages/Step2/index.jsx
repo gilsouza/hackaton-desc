@@ -26,11 +26,32 @@ const Step2 = () => {
   return (
     <Container>
       <Title>Avalie a carreira de acordo com sua qualidade de vida</Title>
-      <ReactStars value={happiness} count={5} onChange={setHappiness} size={54} />
+      <ReactStars
+        value={happiness}
+        count={5}
+        onChange={setHappiness}
+        size={54}
+        color1="#DDD"
+        color2="#00C86F"
+      />
       <Title>Avalie o quanto satisfeito você esta com seu salário</Title>
-      <ReactStars value={salarySatisfaction} count={5} onChange={setSalarySatisfaction} size={54} />
+      <ReactStars
+        value={salarySatisfaction}
+        count={5}
+        onChange={setSalarySatisfaction}
+        size={54}
+        color1="#DDD"
+        color2="#00C86F"
+      />
       <Title>Avalie a carreira em relação a empregabilidade</Title>
-      <ReactStars value={employability} count={5} onChange={setEmployability} size={54} />
+      <ReactStars
+        value={employability}
+        count={5}
+        onChange={setEmployability}
+        size={54}
+        color1="#DDD"
+        color2="#00C86F"
+      />
       <Row>
         <Button
           text="Voltar passo"

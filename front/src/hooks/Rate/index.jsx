@@ -19,11 +19,14 @@ const RateProvider = ({ children }) => {
       salary_satisfaction: rateState.salarySatisfaction,
       careerId: rateState.careerId,
     });
-    await axios.post(`${API_URL}/briefs`, {
-      text: rateState.brief,
-      careerId: rateState.careerId,
-      userId: 1,
-    });
+
+    if (rateState.brief) {
+      await axios.post(`${API_URL}/briefs`, {
+        text: rateState.brief,
+        careerId: rateState.careerId,
+        userId: 1,
+      });
+    }
     setRateState(true);
   };
 
