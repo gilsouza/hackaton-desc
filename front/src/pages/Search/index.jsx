@@ -58,7 +58,7 @@ const Search = () => {
     <PageContainer>
       <SearchContainer>
         <SearchFrom onSubmit={searchCareers}>
-          <SearchInput value={searchText} onInput={handleInputChange} placeholder="busque por uma carreira" />
+          <SearchInput value={searchText} onInput={handleInputChange} placeholder="Busque por uma carreira" />
         </SearchFrom>
         <SearchIcon />
       </SearchContainer>

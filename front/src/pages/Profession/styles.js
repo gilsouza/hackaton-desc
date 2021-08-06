@@ -17,10 +17,10 @@ export const ContentContainer = styled.div`
   flex: 1;
   background-color: var(--third-color);
   border-radius: 0 0 5px 5px;
-  border: 1px solid black;
+  border: 1px solid var(--secondary-color);
 `;
 export const ProfessionHeader = styled.div`
-  background-color: black;
+  background-color: var(--secondary-color);
   padding: 12px 20px 0 20px;
   border-radius: 5px 5px 0 0 ;
 `;

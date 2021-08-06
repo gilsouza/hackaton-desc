@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
   flex: 1;
   background-color: var(--third-color);
   border-radius: 0 0 5px 5px;
-  border: 1px solid black;
+  border: 1px solid var(--secondary-color);
 `;
 export const Container = styled.div`
     display: flex;
@@ -29,8 +29,20 @@ export const Container = styled.div`
 export const Title = styled.div`
     margin-top: 20px;
 `;
+export const TextArea = styled.textarea`
+    margin-top: 20px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 16px;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+`;
 export const ProfessionHeader = styled.div`
-  background-color: black;
+  background-color: var(--secondary-color);
   padding: 12px 20px 0 20px;
   border-radius: 5px 5px 0 0 ;
 `;

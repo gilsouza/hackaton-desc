@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: black;
+  background-color: var(--secondary-color);
 `;
 
 export const HeaderText = styled.h1`
@@ -48,7 +48,7 @@ export const Row = styled.div`
 
 export const LoginButton = styled.button`
   margin-right: 30px;
-  border: 2px solid black;
+  border: 2px solid var(--secondary-color);
   border-radius: 20px;
   height: 40px;
   font-size: 20px;

@@ -1,22 +1,31 @@
 import { ArrowRight } from '@material-ui/icons';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   AsyncSelectStyled, Container, Row, Title,
 } from '../Avaliar/styles';
 import { Button } from '../../components/Button';
 import { useCareers } from '../../hooks/Careers';
+import { useRate } from '../../hooks/Rate';
 
 const Step1 = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const { getCareersByFragment } = useCareers();
+  const { setRateState } = useRate();
   const [isEmployed, setIsEmployed] = useState();
   const [searchText, setSearchText] = useState('');
   const [selectedCareer, setSelectedCareer] = useState('');
   const [salarie, setSalarie] = useState(0);
 
-  console.log(selectedCareer, salarie);
+  useEffect(() => {
+    setRateState((previosRateState) => ({
+      ...previosRateState,
+      selectedCareer,
+      salarie,
+    }));
+  }, [salarie, selectedCareer]);
+
   const searchCareers = async () => {
     const carrers = await getCareersByFragment(searchText, false);
     if (searchText) {
