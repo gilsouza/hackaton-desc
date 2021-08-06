@@ -38,29 +38,39 @@ const tabs = [
     path: 'avaliacoes',
   },
 ];
+
 const Profession = () => {
   const { profissao } = useParams();
   const history = useHistory();
   const { currentCareer, getCareerById } = useCareers();
-  const [hasFollowed, setHasFollowed] = useState(false);
+  const [hasFollowed, setHasFollowed] = useState([]);
 
   useEffect(() => {
     getCareerById(profissao);
 
-    const followed = localStorage.getItem('dc-has-followed');
+    const followed = JSON.parse(localStorage.getItem('dc-has-followed'));
 
-    setHasFollowed(followed === 'true');
+    if (!followed) {
+      return;
+    }
+
+    setHasFollowed(followed);
   }, []);
 
   const handleFollow = () => {
-    const newHasFollowed = !hasFollowed;
+    if (hasFollowed.includes(currentCareer.id)) {
+      const newHasFollowed = hasFollowed.filter((el) => el !== currentCareer.id);
+
+      setHasFollowed(newHasFollowed);
+
+      localStorage.setItem('dc-has-followed', JSON.stringify(newHasFollowed));
+      return;
+    }
+
+    const newHasFollowed = [...hasFollowed, currentCareer.id];
 
     setHasFollowed(newHasFollowed);
-    if (newHasFollowed) {
-      localStorage.setItem('dc-has-followed', 'true');
-    } else {
-      localStorage.setItem('dc-has-followed', 'false');
-    }
+    localStorage.setItem('dc-has-followed', JSON.stringify(newHasFollowed));
   };
 
   return (
@@ -74,8 +84,8 @@ const Profession = () => {
               <ProfessionText>{currentCareer?.name}</ProfessionText>
               <Row>
                 <Button
-                  text={hasFollowed ? 'Seguindo' : 'Seguir'}
-                  sufixIcon={hasFollowed ? <Check /> : <Add />}
+                  text={hasFollowed.includes(currentCareer ? currentCareer.id : '') ? 'Seguindo' : 'Seguir'}
+                  sufixIcon={hasFollowed.includes(currentCareer ? currentCareer.id : '') ? <Check /> : <Add />}
                   onClick={handleFollow}
                 />
                 <Button
